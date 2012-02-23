@@ -1,0 +1,64 @@
+=head1 名前
+
+Ringo Wiki(りんごウィキ) - 開発が始まったばかり
+
+=head2 説明
+
+リンゴウィキはインストールが簡単なWikiです。
+
+Perl 5.10.1以上の環境であれば、Windows, Linux/Unix, Mac OS X
+など多くのOSで利用が可能です。
+
+リンゴWikiはPerlで書かれているので、Perlが得意な人にとっては
+とてもよいWikiでしょう。データベースはSQLiteを利用しています。
+
+=head1 セットアップ
+
+いくつかのモジュールをインストールします。
+
+  perl cpanm -l extlib Module::CoreList
+  perl t/module.t list --fail | perl -Iextlib/lib/perl5 cpanm -n -L extlib
+
+=head1 テスト
+
+セットアップが正しく行われているかどうかの
+試験を行います。
+
+  prove t
+
+すべてのテストがパスすれば、セットアップは成功しています。
+
+=head1 アプリケーションの実行 (Unix/Linux)
+
+=head2 起動
+
+  ./hypnotoad
+
+アプリケーションがバックエンドで起動します。
+ポート番号はデフォルトでC<10001>です。
+以下のアドレスでアプリケーションにアクセスすることができます。
+
+  http://localhost:10001
+
+ポート番号を変更したい場合は
+C<ringowiki.conf>を編集します。
+
+再起動も同じコマンドで行うことができます。
+
+=head2 停止
+
+  ./hypnotoad --stop
+
+C<--stop>オプションで停止することができます。
+
+=head1 アプリケーションの実行 (Windows)
+
+=head2 起動
+
+  set MOJO_MODE=production
+  start perl script/portablebbs daemon --listen=http://*:10001
+
+もしバックエンドで実行したい場合は、ウインドウズのサービスなどに
+登録してください。
+
+=cut
