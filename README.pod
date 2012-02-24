@@ -1,3 +1,5 @@
+=encoding utf8
+
 =head1 名前
 
 Ringo Wiki(りんごウィキ) - 開発が始まったばかり
