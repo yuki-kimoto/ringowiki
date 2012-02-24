@@ -1,12 +1,10 @@
 =encoding utf8
 
-=head1 名前
+=head1 りんごウィキ
 
-リンゴウィキ(Ringo Wiki) - 開発が始まったばかり
+(開発が始まったばかりでまだ利用できません。)
 
-=head2 説明
-
-リンゴウィキはPerlで書かれたWikiです。
+りんごウィキはPerlで書かれたWikiです。
 
 Perl 5.10.1以上の環境であれば、Windows, Linux/Unix, Mac OS X
 など多くのOSで利用が可能です。インストールも簡単です。
