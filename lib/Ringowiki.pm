@@ -1,18 +1,66 @@
 package Ringowiki;
 use Mojo::Base 'Mojolicious';
+use DBIx::Custom;
+use Validator::Custom;
 
-# This method will run once at server start
+has validator => sub { Validator::Custom->new };
+has 'dbi';
+
 sub startup {
   my $self = shift;
-
-  # Documentation browser under "/perldoc"
-  $self->plugin('PODRenderer');
-
-  # Routes
+  
+  # Config
+  my $config = $self->plugin('Config');
+  
+  # Database
+  my $db = $ENV{PORTABLEBBE_DBNAME} || "portablebbs";
+  my $dbpath = $self->home->rel_file("db/$db");
+  
+  # DBI
+  my $dbi = DBIx::Custom->connect(
+    dsn => "dbi:SQLite:$dbpath",
+    option => {sqlite_unicode => 1},
+    connector => 1
+  );
+  $self->dbi($dbi);
+  
+  # Model
+  $dbi->create_model(table => 'entry');
+  
+  # Route
   my $r = $self->routes;
+  
+  # Brige
+  my $b = $r->under(sub {
+    my $self = shift;
+    
+    # Database is setupped?
+    my $path = $self->req->url->path->to_string;
+    eval { $dbi->select(table => 'entry', where => '1 = 0') };
+    if ($@) {
+      return 1 if $path eq '/install' || $path eq '/database/setup';
+      $self->redirect_to('/install');
+      return 0;
+    }
+    
+    return 1;
+  });
 
-  # Normal route to controller
-  $r->route('/')->to('example#welcome');
+  # Top page
+  $b->get('/')->to('index#default');
+  
+  # Admin
+  $b->get('/admin')->to('admin#default');
+
+  # Entry
+  $b->post('/entry/create')->to('entry#create');
+
+  # Install
+  $b->get('/install')->to('install#default');
+  $b->get('/install/success')->to('install#success');
+
+  # Database
+  $b->post('/database/setup')->to('database#setup');
 }
 
 1;
