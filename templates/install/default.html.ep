@@ -1,7 +1,5 @@
-% layout 'default', title => 'リンゴウィキをはじめよう';
-
-<h2>リンゴウィキを作成しましょう。</h2>
+% layout 'default', title => 'ウィキの作成';
 
 <form method="post" action="<%= url_for '/database/setup' %>" >
-  %= submit_button 'ウィキを作成する';
+  %= submit_button 'ウィキの作成';
 </form>

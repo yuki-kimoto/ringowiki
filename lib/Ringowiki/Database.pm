@@ -7,12 +7,9 @@ sub setup {
   
   # Create entry table
   $self->app->dbi->execute(<<'EOS');
-create table entry (
-  id integer primary key autoincrement,
-  title not null,
-  message not null,
-  ctime datetime not null
-)
+create table setup (
+  rowid integer primary key autoincrement
+);
 EOS
   
   $self->redirect_to('/install/success');

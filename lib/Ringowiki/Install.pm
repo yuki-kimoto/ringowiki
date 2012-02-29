@@ -5,9 +5,10 @@ sub default {
   my $self = shift;
   
   # Database is setupped
-  eval { $self->app->dbi->select(table => 'entry', where => '1 = 0') };
-  if ($@) { $self->render }
-  else { $self->render('install/installed') }
+  if ($self->app->util->setup_completed) {
+    $self->redirect_to('/admin');
+  }
+  else { $self->render }
 }
 
 1;
