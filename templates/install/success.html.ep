@@ -1,5 +1,0 @@
-% layout 'default', title => 'セットアップ完了';
-
-<h1>セットアップ完了</h1>
-
-<a href="<%= url_for '/admin' %>">管理ページへ</a>

@@ -1,5 +1,0 @@
-% layout 'default', title => 'ウィキの作成';
-
-<form method="post" action="<%= url_for '/database/setup' %>" >
-  %= submit_button 'ウィキの作成';
-</form>
