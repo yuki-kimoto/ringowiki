@@ -10,4 +10,4 @@ use Test::Mojo;
 use_ok 'Ringowiki';
 
 my $t = Test::Mojo->new('Ringowiki');
-$t->get_ok('/install')->status_is(200)->content_like(qr/Mojolicious/i);
+$t->get_ok('/setup')->status_is(200);

@@ -5,7 +5,7 @@ sub default {
   my $self = shift;
   
   # Goto setup page
-  return $self->redirect_to('/install')
+  return $self->redirect_to('/setup')
     unless $self->app->util->setup_completed;
   
   $self->render;

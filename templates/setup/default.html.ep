@@ -1,0 +1,17 @@
+% layout 'default', title => 'りんごウィキのセットアップ';
+
+%= javascript begin
+  $(function () {
+    $('input[name="setup"]').click(function () {
+      $.post("<%= url_for '/api/setup' %>", {}, function (result) {
+        if (result.success) {
+          alert("セットアップ成功");
+          window.location.href = "<%= url_for '/admin' %>";
+        }
+        else { alert("セットアップ失敗") }
+      }, "json");
+    });
+  });
+% end
+
+<input type="button" name="setup" value="りんごウィキのセットアップ">;

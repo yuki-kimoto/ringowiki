@@ -32,9 +32,6 @@ sub startup {
   );
   $self->dbi($dbi);
   
-  # Model
-  $dbi->create_model(table => 'entry');
-  
   # Route
   my $r = $self->routes;
   
@@ -47,8 +44,8 @@ sub startup {
     # Database is setupped?
     unless ($self->app->util->setup_completed) {
       my $path = $self->req->url->path->to_string;
-      return 1 if $path eq '/install' || $path eq '/database/setup';
-      $self->redirect_to('/install');
+      return 1 if $path =~ m|^(/api)?/setup|;
+      $self->redirect_to('/setup');
       return 0; 
     }
     
@@ -58,18 +55,27 @@ sub startup {
   # Top page
   $b->get('/')->to('default#default');
   
+  # Setup
+  $b->get('/setup')->to('setup#default');
+
   # Admin
   $b->get('/admin')->to('admin#default');
-
-  # Entry
-  $b->post('/entry/create')->to('entry#create');
-
-  # Install
-  $b->get('/install')->to('install#default');
-  $b->get('/install/success')->to('install#success');
-
-  # Database
-  $b->post('/database/setup')->to('database#setup');
+  
+  # API
+  {
+    my $r2 = $b->route('/api');
+    
+    # Admin
+    {
+      my $r3 = $r2->route('/admin')->to('api-admin#');
+      $r3->post('/init')->to('#init');
+    }
+    
+    # Setup
+    {
+      $r2->post('/setup')->to('api-setup#default');
+    }
+  }
 }
 
 1;

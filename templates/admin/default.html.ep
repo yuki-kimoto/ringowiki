@@ -1,4 +1,26 @@
 % layout 'default', title => 'リンゴウィキ管理';
 
+%= javascript begin
+  $(function () {
+    $('input[name="init"]').click(function () {
+      if (!window.confirm("本当に初期化しますか。")) {
+        return false;
+      }
+      
+      // Initialize ringo wiki
+      $.post("<%= url_for "/api/admin/init" %>", {}, function (result) {
+        if (result.success) {
+          alert("初期化成功");
+          window.location.href = "<%= url_for '/setup' %>";
+        }
+        else { alert("初期化失敗") }
+      }, "json");
+    });
+  });
+% end
+
 <h1>リンゴウィキ管理</h1>
-リンゴウィキの管理を行います。
+
+<ul>
+  <li><input type="button" name="init" value="リンゴウィキの初期化"></li>
+</ul>
