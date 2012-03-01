@@ -1,0 +1,27 @@
+% layout 'default', title => 'ウィキの追加';
+
+%= javascript begin
+  $(function () {
+    $('input[name="add"]').click(function () {
+      // Initialize ringo wiki
+      $.post("<%= url_for "/api/admin/wiki/add" %>", {}, function (result) {
+        if (result.success) {
+          alert("Wiki作成完了");
+          window.location.href = "<%= url_for '/admin' %>";
+        }
+        else { alert("失敗") }
+      }, "json");
+    });
+  });
+% end
+
+<h1>ウィキの追加</h1>
+
+<form>
+  <div>
+    <div>
+      ID: <%= input_tag 'wiki_id' => 'default' %>
+      <input type="button" name="add" value="Wikiを追加">
+    </div>
+  </div>
+</form>

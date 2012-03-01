@@ -1,7 +1,9 @@
-% layout 'default', title => 'リンゴウィキ管理';
+% layout 'default', title => 'りんごウィキ管理';
 
 %= javascript begin
   $(function () {
+    
+    // Initialize wiki
     $('input[name="init"]').click(function () {
       if (!window.confirm("本当に初期化しますか。")) {
         return false;
@@ -16,11 +18,32 @@
         else { alert("初期化失敗") }
       }, "json");
     });
+
+    // Setup again
+    $('input[name="setup"]').click(function () {
+      if (!window.confirm("本当にセットアップしますか。")) {
+        return false;
+      }
+      
+      // Overwritten setup
+      $.post("<%= url_for "/api/setup" %>", {}, function (result) {
+        if (result.success) { alert("セットアップ成功") }
+        else { alert("セットアップ失敗") }
+      }, "json");
+    });
   });
 % end
 
-<h1>リンゴウィキ管理</h1>
+<h1>りんごウィキ管理</h1>
 
+<h2>現在のWiki</h2>
 <ul>
-  <li><input type="button" name="init" value="リンゴウィキの初期化"></li>
+ありません。
+</ul>
+
+<h2>ウィキ管理</h2>
+<ul>
+  <li><a href="<%= url_for '/admin/wiki/add' %>">ウィキの追加</a>
+  <li><input type="button" name="init" value="ウィキの初期化"></li>
+  <li><input type="button" name="setup" value="セットアップ" ></li>
 </ul>

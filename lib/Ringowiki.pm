@@ -59,8 +59,15 @@ sub startup {
   $b->get('/setup')->to('setup#default');
 
   # Admin
-  $b->get('/admin')->to('admin#default');
-  
+  {
+    my $w = $b->waypoint('/admin')->via('get')->to('admin#default');
+    
+    # Wiki
+    {
+      my $r2 = $w->route('/wiki')->to('admin-wiki#');
+      $r2->get('/add')->to('#add');
+    }
+  }
   # API
   {
     my $r2 = $b->route('/api');
@@ -69,6 +76,10 @@ sub startup {
     {
       my $r3 = $r2->route('/admin')->to('api-admin#');
       $r3->post('/init')->to('#init');
+      
+      # Wiki
+      my $r4 = $r3->route('/wiki')->to('api-admin-wiki#');
+      $r4->post('add')->to('#add');
     }
     
     # Setup

@@ -2,6 +2,7 @@
 
 %= javascript begin
   $(function () {
+    // Setup
     $('input[name="setup"]').click(function () {
       $.post("<%= url_for '/api/setup' %>", {}, function (result) {
         if (result.success) {
@@ -14,4 +15,4 @@
   });
 % end
 
-<input type="button" name="setup" value="りんごウィキのセットアップ">;
+<input type="button" name="setup" value="りんごウィキのセットアップ">
