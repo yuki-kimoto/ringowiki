@@ -26,35 +26,19 @@ sub default {
   my $dbi = $self->app->dbi;
   
   # Create tables
-  $self->_create_table('setup', []);
-  $self->_create_table('wiki', [
-    'id not null unique'
-  ]);
-  $self->_create_table('wiki', [
-    'id not null unique',
-    'password not null',
-    'admin not null'
-  ]);
+  $dbi->connector->txn(sub {
+    $self->_create_table('setup', []);
+    $self->_create_table('wiki', [
+      'id not null unique'
+    ]);
+    $self->_create_table('user', [
+      'id not null unique',
+      'password not null',
+      'admin not null'
+    ]);
+  });
   
   $self->render(json => {success => 1});
-}
-
-sub _add_column {
-  my ($self, $table, $column) = @_;
-
-  # DBI
-  my $dbi = $self->app->dbi;
-  
-  # Check column existance
-  my $column_exist =
-    eval { $dbi->select($column, where => '1 <> 1'); 1};
-  return if $column_exist;
-  
-  # Add column
-  my $sql = "alter table $table add column $column";
-  $dbi->execute($sql);
-  
-  return 1;
 }
 
 sub _create_table {
@@ -66,16 +50,15 @@ sub _create_table {
   # Check table existance
   my $table_exist = 
     eval { $dbi->select(table => $table, where => '1 <> 1'); 1};
-  return if $table_exist;
   
   # Create table
-  my $sql = "create table $table (rowid integer primary key autoincrement)";
-  $dbi->execute($sql);
-  
-  # Add columns
-  $self->_add_column($table, $_) for @$columns;
-  
-  return 1;
+  unshift @$columns, 'rowid integer primary key autoincrement';
+  unless ($table_exist) {
+    my $sql = "create table $table (";
+    $sql .= join ', ', @$columns;
+    $sql .= ')';
+    $dbi->execute($sql);
+  }
 }
 
 1;

@@ -10,6 +10,7 @@ use Ringowiki::Util;
 has util => sub { RingoWiki::Util->new(app => shift) };
 has validator => sub { Validator::Custom->new };
 has 'dbi';
+has 'dbpath';
 
 sub startup {
   my $self = shift;
@@ -23,6 +24,7 @@ sub startup {
   # Database
   my $db = $ENV{RINGOWIKI_DBNAME} || "ringowiki";
   my $dbpath = $self->home->rel_file("db/$db");
+  $self->dbpath($dbpath);
   
   # DBI
   my $dbi = DBIx::Custom->connect(

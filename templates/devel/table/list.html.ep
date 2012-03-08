@@ -1,3 +1,13 @@
-% layout 'default', title => 'テーブル一覧';
+% layout 'default', title => 'Table一覧';
 
-テーブル一覧
+<h2>Table一覧</h2>
+
+<table border="1">
+  <tr><th>テーブル名</th><th>CREATE TABLE</th></tr>
+  % for my $table_info (@$table_infos) {
+    <tr>
+      <td><%= $table_info->{name} %></td>
+      <td><%= $table_info->{sql} %></td>
+    </tr>
+  % }
+</table>

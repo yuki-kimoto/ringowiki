@@ -7,17 +7,11 @@ sub list {
   # DBI
   my $dbi = $self->app->dbi;
   
-  # Get table names
-  # my $tables = $dbi->execute('.tables')->column;
-  my $info = $dbi->select('# SELECT * FROM main.sqlite_master WHERE type='table';
+  # Get table info
+  my $table_infos
+    = $dbi->select(table => 'main.sqlite_master', where => "type='table'")->all;
   
-  for my $table (@$tables) {
-    
-  }
-  
-  
-  
-  $self->render;
+  $self->render(table_infos => $table_infos);
 }
 
 1;

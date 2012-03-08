@@ -7,7 +7,6 @@
       
       // Post form
       var params = ringowikiapi.create_form_data('#setup_form');
-      alert(JSON.stringify(params));
       $.post("<%= url_for '/api/setup' %>", params, function (result) {
         if (result.success) {
           alert('セットアップ成功');
