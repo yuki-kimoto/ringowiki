@@ -4,7 +4,7 @@ use lib "$FindBin::Bin/../exitlib/lib/perl5";
 
 use Mojo::Base -strict;
 
-use Test::More tests => 4;
+use Test::More 'no_plan';
 use Test::Mojo;
 
 use_ok 'Ringowiki';

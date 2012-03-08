@@ -8,14 +8,14 @@ sub list {
   my $dbi = $self->app->dbi;
   
   # Get table names
-  my $tables = $dbi->execute('.tables')->column;
+  # my $tables = $dbi->execute('.tables')->column;
+  my $info = $dbi->select('# SELECT * FROM main.sqlite_master WHERE type='table';
   
   for my $table (@$tables) {
     
   }
   
   
-  SELECT * FROM main.sqlite_master WHERE type='table';
   
   $self->render;
 }

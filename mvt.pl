@@ -19,13 +19,13 @@ run mvt.pl to create this module version test(t/module.t).
 EOS
 $tm->lib(['../extlib/lib/perl5']);
 $tm->modules([
-  [DBI => '1.617'],
+  [DBI => '1.618'],
   ['DBD::SQLite' => '1.35'],
   ['Object::Simple' => '3.0625'],
   ['Validator::Custom' => '0.1426'],
-  ['DBIx::Custom' => '0.2111'],
+  ['DBIx::Custom' => '0.24'],
   [Mojolicious => '2.51'],
-  ['DBIx::Connector' => '0.47']
+  ['DBIx::Connector' => '0.51']
 ]);
 $tm->test_script(output => "$FindBin::Bin/t/module.t");
 
