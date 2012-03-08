@@ -46,4 +46,5 @@
   <li><a href="<%= url_for '/admin/wiki/add' %>">ウィキの追加</a>
   <li><input type="button" name="init" value="ウィキの初期化"></li>
   <li><input type="button" name="setup" value="セットアップ" ></li>
+  <li><a href="<%= url_for '/devel/table/list' %>">テーブル一覧</a></li>
 </ul>

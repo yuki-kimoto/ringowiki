@@ -1,18 +1,37 @@
-% layout 'default', title => 'りんごウィキのセットアップ';
+% layout 'default', title => 'りんごウィキセットアップ';
 
 %= javascript begin
   $(function () {
     // Setup
     $('input[name="setup"]').click(function () {
-      $.post("<%= url_for '/api/setup' %>", {}, function (result) {
+      
+      // Post form
+      var params = ringowikiapi.create_form_data('#setup_form');
+      alert(JSON.stringify(params));
+      $.post("<%= url_for '/api/setup' %>", params, function (result) {
         if (result.success) {
-          alert("セットアップ成功");
+          alert('セットアップ成功');
           window.location.href = "<%= url_for '/admin' %>";
         }
-        else { alert("セットアップ失敗") }
+        else {
+          var validation = result.validation;
+          if (validation.invalid) {
+            messages = validation.messages;
+            for (var name in messages) {
+              alert(messages[name]);
+              break;
+            }
+          }
+          else { alert('セットアップ失敗') }
+        }
       }, "json");
     });
   });
 % end
 
-<input type="button" name="setup" value="りんごウィキのセットアップ">
+<form id="setup_form">
+  <div>管理者ID: <%= input_tag 'admin_user' => 'admin' %></div>
+  <div>管理者パスワード: <%= password_field 'admin_password1' %></div>
+  <div>(パスワード再入力) <%= password_field 'admin_password2' %></div>
+  <input type="button" name="setup" value="りんごウィキセットアップ">
+</form>

@@ -68,6 +68,18 @@ sub startup {
       $r2->get('/add')->to('#add');
     }
   }
+  
+  # Devel
+  {
+    my $r2 = $b->route('/devel');
+    
+    # Table
+    {
+      my $r3 = $r2->route('/table')->to('devel-table#');
+      $r3->get('list')->to('#list');
+    }
+  }
+  
   # API
   {
     my $r2 = $b->route('/api');

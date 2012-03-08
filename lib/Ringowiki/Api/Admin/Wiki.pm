@@ -6,7 +6,9 @@ sub add {
   
   
   
-  $self->render(json => {a => 1});
+  
+  
+  $self->render(json => {success => 1});
 }
 
 1;
