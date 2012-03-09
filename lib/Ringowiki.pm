@@ -22,8 +22,8 @@ sub startup {
   $self->secret($config->{secret});
   
   # Database
-  my $db = $ENV{RINGOWIKI_DBNAME} || "ringowiki";
-  my $dbpath = $self->home->rel_file("db/$db");
+  my $db = "ringowiki";
+  my $dbpath = $ENV{RINGOWIKI_DBPATH} // $self->home->rel_file("db/$db");
   $self->dbpath($dbpath);
   
   # DBI
@@ -99,6 +99,7 @@ sub startup {
     # Setup
     {
       $r2->post('/setup')->to('api-setup#default');
+      $r2->post('/setup/resetup')->to('api-setup#resetup');
     }
   }
 }

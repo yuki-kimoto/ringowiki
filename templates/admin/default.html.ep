@@ -20,13 +20,13 @@
     });
 
     // Setup again
-    $('input[name="setup"]').click(function () {
+    $('input[name="resetup"]').click(function () {
       if (!window.confirm("本当に再セットアップしますか。")) {
         return false;
       }
       
       // Overwritten setup
-      $.post("<%= url_for "/api/setup" %>", {}, function (result) {
+      $.post("<%= url_for "/api/setup/resetup" %>", {}, function (result) {
         if (result.success) { alert("再セットアップ成功") }
         else { alert("再セットアップ失敗") }
       }, "json");
@@ -44,7 +44,11 @@
 <h2>ウィキ管理</h2>
 <ul>
   <li><a href="<%= url_for '/admin/wiki/add' %>">ウィキの追加</a>
+</ul>
+
+<h2>開発用ユーティリティ</h2>
+<ul>
   <li><input type="button" name="init" value="ウィキの初期化"></li>
-  <li><input type="button" name="setup" value="再セットアップ" ></li>
+  <li><input type="button" name="resetup" value="再セットアップ" ></li>
   <li><a href="<%= url_for '/devel/table/list' %>">テーブル一覧</a></li>
 </ul>
