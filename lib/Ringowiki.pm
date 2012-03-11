@@ -34,6 +34,19 @@ sub startup {
   );
   $self->dbi($dbi);
   
+  # Model
+  $dbi->create_model(table => 'wiki', primary_key => 'id');
+  
+  # Validator;
+  my $vc = $self->validator;
+  $vc->register_constraint(
+    word => sub {
+      my $value = shift;
+      return 0 unless defined $value;
+      return $value =~ /^[a-zA-Z_]+$/ ? 1 : 0;
+    }
+  );
+  
   # Route
   my $r = $self->routes;
   
@@ -67,7 +80,7 @@ sub startup {
     # Wiki
     {
       my $r2 = $w->route('/wiki')->to('admin-wiki#');
-      $r2->get('/add')->to('#add');
+      $r2->get('/create')->to('#create');
     }
   }
   
@@ -93,7 +106,7 @@ sub startup {
       
       # Wiki
       my $r4 = $r3->route('/wiki')->to('api-admin-wiki#');
-      $r4->post('add')->to('#add');
+      $r4->post('create')->to('#create');
     }
     
     # Setup

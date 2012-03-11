@@ -5,7 +5,8 @@ use utf8;
 our $TABLE_INFOS = {
   setup => [],
   wiki => [
-    'id not null unique'
+    'id not null unique',
+    'main not null default 0'
   ],
   user => [
     'id not null unique',

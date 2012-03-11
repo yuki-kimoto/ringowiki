@@ -43,7 +43,7 @@
 
 <h2>ウィキ管理</h2>
 <ul>
-  <li><a href="<%= url_for '/admin/wiki/add' %>">ウィキの追加</a>
+  <li><a href="<%= url_for '/admin/wiki/create' %>">ウィキの作成</a>
 </ul>
 
 <h2>開発用ユーティリティ</h2>
