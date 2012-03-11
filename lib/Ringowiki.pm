@@ -92,6 +92,7 @@ sub startup {
     {
       my $r3 = $r2->route('/table')->to('devel-table#');
       $r3->get('list')->to('#list');
+      $r3->get('select')->to('#select');
     }
   }
   

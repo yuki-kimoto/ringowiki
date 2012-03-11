@@ -14,5 +14,24 @@ sub list {
   $self->render(table_infos => $table_infos);
 }
 
-1;
+sub select {
+  my $self = shift;
+  
+  # Parameter
+  my $table = $self->param('table');
+  return $self->render(table => '') unless defined $table;
+  
+  # DBI
+  my $dbi = $self->app->dbi;
+  
+  # Select
+  my $result = $dbi->select(table => $table);
+  
+  $self->render(
+    table => $table,
+    header => $result->header,
+    rows => $result->fetch_all
+  );
+}
 
+1;

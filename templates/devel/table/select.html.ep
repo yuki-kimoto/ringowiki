@@ -1,0 +1,20 @@
+% layout 'default', title => "select from $table";
+
+<h2>select from <%= $table %></h2>
+
+<div>
+  <table border="1">
+    <tr>
+      % for my $h (@$header) {
+        <th><%= $h %></th>
+      % }
+    </tr>
+    % for my $row (@$rows) {
+      <tr>
+        % for my $data (@$row) {
+          <td><%= $data %></td>
+        % }
+      </tr>
+    % }
+  </table>
+</div>

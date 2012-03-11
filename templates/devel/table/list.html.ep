@@ -6,7 +6,8 @@
   <tr><th>テーブル名</th><th>CREATE TABLE</th></tr>
   % for my $table_info (@$table_infos) {
     <tr>
-      <td><%= $table_info->{name} %></td>
+      % my $table = $table_info->{name};
+      <td><a href="<%= url_for "/devel/table/select?table=$table" %>"><%= $table %></a></td>
       <td><%= $table_info->{sql} %></td>
     </tr>
   % }
