@@ -6,6 +6,7 @@ our $TABLE_INFOS = {
   setup => [],
   wiki => [
     'id not null unique',
+    "title not null default ''",
     'main not null default 0'
   ],
   user => [

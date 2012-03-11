@@ -37,9 +37,23 @@
 <h1>りんごウィキ管理</h1>
 
 <h2>現在のWiki</h2>
-<ul>
-ありません。
-</ul>
+% if (@$wikis) {
+  <ul>
+    % for my $wiki (@$wikis) {
+      <li>
+        % my $id = $wiki->{id};
+        % my $title = $wiki->{title};
+        <a href="<%= url_for '/admin/wiki/config?id=$id' %>"><%= $id %></a>
+        - <%= $title eq '' ? 'タイトル未設定' : $title %>
+        % if ($wiki->{main}) {
+          (メイン)
+        % }
+      </li>
+    % }
+  </ul>
+% } else {
+  ありません。
+% }
 
 <h2>ウィキ管理</h2>
 <ul>
