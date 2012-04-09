@@ -31,69 +31,8 @@
         <!-- /jumpto -->
                 <!-- bodycontent -->
         <div id="mw-content-text" lang="ja" dir="ltr" class="mw-content-ltr"><div class="dablink noprint">
-<table style="width:100%; background:transparent;">
-<tr>
-<td style="width:25px;"><a href="/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Disambig_gray.svg" class="image" title="曖昧さ回避"><img alt="曖昧さ回避" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Disambig_gray.svg/25px-Disambig_gray.svg.png" width="25" height="19" /></a></td>
-<td>この項目では、Perlとしての最新バージョンであるバーション5系までのPerlについて記述しています。当初Perlの次期メジャーバージョンとして設計が始められたプログラミング言語については「<a href="/wiki/Perl6" title="Perl6">Perl6</a>」をご覧ください。</td>
-</tr>
-</table>
 </div>
-<table class="infobox vevent" style="width:22em;">
-<tr>
-<th colspan="2" class="summary" style="text-align:center; font-size:125%; font-weight:bold;">Perl</th>
-</tr>
-<tr>
-<th scope="row" style="text-align:left; white-space:nowrap;"><a href="/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%91%E3%83%A9%E3%83%80%E3%82%A4%E3%83%A0" title="プログラミングパラダイム">パラダイム</a></th>
-<td>マルチパラダイム</td>
-</tr>
-<tr>
-<th scope="row" style="text-align:left; white-space:nowrap;">登場時期</th>
-<td><a href="/wiki/1987%E5%B9%B4" title="1987年">1987年</a></td>
-</tr>
-<tr>
-<th scope="row" style="text-align:left; white-space:nowrap;">最新リリース</th>
-<td>5.14.2 / <a href="/wiki/2011%E5%B9%B4" title="2011年">2011年</a><a href="/wiki/9%E6%9C%8826%E6%97%A5" title="9月26日">9月26日</a></td>
-</tr>
-<tr>
-<th scope="row" style="text-align:left; white-space:nowrap;"><a href="/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0" title="型システム">型付け</a></th>
-<td><a href="/wiki/%E5%8B%95%E7%9A%84%E5%9E%8B%E4%BB%98%E3%81%91" title="動的型付け">動的型付け</a></td>
-</tr>
-<tr>
-<th scope="row" style="text-align:left; white-space:nowrap;">影響を受けた言語</th>
-<td><a href="/wiki/AWK" title="AWK">AWK</a>, <a href="/w/index.php?title=BASIC-PLUS&amp;action=edit&amp;redlink=1" class="new" title="BASIC-PLUS（存在しないページ）">BASIC-PLUS</a>, <a href="/wiki/C%E8%A8%80%E8%AA%9E" title="C言語">C</a>, <a href="/wiki/C%2B%2B" title="C++">C++</a>, <a href="/wiki/LISP" title="LISP">Lisp</a>, <a href="/wiki/Pascal" title="Pascal">Pascal</a>, <a href="/wiki/Python" title="Python">Python</a>, <a href="/wiki/Sed_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF)" title="Sed (コンピュータ)">sed</a>, <a href="/wiki/%E3%82%B7%E3%82%A7%E3%83%AB#.E3.82.B7.E3.82.A7.E3.83.AB.E3.82.B9.E3.82.AF.E3.83.AA.E3.83.97.E3.83.88" title="シェル">シェルスクリプト</a></td>
-</tr>
-<tr>
-<th scope="row" style="text-align:left; white-space:nowrap;">影響を与えた言語</th>
-<td><a href="/wiki/JavaScript" title="JavaScript">JavaScript</a>, <a href="/wiki/PHP:_Hypertext_Preprocessor" title="PHP: Hypertext Preprocessor">PHP</a>, <a href="/wiki/Ruby" title="Ruby">Ruby</a>, <a href="/wiki/Windows_PowerShell" title="Windows PowerShell">PowerShell</a></td>
-</tr>
-<tr>
-<th scope="row" style="text-align:left; white-space:nowrap;"><a href="/wiki/%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0)" title="プラットフォーム (コンピューティング)">プラットフォーム</a></th>
-<td><a href="/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0" title="クロスプラットフォーム">クロスプラットフォーム</a></td>
-</tr>
-<tr>
-<th scope="row" style="text-align:left; white-space:nowrap;"><a href="/wiki/%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9" title="ライセンス">ライセンス</a></th>
-<td><a href="/wiki/GNU_General_Public_License" title="GNU General Public License">GNU General Public License</a>, <a href="/wiki/Artistic_License" title="Artistic License">Artistic License</a></td>
-</tr>
-<tr>
-<th scope="row" style="text-align:left; white-space:nowrap;"><a href="/wiki/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88" title="ウェブサイト">ウェブサイト</a></th>
-<td><a rel="nofollow" class="external free" href="http://www.perl.org/">http://www.perl.org/</a></td>
-</tr>
-<tr>
-<td colspan="2" style="text-align:center;"><a href="/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Wikibooks-logo-en.svg" class="image" title="Wikibooks logo"><img alt="Wikibooks logo" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Wikibooks-logo-en.svg/14px-Wikibooks-logo-en.svg.png" width="14" height="14" /></a> <a href="//ja.wikibooks.org/wiki/Perl" class="extiw" title="b:Perl">Perl</a> - <a href="/wiki/%E3%82%A6%E3%82%A3%E3%82%AD%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9" title="ウィキブックス">ウィキブックス</a></td>
-</tr>
-<tr class="noprint">
-<td colspan="2" style="text-align:right; font-size:85%;"><a href="/wiki/Template:Infobox_%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="Template:Infobox プログラミング言語">テンプレートを表示</a></td>
-</tr>
-</table>
-<div style="clear:right; float:right; position:relative;" class="noprint">
-<div style="background:#f0fff0; border:1px solid #4682b4; padding: 4px; font-size: 12px; line-height: 14px; width: 280px; height: 52px">
-<div style="float:left; margin: 0px; margin-right:8px; border:1px solid #4682b4;"><a href="/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Computer_n_screen.svg" class="image"><img alt="Computer n screen.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/77/Computer_n_screen.svg/47px-Computer_n_screen.svg.png" width="47" height="49" /></a></div>
-<br />
-<big style="font-size: 18px; line-height: 20px;"><b><a href="/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="プログラミング言語">プログラミング言語</a></b></big>
-<div style="text-align: right; font-size: 12px; line-height: 14px; margin:0; padding:0;">&gt;&gt;<a href="/wiki/Category:%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="Category:プログラミング言語">他のプログラミング言語</a></div>
-</div>
-<p style="text-align:right; font-size:xx-small; margin:0; bottom-margin: 4px;"><a href="/wiki/Category:%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="Category:プログラミング言語">■</a>カテゴリ / <a href="/wiki/Template:%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="Template:プログラミング言語">■</a>テンプレート</p>
-</div>
+
 <p><b>Perl</b>（パール）とは、<a href="/wiki/%E3%83%A9%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB" title="ラリー・ウォール">ラリー・ウォール</a>によって開発された<a href="/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="プログラミング言語">プログラミング言語</a>である。実用性と多様性を重視しており、<a href="/wiki/C%E8%A8%80%E8%AA%9E" title="C言語">C</a>や<a href="/wiki/Sed_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF)" title="Sed (コンピュータ)">sed</a>、<a href="/wiki/AWK" title="AWK">awk</a>、<a href="/wiki/%E3%82%B7%E3%82%A7%E3%83%AB#.E3.82.B7.E3.82.A7.E3.83.AB.E3.82.B9.E3.82.AF.E3.83.AA.E3.83.97.E3.83.88" title="シェル">シェルスクリプト</a>など他のプログラミング言語の優れた機能を取り入れている。Webアプリケーション、システム管理、テキスト処理などのプログラムを書くのに広く用いられている。代表的な<a href="/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2" title="アプリケーションソフトウェア">アプリケーション</a>は<a href="/wiki/Movable_Type" title="Movable Type">Movable Type</a>や<a href="/wiki/SpamAssassin" title="SpamAssassin">SpamAssassin</a>など。</p>
 <p>言語処理系としてのperlは<a href="/wiki/%E3%83%95%E3%83%AA%E3%83%BC%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2" title="フリーソフトウェア">フリーソフトウェア</a>である。<a href="/wiki/Artistic_License" title="Artistic License">Artistic License</a>および<a href="/wiki/GNU_General_Public_License" title="GNU General Public License">GPL</a>のもとで配布されており、誰でもどちらかのライセンスを選択して利用することができる。<a href="/wiki/UNIX" title="UNIX">UNIX</a>や<a href="/wiki/Microsoft_Windows" title="Microsoft Windows">Windows</a>など多くのプラットフォーム上で動作する。</p>
 <table id="toc" class="toc">
