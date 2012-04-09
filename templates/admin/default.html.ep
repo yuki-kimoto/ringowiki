@@ -43,7 +43,7 @@
       <li>
         % my $id = $wiki->{id};
         % my $title = $wiki->{title};
-        <a href="<%= url_for '/admin/wiki/config?id=$id' %>"><%= $id %></a>
+        <a href="<%= url_for "/wikies/$id" %>"><%= $id %></a>
         - <%= $title eq '' ? 'タイトル未設定' : $title %>
         % if ($wiki->{main}) {
           (メイン)
@@ -64,5 +64,5 @@
 <ul>
   <li><input type="button" name="init" value="ウィキの初期化"></li>
   <li><input type="button" name="resetup" value="再セットアップ" ></li>
-  <li><a href="<%= url_for '/devel/table/list' %>">テーブル一覧</a></li>
+  <li><a href="<%= url_for '/sqliteviewerlite' %>">テーブル一覧</a></li>
 </ul>

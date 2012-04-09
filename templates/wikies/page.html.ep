@@ -1,0 +1,1098 @@
+% layout 'default', title => '';
+
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Perl skin-vector action-view">
+    <div id="mw-page-base" class="noprint"></div>
+    <div id="mw-head-base" class="noprint"></div>
+    <!-- content -->
+    <div id="content" class="mw-body">
+      <a id="top"></a>
+      <div id="mw-js-message" style="display:none;"></div>
+            <!-- sitenotice -->
+      <div id="siteNotice"><!-- centralNotice loads here --></div>
+      <!-- /sitenotice -->
+            <!-- firstHeading -->
+      <h1 id="firstHeading" class="firstHeading">
+        <span dir="auto">Perl</span>
+      </h1>
+      <!-- /firstHeading -->
+      <!-- bodyContent -->
+      <div id="bodyContent">
+                <!-- tagline -->
+        <div id="siteSub">出典: フリー百科事典『ウィキペディア（Wikipedia）』</div>
+        <!-- /tagline -->
+                <!-- subtitle -->
+        <div id="contentSub"></div>
+        <!-- /subtitle -->
+                                <!-- jumpto -->
+        <div id="jump-to-nav" class="mw-jump">
+          移動： <a href="#mw-head">案内</a>,
+          <a href="#p-search">検索</a>
+        </div>
+        <!-- /jumpto -->
+                <!-- bodycontent -->
+        <div id="mw-content-text" lang="ja" dir="ltr" class="mw-content-ltr"><div class="dablink noprint">
+<table style="width:100%; background:transparent;">
+<tr>
+<td style="width:25px;"><a href="/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Disambig_gray.svg" class="image" title="曖昧さ回避"><img alt="曖昧さ回避" src="//upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Disambig_gray.svg/25px-Disambig_gray.svg.png" width="25" height="19" /></a></td>
+<td>この項目では、Perlとしての最新バージョンであるバーション5系までのPerlについて記述しています。当初Perlの次期メジャーバージョンとして設計が始められたプログラミング言語については「<a href="/wiki/Perl6" title="Perl6">Perl6</a>」をご覧ください。</td>
+</tr>
+</table>
+</div>
+<table class="infobox vevent" style="width:22em;">
+<tr>
+<th colspan="2" class="summary" style="text-align:center; font-size:125%; font-weight:bold;">Perl</th>
+</tr>
+<tr>
+<th scope="row" style="text-align:left; white-space:nowrap;"><a href="/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%91%E3%83%A9%E3%83%80%E3%82%A4%E3%83%A0" title="プログラミングパラダイム">パラダイム</a></th>
+<td>マルチパラダイム</td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left; white-space:nowrap;">登場時期</th>
+<td><a href="/wiki/1987%E5%B9%B4" title="1987年">1987年</a></td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left; white-space:nowrap;">最新リリース</th>
+<td>5.14.2 / <a href="/wiki/2011%E5%B9%B4" title="2011年">2011年</a><a href="/wiki/9%E6%9C%8826%E6%97%A5" title="9月26日">9月26日</a></td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left; white-space:nowrap;"><a href="/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0" title="型システム">型付け</a></th>
+<td><a href="/wiki/%E5%8B%95%E7%9A%84%E5%9E%8B%E4%BB%98%E3%81%91" title="動的型付け">動的型付け</a></td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left; white-space:nowrap;">影響を受けた言語</th>
+<td><a href="/wiki/AWK" title="AWK">AWK</a>, <a href="/w/index.php?title=BASIC-PLUS&amp;action=edit&amp;redlink=1" class="new" title="BASIC-PLUS（存在しないページ）">BASIC-PLUS</a>, <a href="/wiki/C%E8%A8%80%E8%AA%9E" title="C言語">C</a>, <a href="/wiki/C%2B%2B" title="C++">C++</a>, <a href="/wiki/LISP" title="LISP">Lisp</a>, <a href="/wiki/Pascal" title="Pascal">Pascal</a>, <a href="/wiki/Python" title="Python">Python</a>, <a href="/wiki/Sed_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF)" title="Sed (コンピュータ)">sed</a>, <a href="/wiki/%E3%82%B7%E3%82%A7%E3%83%AB#.E3.82.B7.E3.82.A7.E3.83.AB.E3.82.B9.E3.82.AF.E3.83.AA.E3.83.97.E3.83.88" title="シェル">シェルスクリプト</a></td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left; white-space:nowrap;">影響を与えた言語</th>
+<td><a href="/wiki/JavaScript" title="JavaScript">JavaScript</a>, <a href="/wiki/PHP:_Hypertext_Preprocessor" title="PHP: Hypertext Preprocessor">PHP</a>, <a href="/wiki/Ruby" title="Ruby">Ruby</a>, <a href="/wiki/Windows_PowerShell" title="Windows PowerShell">PowerShell</a></td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left; white-space:nowrap;"><a href="/wiki/%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0)" title="プラットフォーム (コンピューティング)">プラットフォーム</a></th>
+<td><a href="/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0" title="クロスプラットフォーム">クロスプラットフォーム</a></td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left; white-space:nowrap;"><a href="/wiki/%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9" title="ライセンス">ライセンス</a></th>
+<td><a href="/wiki/GNU_General_Public_License" title="GNU General Public License">GNU General Public License</a>, <a href="/wiki/Artistic_License" title="Artistic License">Artistic License</a></td>
+</tr>
+<tr>
+<th scope="row" style="text-align:left; white-space:nowrap;"><a href="/wiki/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88" title="ウェブサイト">ウェブサイト</a></th>
+<td><a rel="nofollow" class="external free" href="http://www.perl.org/">http://www.perl.org/</a></td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center;"><a href="/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Wikibooks-logo-en.svg" class="image" title="Wikibooks logo"><img alt="Wikibooks logo" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Wikibooks-logo-en.svg/14px-Wikibooks-logo-en.svg.png" width="14" height="14" /></a> <a href="//ja.wikibooks.org/wiki/Perl" class="extiw" title="b:Perl">Perl</a> - <a href="/wiki/%E3%82%A6%E3%82%A3%E3%82%AD%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9" title="ウィキブックス">ウィキブックス</a></td>
+</tr>
+<tr class="noprint">
+<td colspan="2" style="text-align:right; font-size:85%;"><a href="/wiki/Template:Infobox_%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="Template:Infobox プログラミング言語">テンプレートを表示</a></td>
+</tr>
+</table>
+<div style="clear:right; float:right; position:relative;" class="noprint">
+<div style="background:#f0fff0; border:1px solid #4682b4; padding: 4px; font-size: 12px; line-height: 14px; width: 280px; height: 52px">
+<div style="float:left; margin: 0px; margin-right:8px; border:1px solid #4682b4;"><a href="/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Computer_n_screen.svg" class="image"><img alt="Computer n screen.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/7/77/Computer_n_screen.svg/47px-Computer_n_screen.svg.png" width="47" height="49" /></a></div>
+<br />
+<big style="font-size: 18px; line-height: 20px;"><b><a href="/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="プログラミング言語">プログラミング言語</a></b></big>
+<div style="text-align: right; font-size: 12px; line-height: 14px; margin:0; padding:0;">&gt;&gt;<a href="/wiki/Category:%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="Category:プログラミング言語">他のプログラミング言語</a></div>
+</div>
+<p style="text-align:right; font-size:xx-small; margin:0; bottom-margin: 4px;"><a href="/wiki/Category:%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="Category:プログラミング言語">■</a>カテゴリ / <a href="/wiki/Template:%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="Template:プログラミング言語">■</a>テンプレート</p>
+</div>
+<p><b>Perl</b>（パール）とは、<a href="/wiki/%E3%83%A9%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB" title="ラリー・ウォール">ラリー・ウォール</a>によって開発された<a href="/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="プログラミング言語">プログラミング言語</a>である。実用性と多様性を重視しており、<a href="/wiki/C%E8%A8%80%E8%AA%9E" title="C言語">C</a>や<a href="/wiki/Sed_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF)" title="Sed (コンピュータ)">sed</a>、<a href="/wiki/AWK" title="AWK">awk</a>、<a href="/wiki/%E3%82%B7%E3%82%A7%E3%83%AB#.E3.82.B7.E3.82.A7.E3.83.AB.E3.82.B9.E3.82.AF.E3.83.AA.E3.83.97.E3.83.88" title="シェル">シェルスクリプト</a>など他のプログラミング言語の優れた機能を取り入れている。Webアプリケーション、システム管理、テキスト処理などのプログラムを書くのに広く用いられている。代表的な<a href="/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2" title="アプリケーションソフトウェア">アプリケーション</a>は<a href="/wiki/Movable_Type" title="Movable Type">Movable Type</a>や<a href="/wiki/SpamAssassin" title="SpamAssassin">SpamAssassin</a>など。</p>
+<p>言語処理系としてのperlは<a href="/wiki/%E3%83%95%E3%83%AA%E3%83%BC%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2" title="フリーソフトウェア">フリーソフトウェア</a>である。<a href="/wiki/Artistic_License" title="Artistic License">Artistic License</a>および<a href="/wiki/GNU_General_Public_License" title="GNU General Public License">GPL</a>のもとで配布されており、誰でもどちらかのライセンスを選択して利用することができる。<a href="/wiki/UNIX" title="UNIX">UNIX</a>や<a href="/wiki/Microsoft_Windows" title="Microsoft Windows">Windows</a>など多くのプラットフォーム上で動作する。</p>
+<table id="toc" class="toc">
+<tr>
+<td>
+<div id="toctitle">
+<h2>目次</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#.E7.89.B9.E5.BE.B4"><span class="tocnumber">1</span> <span class="toctext">特徴</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Hello_world"><span class="tocnumber">2</span> <span class="toctext">Hello world</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#.E6.96.87.E6.B3.95"><span class="tocnumber">3</span> <span class="toctext">文法</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#.E3.82.B3.E3.83.A1.E3.83.B3.E3.83.88"><span class="tocnumber">3.1</span> <span class="toctext">コメント</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#.E5.A4.89.E6.95.B0"><span class="tocnumber">3.2</span> <span class="toctext">変数</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#.E6.9D.A1.E4.BB.B6.E5.88.86.E5.B2.90"><span class="tocnumber">3.3</span> <span class="toctext">条件分岐</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#.E7.B9.B0.E3.82.8A.E8.BF.94.E3.81.97"><span class="tocnumber">3.4</span> <span class="toctext">繰り返し</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#.E9.A3.9B.E3.81.B3.E8.B6.8A.E3.81.97"><span class="tocnumber">3.5</span> <span class="toctext">飛び越し</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#.E3.82.B5.E3.83.96.E3.83.AB.E3.83.BC.E3.83.81.E3.83.B3"><span class="tocnumber">3.6</span> <span class="toctext">サブルーチン</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#.E3.83.AA.E3.83.95.E3.82.A1.E3.83.AC.E3.83.B3.E3.82.B9"><span class="tocnumber">3.7</span> <span class="toctext">リファレンス</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#.E3.83.A2.E3.82.B8.E3.83.A5.E3.83.BC.E3.83.AB.E3.81.AE.E5.88.A9.E7.94.A8"><span class="tocnumber">3.8</span> <span class="toctext">モジュールの利用</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#.E8.A9.95.E4.BE.A1.E3.82.B3.E3.83.B3.E3.83.86.E3.82.AD.E3.82.B9.E3.83.88"><span class="tocnumber">3.9</span> <span class="toctext">評価コンテキスト</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#.E4.BE.8B.E5.A4.96.E5.87.A6.E7.90.86"><span class="tocnumber">3.10</span> <span class="toctext">例外処理</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#.E3.83.91.E3.83.83.E3.82.B1.E3.83.BC.E3.82.B8"><span class="tocnumber">3.11</span> <span class="toctext">パッケージ</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#.E3.82.AA.E3.83.96.E3.82.B8.E3.82.A7.E3.82.AF.E3.83.88"><span class="tocnumber">3.12</span> <span class="toctext">オブジェクト</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="#.E3.83.89.E3.82.AD.E3.83.A5.E3.83.A1.E3.83.B3.E3.83.86.E3.83.BC.E3.82.B7.E3.83.A7.E3.83.B3"><span class="tocnumber">3.13</span> <span class="toctext">ドキュメンテーション</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="#.E3.83.AF.E3.83.B3.E3.83.A9.E3.82.A4.E3.83.8A.E3.83.BC"><span class="tocnumber">3.14</span> <span class="toctext">ワンライナー</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="#.E6.8E.A8.E5.A5.A8.E3.81.95.E3.82.8C.E3.81.A6.E3.81.84.E3.82.8B.E8.A8.98.E8.BF.B0"><span class="tocnumber">3.15</span> <span class="toctext">推奨されている記述</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#Perl_5.10_.E3.81.A7.E8.BF.BD.E5.8A.A0.E3.81.95.E3.82.8C.E3.81.9F.E6.A9.9F.E8.83.BD"><span class="tocnumber">3.16</span> <span class="toctext">Perl 5.10 で追加された機能</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="#.E3.81.9D.E3.81.AE.E4.BB.96.E3.81.AE.E6.96.87.E6.B3.95"><span class="tocnumber">3.17</span> <span class="toctext">その他の文法</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="#.E3.81.9D.E3.81.AE.E4.BB.96.E3.81.AE.E7.89.B9.E5.BE.B4"><span class="tocnumber">3.18</span> <span class="toctext">その他の特徴</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-22"><a href="#.E3.83.A2.E3.82.B8.E3.83.A5.E3.83.BC.E3.83.AB"><span class="tocnumber">4</span> <span class="toctext">モジュール</span></a>
+<ul>
+<li class="toclevel-2 tocsection-23"><a href="#.E6.A8.99.E6.BA.96.E3.83.A2.E3.82.B8.E3.83.A5.E3.83.BC.E3.83.AB"><span class="tocnumber">4.1</span> <span class="toctext">標準モジュール</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="#.E4.BB.A3.E8.A1.A8.E7.9A.84.E3.81.AACPAN.E3.83.A2.E3.82.B8.E3.83.A5.E3.83.BC.E3.83.AB"><span class="tocnumber">4.2</span> <span class="toctext">代表的なCPANモジュール</span></a></li>
+<li class="toclevel-2 tocsection-25"><a href="#PSGI.2FPlack"><span class="tocnumber">4.3</span> <span class="toctext">PSGI/Plack</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-26"><a href="#.E6.AD.B4.E5.8F.B2"><span class="tocnumber">5</span> <span class="toctext">歴史</span></a></li>
+<li class="toclevel-1 tocsection-27"><a href="#.E3.82.A8.E3.83.94.E3.82.BD.E3.83.BC.E3.83.89"><span class="tocnumber">6</span> <span class="toctext">エピソード</span></a></li>
+<li class="toclevel-1 tocsection-28"><a href="#.E8.84.9A.E6.B3.A8"><span class="tocnumber">7</span> <span class="toctext">脚注</span></a></li>
+<li class="toclevel-1 tocsection-29"><a href="#.E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE"><span class="tocnumber">8</span> <span class="toctext">参考文献</span></a></li>
+<li class="toclevel-1 tocsection-30"><a href="#.E9.96.A2.E9.80.A3.E9.A0.85.E7.9B.AE"><span class="tocnumber">9</span> <span class="toctext">関連項目</span></a></li>
+<li class="toclevel-1 tocsection-31"><a href="#.E5.A4.96.E9.83.A8.E3.83.AA.E3.83.B3.E3.82.AF"><span class="tocnumber">10</span> <span class="toctext">外部リンク</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<h2><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=1" title="節を編集: 特徴">編集</a>]</span> <span class="mw-headline" id=".E7.89.B9.E5.BE.B4">特徴</span></h2>
+<ul>
+<li>強力な文字列処理。<a href="/wiki/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE" title="正規表現">正規表現</a>をサポート</li>
+<li><a href="/wiki/%E9%80%A3%E6%83%B3%E9%85%8D%E5%88%97" title="連想配列">連想配列</a>（ハッシュ）をサポート</li>
+<li>多次元データ構造が利用可能</li>
+<li>自由度の高い文法。簡潔にプログラムを記述できる</li>
+<li>高い<a href="/wiki/%E5%BE%8C%E6%96%B9%E4%BA%92%E6%8F%9B" title="後方互換">後方互換</a>性を持つ</li>
+<li>数多くのオペレーティングシステムで利用可能</li>
+<li>プログラムの実行には事前コンパイルは不要</li>
+<li>スクリプト言語の中では高い処理速度を持つ</li>
+<li><a href="/wiki/Unicode" title="Unicode">Unicode</a>のサポート</li>
+<li>モジュールによる拡張が可能</li>
+<li>有志によって開発された豊富なモジュール（<a href="/wiki/CPAN" title="CPAN">CPAN</a>を参照）</li>
+<li><a href="/wiki/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91" title="オブジェクト指向">オブジェクト指向</a>プログラミングのサポート</li>
+<li><a href="/wiki/%E5%8F%82%E7%85%A7%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88" title="参照カウント">リファレンスカウント</a>方式によるガーベッジコレクション</li>
+<li><a href="/wiki/%E4%BE%8B%E5%A4%96%E5%87%A6%E7%90%86" title="例外処理">例外処理</a>のサポート</li>
+<li><a href="/wiki/%E3%82%AF%E3%83%AD%E3%83%BC%E3%82%B8%E3%83%A3" title="クロージャ">クロージャ</a>のサポート</li>
+<li><a href="/wiki/%E3%83%AA%E3%83%95%E3%83%AC%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3_(%E6%83%85%E5%A0%B1%E5%B7%A5%E5%AD%A6)" title="リフレクション (情報工学)">リフレクション</a>のサポート</li>
+</ul>
+<h2><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=2" title="節を編集: Hello world">編集</a>]</span> <span class="mw-headline" id="Hello_world"><a href="/wiki/Hello_world" title="Hello world">Hello world</a></span></h2>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">print</span> <span class="st0">"Hello, world!<span class="es0">\n</span>"</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<h2><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=3" title="節を編集: 文法">編集</a>]</span> <span class="mw-headline" id=".E6.96.87.E6.B3.95">文法</span></h2>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=4" title="節を編集: コメント">編集</a>]</span> <span class="mw-headline" id=".E3.82.B3.E3.83.A1.E3.83.B3.E3.83.88">コメント</span></h3>
+<p>「<b>#</b>」以降は行末までがコメントである。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="co1"># ここはコメントです。</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=5" title="節を編集: 変数">編集</a>]</span> <span class="mw-headline" id=".E5.A4.89.E6.95.B0">変数</span></h3>
+<p>変数としてスカラ、配列、ハッシュがある。変数名の前にシジル (sigil) と呼ばれる記号でこれらの変数を区別する。スカラのシジルは「$」、配列は「@」、ハッシュは「%」となっている。</p>
+<p>変数は初期化の仕方によって、スコープが異なったものになる。</p>
+<ul>
+<li>変数宣言をせずに初期化された変数 → <a href="/wiki/%E5%A4%A7%E5%9F%9F%E5%A4%89%E6%95%B0" title="大域変数" class="mw-redirect">大域変数</a></li>
+<li><code>local</code>宣言をしてから初期化された変数 → <a href="/wiki/%E5%8B%95%E7%9A%84%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97" title="動的スコープ">動的スコープ</a>で、ブロック内でのみ有効な<a href="/wiki/%E5%B1%80%E6%89%80%E5%A4%89%E6%95%B0" title="局所変数" class="mw-redirect">局所変数</a></li>
+<li><code>my</code>宣言をしてから初期化された変数 → <a href="/wiki/%E9%9D%99%E7%9A%84%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97" title="静的スコープ">静的スコープ</a>で、ブロック内でのみ有効な<a href="/wiki/%E5%B1%80%E6%89%80%E5%A4%89%E6%95%B0" title="局所変数" class="mw-redirect">局所変数</a></li>
+</ul>
+<p>より高速で安全な<code>my</code>宣言が導入されたPerl 5.0以降、<code>local</code>宣言は非推奨となっている<sup id="cite_ref-0" class="reference"><a href="#cite_note-0">[1]</a></sup>。</p>
+<p>下のコードは <code>my</code> を使って変数を宣言し、同時に初期化する例である。<code>local</code>宣言もキーワードが異なるのみで同様である。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="br0">{</span>
+<span class="kw1">my</span> <span class="re0">$num</span>     <span class="sy0">=</span> <span class="nu0">2</span> <span class="sy0">+</span> <span class="nu0">3</span><span class="sy0">;</span>
+<span class="kw1">my</span> <span class="re0">$message</span> <span class="sy0">=</span> <span class="st0">"Hello, world"</span><span class="sy0">;</span>
+<span class="kw1">my</span> <span class="re0">@nums</span>    <span class="sy0">=</span> <span class="br0">(</span><span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="kw1">my</span> <span class="re0">%score</span>   <span class="sy0">=</span> <span class="br0">(</span>english <span class="sy0">=&gt;</span> <span class="nu0">100</span><span class="sy0">,</span> math <span class="sy0">=&gt;</span> <span class="nu0">80</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="co1"># これらの変数は開き括弧「{」から閉じ括弧「}」までの間で有効。</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<p>配列およびハッシュの各要素はスカラであり、以下のようにアクセスする。ひとつの要素にアクセスするときは、変数が配列やハッシュであっても「$」を使う。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="re0">$nums</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="sy0">;</span> <span class="co1"># 0</span>
+<span class="re0">$score</span><span class="br0">{</span>math<span class="br0">}</span> <span class="co1"># 80</span>
+</pre></div>
+</div>
+<p>スカラには数値、文字列などを格納することができる。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="re0">$jackBauer</span> <span class="sy0">=</span> <span class="nu0">24</span><span class="sy0">;</span>
+<span class="re0">$pi</span> <span class="sy0">=</span> <span class="nu0">3.14159265358979</span><span class="sy0">;</span>
+<span class="re0">$vulcanSalute</span> <span class="sy0">=</span> <span class="st_h">'Live long and Prosper!'</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=6" title="節を編集: 条件分岐">編集</a>]</span> <span class="mw-headline" id=".E6.9D.A1.E4.BB.B6.E5.88.86.E5.B2.90">条件分岐</span></h3>
+<p>条件分岐を行うには「if ～ elsif ～ else」を利用する。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">if</span> <span class="br0">(</span>条件<span class="nu0">1</span><span class="br0">)</span>
+  <span class="br0">{</span>～ 処理<span class="nu0">1</span>が真の場合の処理 ～<span class="br0">}</span>
+<span class="kw1">elsif</span> <span class="br0">(</span>条件<span class="nu0">2</span><span class="br0">)</span>
+  <span class="br0">{</span>～ 条件<span class="nu0">1</span>が偽で、条件<span class="nu0">2</span>が真の場合の処理 ～<span class="br0">}</span>
+<span class="kw1">else</span>
+  <span class="br0">{</span>～ 条件<span class="nu0">1</span>も条件<span class="nu0">2</span>も偽の場合の処理 ～<span class="br0">}</span>
+</pre></div>
+</div>
+<p>条件分岐後の処理は文がひとつの場合でも必ず中括弧「{～}」で囲まねばならない。</p>
+<p>ifは修飾子として後置することもできる。この場合は逆に中括弧で囲むことはできず、ひとつの文しか指定できない。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">print</span> <span class="st_h">'Hello'</span> <span class="kw1">if</span> 条件 <span class="sy0">;</span>
+</pre></div>
+</div>
+<p>ifに対してunlessが存在する。ifとは反対に条件が満たされなかった場合に処理が実行される。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">unless</span> <span class="br0">(</span>条件<span class="br0">)</span>
+  <span class="br0">{</span>～ 条件が偽の場合の処理 ～<span class="br0">}</span>
+ 
+<span class="kw3">print</span> <span class="st_h">'Hello'</span> <span class="kw1">unless</span> 条件 <span class="sy0">;</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=7" title="節を編集: 繰り返し">編集</a>]</span> <span class="mw-headline" id=".E7.B9.B0.E3.82.8A.E8.BF.94.E3.81.97">繰り返し</span></h3>
+<p>繰り返しにはwhile、for、foreachを利用する。</p>
+<p><b>while</b></p>
+<p>whileでは条件が満たされる間、処理が繰り返される。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">while</span> <span class="br0">(</span>条件<span class="br0">)</span> <span class="br0">{</span>
+    <span class="co1"># 処理</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<p><b>for</b></p>
+<p>forは規則性のある仕方で変数を変化させるときに使う。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="re0">$sum</span> <span class="sy0">=</span> <span class="nu0">0</span> <span class="sy0">;</span>
+<span class="kw1">for</span> <span class="br0">(</span><span class="kw1">my</span> <span class="re0">$i</span> <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> <span class="re0">$i</span> <span class="sy0">&lt;</span> <span class="nu0">10</span> <span class="sy0">;</span> <span class="sy0">++</span><span class="re0">$i</span><span class="br0">)</span>
+  <span class="br0">{</span><span class="re0">$sum</span> <span class="sy0">+=</span> <span class="re0">$i</span> <span class="sy0">;</span><span class="br0">}</span>
+</pre></div>
+</div>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">for</span> <span class="br0">(</span><span class="re0">$node</span> <span class="sy0">=</span> <span class="re0">$doc</span><span class="sy0">-&gt;</span><span class="me1">getFirstChild</span> <span class="sy0">;</span> <span class="re0">$node</span> <span class="sy0">;</span> <span class="re0">$node</span> <span class="sy0">=</span> <span class="re0">$node</span><span class="sy0">-&gt;</span><span class="me1">getNextSibling</span><span class="br0">)</span>
+  <span class="br0">{</span><span class="kw3">print</span> <span class="re0">$node</span><span class="sy0">-&gt;</span><span class="me1">getNodeValue</span><span class="sy0">,</span> <span class="st0">"<span class="es0">\n</span>"</span> <span class="sy0">;</span><span class="br0">}</span>
+</pre></div>
+</div>
+<p><b>foreach</b></p>
+<p>foreachはすべての配列の要素を順番に処理したい場合に利用される。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">my</span> <span class="re0">@names</span> <span class="sy0">=</span> <span class="br0">(</span><span class="st_h">'Tom'</span><span class="sy0">,</span> <span class="st_h">'Mike'</span><span class="sy0">,</span> <span class="st_h">'Bred'</span><span class="br0">)</span><span class="sy0">;</span>
+<span class="kw1">foreach</span> <span class="kw1">my</span> <span class="re0">$name</span> <span class="br0">(</span><span class="re0">@names</span><span class="br0">)</span> <span class="br0">{</span>
+    <span class="co1"># 処理</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<p>(実際にはforeachはforの別名であり両者は同じものである。)</p>
+<p>forやforeachは修飾子として後置することもできる。配列の各要素は順に$_という変数に渡される。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">print</span> <span class="co5">$_</span> <span class="kw1">for</span> <span class="re0">@names</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<p><b>繰り返し制御</b></p>
+<p>lastで繰り返しを抜けることができる。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">foreach</span> <span class="kw1">my</span> <span class="re0">$name</span> <span class="br0">(</span><span class="re0">@names</span><span class="br0">)</span> <span class="br0">{</span>
+    <span class="kw1">last</span> <span class="kw1">unless</span> <span class="re0">$name</span><span class="sy0">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<p>nextで次の繰り返しに移行できる。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">foreach</span> <span class="kw1">my</span> <span class="re0">$name</span> <span class="br0">(</span><span class="re0">@names</span><span class="br0">)</span> <span class="br0">{</span>
+    <span class="kw1">next</span> <span class="kw1">unless</span> <span class="re0">$name</span><span class="sy0">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=8" title="節を編集: 飛び越し">編集</a>]</span> <span class="mw-headline" id=".E9.A3.9B.E3.81.B3.E8.B6.8A.E3.81.97">飛び越し</span></h3>
+<p>飛び越しを行うには「<code>goto</code>」を利用する。<code>goto</code> の後ろには飛び越し先ブロックのラベルを書く。<code>goto</code> を使わずに、<code>while</code>/<code>last</code>/<code>redo</code> などの繰り返し機構を使ってプログラムを書いたほうが、プログラムコードが読みやすくなる場合もある。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">goto</span> destination <span class="sy0">;</span>
+ 
+<span class="kw3">print</span> <span class="st0">"この print 文は実行されない。<span class="es0">\n</span>"</span> <span class="sy0">;</span>
+ 
+destination<span class="sy0">:</span>
+  <span class="br0">{</span>
+  <span class="kw3">print</span> <span class="st0">"飛び越し先ブロック<span class="es0">\n</span>"</span> <span class="sy0">;</span>
+  <span class="br0">}</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=9" title="節を編集: サブルーチン">編集</a>]</span> <span class="mw-headline" id=".E3.82.B5.E3.83.96.E3.83.AB.E3.83.BC.E3.83.81.E3.83.B3">サブルーチン</span></h3>
+<p><a href="/wiki/%E3%82%B5%E3%83%96%E3%83%AB%E3%83%BC%E3%83%81%E3%83%B3" title="サブルーチン">サブルーチン</a>は以下のように定義する。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw2">sub</span> hello <span class="br0">{</span>
+    <span class="kw3">print</span> <span class="st0">"Hello, world!<span class="es0">\n</span>"</span><span class="sy0">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<p>呼び出しは以下のとおり。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+hello<span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+hello<span class="sy0">;</span>
+<span class="re0">&amp;hello</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<p>サブルーチンは関数としても機能する。その場合、最後に評価した値ないし<code>return</code>で指定された値が戻り値となる。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw2">sub</span> hello <span class="br0">{</span>
+    <span class="kw3">return</span> <span class="st0">"Hello, world<span class="es0">\n</span>"</span><span class="sy0">;</span> <span class="co1"># return は省略可能</span>
+<span class="br0">}</span>
+<span class="kw3">print</span> hello<span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1"># "Hello, world!" と表示</span>
+</pre></div>
+</div>
+<p>引数は特殊変数<code>@_</code>に格納される。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="co1"># 丁寧に書いた例</span>
+<span class="kw2">sub</span> mul <span class="br0">{</span>
+    <span class="kw1">my</span> <span class="br0">(</span><span class="re0">$left</span><span class="sy0">,</span> <span class="re0">$right</span><span class="br0">)</span> <span class="sy0">=</span> <span class="co5">@_</span><span class="sy0">;</span>
+    <span class="kw3">return</span> <span class="re0">$left</span> <span class="sy0">*</span> <span class="re0">$right</span><span class="sy0">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw2">sub</span> mul <span class="br0">{</span> <span class="co5">$_</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy0">*</span> <span class="co5">$_</span><span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span> <span class="br0">}</span><span class="sy0">;</span> <span class="co1"># こうも書ける</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=10" title="節を編集: リファレンス">編集</a>]</span> <span class="mw-headline" id=".E3.83.AA.E3.83.95.E3.82.A1.E3.83.AC.E3.83.B3.E3.82.B9">リファレンス</span></h3>
+<p>データに直接アクセスするのではなく、データの存在するメモリアドレスをスカラ値として定義するリファレンスを使用することができる。スカラ、配列、ハッシュ、ファイルハンドル、サブルーチンのリファレンスが存在する。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">my</span> <span class="re0">$scalar_ref</span> <span class="sy0">=</span> <span class="re0">\$scalar</span><span class="sy0">;</span> <span class="co1"># スカラへのリファレンス</span>
+<span class="kw1">my</span> <span class="re0">$array_ref</span>  <span class="sy0">=</span> <span class="re0">\@array</span><span class="sy0">;</span>  <span class="co1"># 配列へのリファレンス</span>
+<span class="kw1">my</span> <span class="re0">$hash_ref</span>   <span class="sy0">=</span> <span class="re0">\%hash</span><span class="sy0">;</span>   <span class="co1"># ハッシュへのリファレンス</span>
+<span class="kw1">my</span> <span class="re0">$sub_ref</span>    <span class="sy0">=</span> \<span class="sy0">&amp;</span><span class="kw2">sub</span><span class="sy0">;</span>    <span class="co1"># サブルーチンへのリファレンス</span>
+<span class="kw3">open</span> <span class="kw1">my</span> <span class="re0">$fh</span><span class="sy0">,</span> <span class="st_h">'&lt;'</span><span class="sy0">,</span> <span class="re0">$file</span><span class="sy0">;</span>   <span class="co1"># $fhがファイルハンドルへのリファレンス</span>
+</pre></div>
+</div>
+<p>参照元にアクセス、すなわちデリファレンスするには、シジルを変数名の頭につければよい。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">my</span> <span class="re0">$scalar</span> <span class="sy0">=</span> <span class="re0">$$scalar_ref</span><span class="sy0">;</span>
+<span class="kw1">my</span> <span class="re0">@array</span>  <span class="sy0">=</span> <span class="re0">@$array_ref</span><span class="sy0">;</span>
+<span class="kw1">my</span> <span class="re0">%hash</span>   <span class="sy0">=</span> <span class="re0">%$hash_ref</span><span class="sy0">;</span>
+<span class="kw1">my</span> <span class="re0">$sub</span>    <span class="sy0">=</span> <span class="re0">&amp;$sub_ref</span><span class="br0">(</span><span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">3</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1"># サブルーチン呼び出し -- $sub には戻り値が入る</span>
+</pre></div>
+</div>
+<p>ただし、配列・ハッシュおよびサブルーチンへのリファレンスに関しては、その要素にアクセスするのに（あるいはサブルーチンを呼び出すのに）-&gt;を使うことができる。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="re0">$array_ref</span><span class="sy0">-&gt;</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="sy0">;</span>
+<span class="re0">$hash_ref</span><span class="sy0">-&gt;</span><span class="br0">{</span>two<span class="br0">}</span><span class="sy0">;</span>
+<span class="re0">$sub_ref</span><span class="sy0">-&gt;</span><span class="br0">(</span><span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">3</span><span class="br0">)</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<p>配列・ハッシュについては、配列名・ハッシュ名が定義されておらずリファレンスからのみアクセスできる無名配列・無名ハッシュを作成することができる。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">my</span> <span class="re0">$array_ref</span> <span class="sy0">=</span> <span class="br0">[</span><span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">]</span><span class="sy0">;</span>                       <span class="co1"># 無名配列</span>
+<span class="kw1">my</span> <span class="re0">$hash_ref</span>  <span class="sy0">=</span> <span class="br0">{</span>zero <span class="sy0">=&gt;</span> <span class="nu0">0</span><span class="sy0">,</span> one <span class="sy0">=&gt;</span> <span class="nu0">1</span><span class="sy0">,</span> two <span class="sy0">=&gt;</span> <span class="nu0">2</span><span class="br0">}</span><span class="sy0">;</span> <span class="co1"># 無名ハッシュ</span>
+</pre></div>
+</div>
+<p>また、無名サブルーチンを作ることもできる。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">my</span> <span class="re0">$sub_ref</span> <span class="sy0">=</span> <span class="kw2">sub</span> <span class="br0">{</span> <span class="co5">$_</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> <span class="sy0">*</span> <span class="co5">$_</span><span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span> <span class="br0">}</span><span class="sy0">;</span>
+<span class="kw3">print</span> <span class="re0">$sub_ref</span><span class="sy0">-&gt;</span><span class="br0">(</span><span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">3</span><span class="br0">)</span><span class="sy0">,</span> <span class="st0">"<span class="es0">\n</span>"</span><span class="sy0">;</span> <span class="co1"># 6 を出力</span>
+<span class="kw3">print</span> <span class="re0">&amp;$sub_ref</span><span class="br0">(</span><span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">3</span><span class="br0">)</span><span class="sy0">,</span>  <span class="st0">"<span class="es0">\n</span>"</span><span class="sy0">;</span> <span class="co1"># こうも書けるが、読みにくいためあまり使われない</span>
+</pre></div>
+</div>
+<p>参照元のデータタイプを調べるには、<code>ref</code>を使う。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">ref</span> <span class="nu0">1</span><span class="sy0">;</span>           <span class="co1"># ''</span>
+<span class="kw3">ref</span> <span class="re0">$scalar_ref</span><span class="sy0">;</span> <span class="co1"># 'SCALAR'</span>
+<span class="kw3">ref</span> <span class="re0">$array_ref</span><span class="sy0">;</span>  <span class="co1"># 'ARRAY'</span>
+<span class="kw3">ref</span> <span class="re0">$hash_ref</span><span class="sy0">;</span>   <span class="co1"># 'HASH'</span>
+</pre></div>
+</div>
+<p>参照元がオブジェクトの場合、refはそのオブジェクトが所属するパッケージ名（クラス名）を返す。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">ref</span> Foo<span class="sy0">::</span><span class="me2">Bar</span><span class="sy0">-&gt;</span><span class="kw2">new</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1"># たいてい 'Foo::Bar'</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=11" title="節を編集: モジュールの利用">編集</a>]</span> <span class="mw-headline" id=".E3.83.A2.E3.82.B8.E3.83.A5.E3.83.BC.E3.83.AB.E3.81.AE.E5.88.A9.E7.94.A8">モジュールの利用</span></h3>
+<p>モジュールを利用するにはuseを使用する。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw2">use</span> Net<span class="sy0">::</span><span class="me2">FTP</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<p>モジュールの読み込みと共に関数をインポートしたい場合は、モジュール名に続いて、関数名を並べるのが一般的である。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw2">use</span> File<span class="sy0">::</span><span class="me2">Basename</span> <span class="st_h">'fileparse'</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=12" title="節を編集: 評価コンテキスト">編集</a>]</span> <span class="mw-headline" id=".E8.A9.95.E4.BE.A1.E3.82.B3.E3.83.B3.E3.83.86.E3.82.AD.E3.82.B9.E3.83.88">評価コンテキスト</span></h3>
+<p>評価コンテキスト、すなわち、構文上何が(リスト、数値、文字列、リファレンス、あるいは何もないのかが)要求されているかの違いにより評価値が変化する。 リストが数値スカラコンテキストで評価されると配列の長さに評価される。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="re0">$a</span> <span class="sy0">=</span> <span class="br0">(</span><span class="st0">"a"</span><span class="sy0">,</span> <span class="st0">"b"</span><span class="br0">)</span><span class="sy0">;</span>  <span class="co1">#数値スカラコンテキスト</span>
+<span class="kw3">print</span> <span class="re0">$a</span><span class="sy0">;</span>         <span class="co1"># 2 を出力</span>
+<span class="br0">(</span><span class="re0">$x</span><span class="sy0">,</span> <span class="re0">$y</span><span class="br0">)</span> <span class="sy0">=</span> <span class="br0">(</span><span class="st0">"a"</span><span class="sy0">,</span> <span class="st0">"b"</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1">#リストコンテキスト</span>
+<span class="kw3">print</span> <span class="re0">$x</span><span class="sy0">;</span>              <span class="co1"># a を出力</span>
+</pre></div>
+</div>
+<p>意味が大きく変わる表現も存在する。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="re0">@match</span> <span class="sy0">=</span> <span class="br0">(</span><span class="st0">"123 a 56 x"</span> <span class="sy0">=~</span> <span class="co2">m/\d+/g</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1">#リストコンテキスト (全てを一度にマッチ）</span>
+<span class="co1"># @match =&gt; ("123", "56")</span>
+<span class="re0">$match</span> <span class="sy0">=</span> <span class="br0">(</span><span class="st0">"123 a 56 x"</span><span class="br0">)</span> <span class="sy0">=~</span> <span class="co2">m/\d+/g</span><span class="br0">)</span><span class="sy0">;</span> <span class="co1">#スカラコンテキスト (順次マッチ）</span>
+<span class="co1"># $match =&gt; "1"</span>
+</pre></div>
+</div>
+<p>ブロックを呼び出したコンテキストがリストコンテキストかどうかをwantarray?で判別することができる。したがって、コンテキストによって返り値を切り替えるような関数をユーザーが定義することもできる。</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=13" title="節を編集: 例外処理">編集</a>]</span> <span class="mw-headline" id=".E4.BE.8B.E5.A4.96.E5.87.A6.E7.90.86">例外処理</span></h3>
+<p>例外を発生させるにはdie関数を使う。例外が発生するとプログラムはメッセージを出力して終了する。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">die</span> <span class="st0">"例外が発生しました。"</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<p>例外をキャッチするには「eval { };」を使用する。例外が発生した場合は特殊変数「$@」にメッセージが代入される。「$@」の値を調べることで例外が発生した場合の処理を記述できる。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">eval</span> <span class="br0">{</span>
+    例外が発生する処理
+<span class="br0">}</span><span class="sy0">;</span>
+ 
+<span class="kw1">if</span> <span class="br0">(</span><span class="co5">$@</span><span class="br0">)</span> <span class="br0">{</span>
+    例外が発生した場合の処理
+<span class="br0">}</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=14" title="節を編集: パッケージ">編集</a>]</span> <span class="mw-headline" id=".E3.83.91.E3.83.83.E3.82.B1.E3.83.BC.E3.82.B8">パッケージ</span></h3>
+<p>Perlにおけるパッケージとは、一般的に名前空間と呼ばれる機能のことである。パッケージを宣言するには「package」を使う。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">package</span> Foo<span class="sy0">;</span>
+</pre></div>
+</div>
+<p>パッケージ内で宣言されたパッケージ変数とサブルーチンはパッケージに属するものとなる。パッケージ変数を宣言するには「our」を使う。パッケージ変数には大文字を利用するのが一般的である。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">package</span> Foo<span class="sy0">;</span>
+ 
+<span class="kw1">our</span> <span class="re0">$NUM</span> <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">;</span>
+ 
+<span class="kw2">sub</span> sum <span class="br0">{</span>
+    <span class="co1"># ...</span>
+<span class="br0">}</span>
+ 
+<span class="kw3">package</span> Bar<span class="sy0">;</span>
+ 
+<span class="kw1">our</span> <span class="re0">$NUM</span> <span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">;</span>
+ 
+<span class="kw2">sub</span> sum <span class="br0">{</span>
+    <span class="co1"># ...</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<p>上記において、Fooパッケージのパッケージ変数$NUMとBarパッケージのパッケージ変数$NUMはまったく別の変数である。またFooパッケージのsumとBarパッケージのsumはまったく別のサブルーチンである。パッケージ変数やサブルーチンはパッケージごとに定義することができる。</p>
+<p>自パッケージ内であれば、パッケージ名の指定を行わずに、パッケージ変数やサブルーチンを参照することができる。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">package</span> Foo<span class="sy0">;</span>
+ 
+<span class="kw1">our</span> <span class="re0">$NUM</span> <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">;</span>
+ 
+<span class="kw2">sub</span> sum <span class="br0">{</span>
+    <span class="co1"># ...</span>
+<span class="br0">}</span>
+ 
+<span class="kw3">print</span> <span class="re0">$NUM</span><span class="sy0">;</span>
+<span class="kw3">print</span> sum<span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<p>他のパッケージから参照するには、完全修飾を行う必要がある。mainはデフォルトのパッケージをあらわす。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">package</span> Foo<span class="sy0">;</span>
+ 
+<span class="kw1">our</span> <span class="re0">$NUM</span> <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">;</span>
+ 
+<span class="kw2">sub</span> sum <span class="br0">{</span>
+    <span class="co1"># ...</span>
+<span class="br0">}</span>
+ 
+<span class="kw3">package</span> main<span class="sy0">;</span>
+ 
+<span class="kw3">print</span> <span class="re0">$Foo</span><span class="sy0">::</span><span class="me2">NUM</span><span class="sy0">;</span>
+<span class="kw3">print</span> Foo<span class="sy0">::</span><span class="me2">sum</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=15" title="節を編集: オブジェクト">編集</a>]</span> <span class="mw-headline" id=".E3.82.AA.E3.83.96.E3.82.B8.E3.82.A7.E3.82.AF.E3.83.88">オブジェクト</span></h3>
+<p>Perlでは、上記のリファレンスとパッケージを組み合わせることにより、クラスベースのオブジェクト指向を実現している。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw3">package</span> Class<span class="sy0">;</span>
+ 
+<span class="co1"># コンストラクタ</span>
+<span class="kw2">sub</span> <span class="kw2">new</span> <span class="br0">{</span>
+    <span class="kw1">my</span> <span class="re0">$class</span> <span class="sy0">=</span> <span class="kw3">shift</span><span class="sy0">;</span>
+    <span class="kw1">my</span> <span class="re0">$self</span>  <span class="sy0">=</span> <span class="br0">{</span> <span class="co5">@_</span> <span class="br0">}</span><span class="sy0">;</span>
+    <span class="kw3">bless</span> <span class="re0">$self</span><span class="sy0">,</span> <span class="re0">$class</span><span class="sy0">;</span>
+<span class="br0">}</span>
+ 
+<span class="co1"># アクセサ</span>
+<span class="kw2">sub</span> meth <span class="br0">{</span>
+    <span class="kw1">my</span> <span class="re0">$self</span> <span class="sy0">=</span> <span class="kw3">shift</span><span class="sy0">;</span>
+    <span class="re0">$self</span><span class="sy0">-&gt;</span><span class="br0">{</span>meth<span class="br0">}</span> <span class="sy0">=</span> <span class="kw3">shift</span> <span class="kw1">if</span> <span class="co5">@_</span><span class="sy0">;</span>
+    <span class="re0">$self</span><span class="sy0">-&gt;</span><span class="br0">{</span>meth<span class="br0">}</span><span class="sy0">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<p>オブジェクトを使うときは以下のようにする。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">my</span> <span class="re0">$obj</span> <span class="sy0">=</span> Class<span class="sy0">-&gt;</span><span class="kw2">new</span><span class="br0">(</span> meth <span class="sy0">=&gt;</span> <span class="st_h">'od'</span> <span class="br0">)</span><span class="sy0">;</span>
+<span class="kw3">warn</span> <span class="re0">$obj</span><span class="sy0">-&gt;</span><span class="me1">meth</span><span class="sy0">;</span> <span class="co1"># 'od';</span>
+</pre></div>
+</div>
+<p>なぜこれが動くのかというと実は、Perlはこれを以下のように解釈している。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw1">my</span> <span class="re0">$obj</span> <span class="sy0">=</span> Class<span class="sy0">::</span><span class="kw2">new</span><span class="br0">(</span> <span class="st_h">'Class'</span><span class="sy0">,</span> meth <span class="sy0">=&gt;</span> <span class="st_h">'od'</span> <span class="br0">)</span><span class="sy0">;</span>
+<span class="kw3">warn</span> Class<span class="sy0">::</span><span class="me2">meth</span><span class="br0">(</span><span class="re0">$obj</span><span class="br0">)</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<p>Perlにおいて、クラスはただのパッケージであり、オブジェクトはただのblessされたリファレンスであり、そしてメソッドは第一引数にオブジェクトをとるただのサブルーチンである。これはPerl 4との互換性を考慮してこのような「後付け」の設計となったのだが、驚くべき柔軟性を示す。これだけで<a href="/wiki/%E7%B6%99%E6%89%BF_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)" title="継承 (プログラミング)">継承</a>も<a href="/wiki/%E5%A7%94%E8%AD%B2" title="委譲">委譲</a>も出来てしまうのだ。最初から<a href="/wiki/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91" title="オブジェクト指向">オブジェクト指向</a>のもとに設計された言語から見ると見た目は変であるが、それらの言語にまさるとも劣らないオブジェクト機能をPerlは持っている。</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=16" title="節を編集: ドキュメンテーション">編集</a>]</span> <span class="mw-headline" id=".E3.83.89.E3.82.AD.E3.83.A5.E3.83.A1.E3.83.B3.E3.83.86.E3.83.BC.E3.82.B7.E3.83.A7.E3.83.B3">ドキュメンテーション</span></h3>
+<p>ドキュメンテーションは<a href="/wiki/Plain_Old_Documentation" title="Plain Old Documentation">POD</a>を用いて記述する。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="coMULTI">=head1 NAME
+ 
+foo.pl
+ 
+=head1 DESCRIPTION
+ 
+this script is ...
+ 
+=cut</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=17" title="節を編集: ワンライナー">編集</a>]</span> <span class="mw-headline" id=".E3.83.AF.E3.83.B3.E3.83.A9.E3.82.A4.E3.83.8A.E3.83.BC">ワンライナー</span></h3>
+<p>コマンドラインからワンライナーと呼ばれる機能を使って、Perlを実行することができる。</p>
+<pre>
+perl -e 'print "Hello, world!\n"'
+</pre>
+<pre>
+perl -le 'print "Hello, world!"'
+</pre>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=18" title="節を編集: 推奨されている記述">編集</a>]</span> <span class="mw-headline" id=".E6.8E.A8.E5.A5.A8.E3.81.95.E3.82.8C.E3.81.A6.E3.81.84.E3.82.8B.E8.A8.98.E8.BF.B0">推奨されている記述</span></h3>
+<p>以下の2行をプログラムの先頭に記述することが強く推奨されている。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw2">use</span> strict<span class="sy0">;</span>
+<span class="kw2">use</span> warnings<span class="sy0">;</span>
+</pre></div>
+</div>
+<p>strictは潜在的な問題をコンパイル時に調べるためのものであり、warningsは警告の出力を有効にするためものである。</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=19" title="節を編集: Perl 5.10 で追加された機能">編集</a>]</span> <span class="mw-headline" id="Perl_5.10_.E3.81.A7.E8.BF.BD.E5.8A.A0.E3.81.95.E3.82.8C.E3.81.9F.E6.A9.9F.E8.83.BD">Perl 5.10 で追加された機能</span></h3>
+<p>Perl 5.10.0以降では改行を自動的に出力するsayが使えるようになった。</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="kw2">use</span> 5<span class="sy0">.</span>10<span class="sy0">.</span>0<span class="sy0">;</span> <span class="co1"># 5.10未満のPerlでの動作を制限するとともに、5.10での追加機能を有効に</span>
+say <span class="st0">"Hello, world!"</span><span class="sy0">;</span>
+</pre></div>
+</div>
+<p>シェルからは<code>-e</code>オプションの代わりに<code>-E</code>を使用すれば、追加機能を利用できる。</p>
+<pre>
+perl -E 'say "Hello, world!"'
+</pre>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=20" title="節を編集: その他の文法">編集</a>]</span> <span class="mw-headline" id=".E3.81.9D.E3.81.AE.E4.BB.96.E3.81.AE.E6.96.87.E6.B3.95">その他の文法</span></h3>
+<p><a href="/wiki/Plain_Old_Documentation" title="Plain Old Documentation">POD</a>による記法を用いると複数行コメントを書くことができる。(あまり利用されない)</p>
+<div dir="ltr" class="mw-geshi mw-content-ltr">
+<div class="perl source-perl">
+<pre class="de1">
+<span class="coMULTI">=begin comment
+ここは
+コメント
+です。
+=end comment</span>
+</pre></div>
+</div>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=21" title="節を編集: その他の特徴">編集</a>]</span> <span class="mw-headline" id=".E3.81.9D.E3.81.AE.E4.BB.96.E3.81.AE.E7.89.B9.E5.BE.B4">その他の特徴</span></h3>
+<ul>
+<li><a href="/wiki/%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89_(%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF)" title="スレッド (コンピュータ)">スレッド</a>
+<dl>
+<dd>Perlのスレッドはデータが丸ごとコピーされるという点で概念的にUNIXや<a href="/wiki/Linux" title="Linux">Linux</a>の<a href="/wiki/Fork" title="Fork">fork</a>に近い。iThreads（インタープリタスレッド）と呼ばれており、他のシステムにおけるどのスレッドとも実装は異なる。<a href="/wiki/%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB_(%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2)" title="シグナル (ソフトウェア)">シグナル</a>と同時に利用することで問題があるとも言われている。もともとWindows版にて<a href="/wiki/Fork" title="Fork">fork</a>のような実装を行うためのコードだったものから、発展している。<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[2]</a></sup>多くの<a href="/wiki/Linux" title="Linux">Linux</a>ディストリビューションではiThreadsをオンにして配布しているが、安全性重視をうたっている<a href="/wiki/FreeBSD" title="FreeBSD">FreeBSD</a>や<a href="/wiki/OpenBSD" title="OpenBSD">OpenBSD</a>の標準ディストリビューションや<a href="/wiki/OpenSolaris" title="OpenSolaris">OpenSolaris</a>では、iThreadsをオフにしている。</dd>
+</dl>
+</li>
+<li>PerlIOレイヤ
+<dl>
+<dd><a href="/wiki/%E5%85%A5%E5%87%BA%E5%8A%9B" title="入出力">入出力</a>操作に手を加えることができる。各レイヤはC言語で実装できるため高速である。</dd>
+</dl>
+</li>
+</ul>
+<h2><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=22" title="節を編集: モジュール">編集</a>]</span> <span class="mw-headline" id=".E3.83.A2.E3.82.B8.E3.83.A5.E3.83.BC.E3.83.AB">モジュール</span></h2>
+<p>Perlプログラムには、<a href="/wiki/%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB" title="モジュール">モジュール</a>によって機能を付加することができる。たとえば、他のプログラムやネットワークとの通信、各種ファイル形式の取り扱い、数学的な計算など、数多くのモジュールが存在する。PerlにはCPANというモジュールを体系的に管理する<a href="/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88" title="インターネット">インターネット</a>上のシステムがある。インターネットに接続しているならば、CPANにアクセスして、モジュールをインストールすることが可能である。</p>
+<p class="rellink" style="margin-left:2em; font-style:italic;">詳細は「<a href="/wiki/CPAN" title="CPAN">CPAN</a>」を参照</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=23" title="節を編集: 標準モジュール">編集</a>]</span> <span class="mw-headline" id=".E6.A8.99.E6.BA.96.E3.83.A2.E3.82.B8.E3.83.A5.E3.83.BC.E3.83.AB">標準モジュール</span></h3>
+<p>Perlには標準で利用できるモジュールが数多く存在する。</p>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/base/lib/base.pm">base</a> - クラスの継承</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/perl/lib/Benchmark.pm">Benchmark</a> - ベンチマーク</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/perl/lib/Carp.pm">Carp</a> - 呼び出し元の観点で例外を発生</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/PathTools/Cwd.pm">Cwd</a> - カレントディレクトリのパスを取得</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Data-Dumper/Dumper.pm">Data::Dumper</a> - 変数の内容を出力</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Digest-MD5/MD5.pm">Digest::MD5</a> - MD5値</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Encode/Encode.pm">Encode</a> - 文字列のエンコード・デコード</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Exporter/lib/Exporter.pm">Exporter</a> - 関数のエクスポート</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/perl/lib/File/Basename.pm">File::Basename</a> - ファイルのベース名とディレクトリ名の取得</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/perl/lib/File/Copy.pm">File::Copy</a> - ファイルの移動とコピー</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/File-Path/Path.pm">File::Path</a> - 複数階層のディレクトリの作成と削除</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/PathTools/lib/File/Spec.pm">File::Spec</a> - ファイル名に対する移植性のある処理</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/File-Temp/Temp.pm">File::Temp</a> - 一時ファイルの生成</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/perl/lib/FindBin.pm">FindBin</a> - スクリプトが存在するディレクトリのパスの取得</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Getopt-Long/lib/Getopt/Long.pm">Getopt::Long</a> - コマンドライン引数の処理</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/lib/lib_pm.PL">lib</a> - モジュールの検索パスを追加</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Scalar-List-Utils/lib/List/Util.pm">List::Util</a> - 配列に対する処理</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/libnet/Net/FTP.pm">Net::FTP</a> - FTPクライアント</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Scalar-List-Utils/lib/List/Util.pm">Scalar::Util</a> - スカラ値のユーティリティ</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Storable/Storable.pm">Storable</a> - データの直列化</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/perl/ext/Sys-Hostname/Hostname.pm">Sys::Hostname</a> - ホスト名の取得</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Time-Piece/Piece.pm">Time::Piece</a> - 日付・時刻の扱い</li>
+</ul>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=24" title="節を編集: 代表的なCPANモジュール">編集</a>]</span> <span class="mw-headline" id=".E4.BB.A3.E8.A1.A8.E7.9A.84.E3.81.AACPAN.E3.83.A2.E3.82.B8.E3.83.A5.E3.83.BC.E3.83.AB">代表的なCPANモジュール</span></h3>
+<dl>
+<dt>テキスト処理</dt>
+<dd>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Text-CSV/lib/Text/CSV.pm">Text::CSV</a> - CSVファイルの解析</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Text-Diff/lib/Text/Diff.pm">Text::Diff</a> - diffコマンド</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Template-Toolkit/lib/Template.pm">Template Toolkit</a> - テンプレートシステム</li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>データベース</dt>
+<dd>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/DBI/DBI.pm">DBI</a> - 汎用<a href="/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9" title="データベース">データベース</a>インタフェース</li>
+</ul>
+</dd>
+<dt>Webアプリケーション</dt>
+<dd>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/CGI/lib/CGI.pm">CGI</a> - CGIプログラミング</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Plack/">Plack</a> - <a href="/w/index.php?title=PSGI&amp;action=edit&amp;redlink=1" class="new" title="PSGI（存在しないページ）">PSGI</a>のリファレンス実装</li>
+<li><a rel="nofollow" class="external text" href="http://mojolicio.us/">Mojolicious</a> - Webフレームワーク</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Catalyst-Runtime/lib/Catalyst.pm">Catalyst</a> - Webアプリケーションフレームワーク</li>
+</ul>
+</dd>
+<dt>Webアクセス</dt>
+<dd>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/libwww-perl/lib/LWP/UserAgent.pm">LWP::UserAgent</a> - WWWクライアント</li>
+</ul>
+</dd>
+<dt>データ記述言語の処理</dt>
+<dd>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/XML-Simple/lib/XML/Simple.pm">XML::Simple</a> - XMLをPerlのデータ構造に変換</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/XML-LibXML/LibXML.pod">XML::LibXML</a> - XMLのサポート</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/JSON/lib/JSON.pm">JSON</a> - <a href="/wiki/JSON" title="JSON" class="mw-redirect">JSON</a>のサポート</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/YAML/lib/YAML.pm">YAML</a> - <a href="/wiki/YAML" title="YAML">YAML</a>のサポート</li>
+</ul>
+</dd>
+</dl>
+<h3><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=25" title="節を編集: PSGI/Plack">編集</a>]</span> <span class="mw-headline" id="PSGI.2FPlack">PSGI/Plack</span></h3>
+<p>Perlスクリプトは実行ファイル形式またはモジュール形式を用いて<a href="/wiki/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" title="ウェブアプリケーション">ウェブアプリケーション</a>として実行することができる。実行ファイル形式はCGI、<a href="/wiki/FastCGI" title="FastCGI">FastCGI</a>、<a href="/wiki/SpeedyCGI" title="SpeedyCGI" class="mw-redirect">SpeedyCGI</a>、モジュール形式はmod_perl、<a href="/wiki/ISAPI" title="ISAPI">ISAPI</a>などがある。このうちCGIが主な実行方法として知られているが、実行のたびにプロセスの読込・破棄を行っているため、オーバーヘッドが大きい。そのため、多くのアクセスを処理しなければならないウェブアプリケーションでは、パフォーマンスが悪くなることがある。一方、FastCGI、SpeedyCGI、mod_perlなどの環境では、プロセスをメモリ上に永続的に置くことによりプロセスの読込・破棄の作業を省き、高速化を図っている。</p>
+<p>上記の実行環境はそれぞれインターフェイスが異なるため、ウェブアプリケーションフレームワークごとに差異を吸収するコードが繰り返し再発明されていた。この問題を解決すべく、<a href="/w/index.php?title=%E5%AE%AE%E5%B7%9D%E9%81%94%E5%BD%A6&amp;action=edit&amp;redlink=1" class="new" title="宮川達彦（存在しないページ）">宮川達彦</a>氏主導の元、<a href="/wiki/WSGI" title="WSGI" class="mw-redirect">WSGI</a>や<a href="/w/index.php?title=Rack&amp;action=edit&amp;redlink=1" class="new" title="Rack（存在しないページ）">Rack</a>にインスパイアされた<a href="/w/index.php?title=PSGI&amp;action=edit&amp;redlink=1" class="new" title="PSGI（存在しないページ）">PSGI</a>というウェブアプリケーション フレームワーク用の規格が打ち出された<sup id="cite_ref-psgi1_2-0" class="reference"><a href="#cite_note-psgi1-2">[3]</a></sup>。また、同時にPSGIのリファレンス実装のPlackも発表された 。これにより、具体的な実行環境を意識することなくウェブアプリケーションを作成できるようになった。2010年現在では、ほとんどのPerl製ウェブアプリケーションフレームワークがPSGIに対応している。</p>
+<p>具体的にどの実行環境を使用するかはオペレーティングシステムやウェブサーバによって異なるが、次のような利用方法がある。</p>
+<dl>
+<dt><a href="/wiki/UNIX" title="UNIX">UNIX</a>系</dt>
+</dl>
+<dl>
+<dd>
+<dl>
+<dt><a href="/wiki/Apache_HTTP_Server" title="Apache HTTP Server">Apache</a></dt>
+<dd>
+<ul>
+<li>CGI</li>
+<li>FastCGI</li>
+<li>SpeedyCGI</li>
+<li>mod_perl</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dd>
+<dl>
+<dt><a href="/wiki/Lighttpd" title="Lighttpd">lighttpd</a></dt>
+<dd>
+<ul>
+<li>CGI</li>
+<li>FastCGI</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt>Windows</dt>
+</dl>
+<dl>
+<dd>
+<dl>
+<dt><a href="/wiki/Internet_Information_Services" title="Internet Information Services">IIS</a></dt>
+<dd>
+<ul>
+<li>CGI</li>
+<li>ISAPI</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dd>
+<dl>
+<dt>Apache</dt>
+<dd>
+<ul>
+<li>CGI</li>
+<li>FastCGI</li>
+<li>SpeedyCGI</li>
+<li>mod_perl</li>
+<li>ISAPI</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dd>
+<dl>
+<dt><a href="/wiki/AN_HTTPD" title="AN HTTPD">AN HTTPD</a></dt>
+<dd>
+<ul>
+<li>CGI</li>
+<li>ISAPI</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=26" title="節を編集: 歴史">編集</a>]</span> <span class="mw-headline" id=".E6.AD.B4.E5.8F.B2">歴史</span></h2>
+<table class="wikitable">
+<caption>Perlのバージョン</caption>
+<tr>
+<th style="white-space:nowrap">Perl 1.0</th>
+<td>1987年12月18日にリリース。6台のVAXと6台のSunのためのコンフィギュレーション管理制御システムのレポート作成ツールとして誕生した。</td>
+</tr>
+<tr>
+<th style="white-space:nowrap">Perl 2.0</th>
+<td>1988年6月05日にリリース。Henry Spencer作の美しい正規表現ライブラリをPerl風にアレンジし、導入した。</td>
+</tr>
+<tr>
+<th style="white-space:nowrap">Perl 3.0</th>
+<td>1989年10月18日にリリース。バイナリデータを処理できるようになった。</td>
+</tr>
+<tr>
+<th style="white-space:nowrap">Perl 4.0</th>
+<td>1991年3月21日にリリース。O'Reilly&amp;Associates,Inc よりProgramming perlが発売されたのに合わせてリリースされた。</td>
+</tr>
+<tr>
+<th style="white-space:nowrap">Perl 5.0</th>
+<td>1994年10月17日にリリース。リファレンスおよびオブジェクト指向に対応。また、useが導入され追加モジュールの取扱いが大幅に強化された。</td>
+</tr>
+<tr>
+<th style="white-space:nowrap">Perl 5.5.0</th>
+<td>1998年7月22日にリリース。正規表現の拡張、B::*モジュールによるフックのサポート、qr// 正規表現演算子の追加がなされた。BeOS を含む幅広いオペレーティングシステムに移植された。日本国内で最も重要なことは、このバージョンが JPerl がサポートする最後のバージョンということである。したがって、日本語情報処理において今なお使われている。</td>
+</tr>
+<tr>
+<th style="white-space:nowrap">Perl 5.6.0</th>
+<td>2000年5月22日にリリース。our文やウィークリファレンス、warningsプラグマの導入など、言語コアが大きく拡張された。試験的ながらUnicodeのサポートを開始した最初のバージョン。バージョン番号の構造を変更。サブバージョン（5.6.0の6に相当）が偶数のものが安定版、奇数のものが開発版を意味する。</td>
+</tr>
+<tr>
+<th style="white-space:nowrap">Perl 5.8.0</th>
+<td>2002年7月18日にリリース。5.8系列の最新版は5.8.9（2008年12月14日）。汎用文字エンコーディング操作モジュールEncodeが標準ライブラリに加えられ、Unicodeおよび<a href="/wiki/Shift_JIS" title="Shift JIS">Shift_JIS</a>などの様々な文字エンコーディングに正式に対応した。また、スレッドやPerlIOレイヤが導入された。</td>
+</tr>
+<tr>
+<th style="white-space:nowrap">Perl 5.10.0</th>
+<td>2007年12月18日にリリース。この日はPerl 1.0のリリースからちょうど20年目にあたる。静的変数を宣言するstate文や、<a href="/wiki/Switch%E6%96%87" title="Switch文">switch文</a>に相当するgiven文、sayなどの言語拡張が導入された。また、新しいキーワードの導入による<a href="/wiki/%E4%BA%92%E6%8F%9B%E6%80%A7" title="互換性">互換性</a>の問題に対処するため、新しいキーワードの導入をfeatureプラグマで制御できるようになった。</td>
+</tr>
+<tr>
+<th style="white-space:nowrap">Perl 5.12.0</th>
+<td>2010年4月13日にリリース。packageのバージョン指定構文や未実装部分を表す...演算子（<a href="/w/index.php?title=%E3%83%A4%E3%83%80%E3%83%A4%E3%83%80%E6%BC%94%E7%AE%97%E5%AD%90&amp;action=edit&amp;redlink=1" class="new" title="ヤダヤダ演算子（存在しないページ）">ヤダヤダ演算子</a>）、後置のwhen修飾子などが導入された。また、日付と時刻に関するコアモジュールが<a href="/wiki/2038%E5%B9%B4%E5%95%8F%E9%A1%8C" title="2038年問題">2038年問題</a>に対応した。</td>
+</tr>
+<tr>
+<th style="white-space:nowrap">Perl 5.14.0</th>
+<td>2011年5月14日にリリース。Unicode 6.0にほぼ完全に対応。IPv6サポートの改善。push, pop, unshift, shift, each, keys, valuesなどの配列やハッシュを受け取る関数が、リファレンスを受け取ることができるようになった。「package パッケージ名 { ... }」構文の追加。値を破壊せずに戻り値として返す正規表現オプション「r」が追加。</td>
+</tr>
+</table>
+<h2><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=27" title="節を編集: エピソード">編集</a>]</span> <span class="mw-headline" id=".E3.82.A8.E3.83.94.E3.82.BD.E3.83.BC.E3.83.89">エピソード</span></h2>
+<p>Perlは当初、<a href="/wiki/%E6%96%B0%E7%B4%84%E8%81%96%E6%9B%B8" title="新約聖書">新約聖書</a>の<a href="/wiki/%E3%83%9E%E3%82%BF%E3%82%A4%E3%81%AB%E3%82%88%E3%82%8B%E7%A6%8F%E9%9F%B3%E6%9B%B8" title="マタイによる福音書">マタイによる福音書</a>13章46節の「高価な真珠」にちなんで<a href="/wiki/%E7%9C%9F%E7%8F%A0" title="真珠">真珠</a>を意味する「pearl」と名付けられた。ラリー・ウォールは肯定的な意味を持つ短い名前を選びたいと考えていて、彼によれば3文字および4文字の単語を辞書から探したが良いのが見つからなかったということである。また、彼は妻のグロリアにちなんで名前を付けることも考えたが、家族の会話でまぎらわしいために却下となった。</p>
+<p>Perlの正式なリリースの前に、すでに「pearl」という名前のプログラミング言語が存在することに気づき、綴りを変更して「Perl」とした。このようにPerlは略語ではなく、もともと意味はないが、あとからいくつかの意味が考えられている。開発者ラリー自身によると、「<span lang="en" xml:lang="en"><b>p</b>ractical <b>e</b>xtraction and <b>r</b>eport <b>l</b>anguage</span>」（実用的なデータ取得レポート作成言語）という意味を持ち、同時に 「<span lang="en" xml:lang="en"><b>p</b>athologically <b>e</b>clectic <b>r</b>ubbish <b>l</b>ister</span>」（病的折衷主義のガラクタ出力装置）<sup id="cite_ref-progperl1_3-0" class="reference"><a href="#cite_note-progperl1-3">[4]</a></sup>という少し皮肉な意味も込められている。</p>
+<p>Perlという名称の記述においては、若干の注意が必要である。プログラミング言語としてのPerlを示すときは「Perl」というように、頭文字を大文字にして固有名詞であることをはっきりさせる。この「Perl」という表記では処理系のことは含まれない。Perl 5の現在開発されている唯一の処理系は「perl」という、すべて小文字で記述される名前の処理系である。一般に「perlだけがPerlを解釈することができる」という表現がなされる。「PERL」のようにすべてを大文字にするのは誤りである。</p>
+<p>このようにPerl 5現在において、Perlとは言語の名前であると同時に唯一の処理系の名前でもある。この処理系はC言語で書かれている。スクリプトは実行前に<a href="/wiki/%E4%BB%AE%E6%83%B3%E6%A9%9F%E6%A2%B0" title="仮想機械">仮想機械</a>向けにコンパイルされ、コンパイルされたバイトコードが実行される（ランタイムコンパイル）。そのため、厳密にはインタプリタとは異なる。</p>
+<p><a href="/wiki/Python" title="Python">Python</a>のように一旦生成したバイトコードを保存して再利用することは少ないが、これは現在のPerlのランタイムコンパイルが高速で、バイトコードから実行するメリットがあまりないことが理由の一つである。コンパイル済みコードの<a href="/wiki/%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E5%86%8D%E5%88%A9%E7%94%A8" title="コードの再利用">再利用</a>としてはむしろ<a rel="nofollow" class="external text" href="http://perl.apache.org/">mod_perl</a>のような形式が好まれている。</p>
+<p><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/PAR/">PAR</a> (Perl Archive Toolkit) というPerlスクリプトを実行環境ごとアーカイブし、単一のファイルにまとめるためのツールキットも存在する。<a href="/wiki/Jar" title="Jar" class="mw-redirect">JAR</a>のPerl版と考えてよい。実行可能ファイルを作ることもできるため、アプリケーションの配布に適する。しかしその場合はPerl実行環境をまるごと含むため、ファイルサイズが大きくなる傾向にある。</p>
+<p>なお、Perlとは互換性がないが、機能を大幅に強化した<a href="/wiki/Perl6" title="Perl6">Perl6</a>が開発中である。Perl6は<a href="/wiki/Parrot" title="Parrot">Parrot</a>という仮想機械の上で動作する。現在、ParrotCodeへのコンパイルを行う<a href="/wiki/Haskell" title="Haskell">Haskell</a>で書かれた<a href="/wiki/Pugs" title="Pugs">Pugs</a>という処理系が開発されており、Perl 6ではPerl 5と違って複数の実装が公開される予定である。</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=28" title="節を編集: 脚注">編集</a>]</span> <span class="mw-headline" id=".E8.84.9A.E6.B3.A8">脚注</span></h2>
+<ol class="references">
+<li id="cite_note-0"><b><a href="#cite_ref-0">^</a></b> <span class="reference-text"><cite style="font-style:normal">“<a rel="nofollow" class="external text" href="http://perldoc.perl.org/perlsub.html">perlsub - perldoc.perl.org</a>” (英語). <span title="">2011年7月21日</span>閲覧。&#160;“<b>WARNING</b>: In general, you should be using <code>my</code> instead of <code>local</code>, because it's faster and safer.”</cite></span></li>
+<li id="cite_note-1"><b><a href="#cite_ref-1">^</a></b> <span class="reference-text"><a rel="nofollow" class="external free" href="http://perldoc.perl.org/perlfork.html">http://perldoc.perl.org/perlfork.html</a> perlfork - Perl's fork() emulation</span></li>
+<li id="cite_note-psgi1-2"><b><a href="#cite_ref-psgi1_2-0">^</a></b> <span class="reference-text"><a rel="nofollow" class="external free" href="http://gihyo.jp/news/report/01/yapcasia2009/0001">http://gihyo.jp/news/report/01/yapcasia2009/0001</a> YAPC::Asia Tokyo 2009 スペシャルレポート</span></li>
+<li id="cite_note-progperl1-3"><b><a href="#cite_ref-progperl1_3-0">^</a></b> <span class="reference-text">プログラミング Perl VOLUME 1 <a href="/wiki/%E7%89%B9%E5%88%A5:%E6%96%87%E7%8C%AE%E8%B3%87%E6%96%99/4873110963" class="internal mw-magiclink-isbn">ISBN 4-87311-096-3</a></span></li>
+</ol>
+<h2><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=29" title="節を編集: 参考文献">編集</a>]</span> <span class="mw-headline" id=".E5.8F.82.E8.80.83.E6.96.87.E7.8C.AE">参考文献</span></h2>
+<ul>
+<li><a href="/wiki/%E3%83%A9%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB" title="ラリー・ウォール">ラリー・ウォール</a>、ジョン・オーワント、トム・クリスチャンセン著、<a href="/w/index.php?title=%E8%BF%91%E8%97%A4%E5%98%89%E9%9B%AA&amp;action=edit&amp;redlink=1" class="new" title="近藤嘉雪（存在しないページ）">近藤嘉雪</a>訳『プログラミング <a rel="nofollow" class="external text" href="http://www.oreilly.co.jp/books/perl/">Perl</a>』VOLUME 1 (<a href="/wiki/%E7%89%B9%E5%88%A5:%E6%96%87%E7%8C%AE%E8%B3%87%E6%96%99/4873110963" class="internal mw-magiclink-isbn">ISBN 4-87311-096-3</a>), 2 (<a href="/wiki/%E7%89%B9%E5%88%A5:%E6%96%87%E7%8C%AE%E8%B3%87%E6%96%99/4873110971" class="internal mw-magiclink-isbn">ISBN 4-87311-097-1</a>), <a href="/wiki/%E3%82%AA%E3%83%A9%E3%82%A4%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3" title="オライリー・ジャパン">オライリー・ジャパン</a>、2002年</li>
+</ul>
+<h2><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=30" title="節を編集: 関連項目">編集</a>]</span> <span class="mw-headline" id=".E9.96.A2.E9.80.A3.E9.A0.85.E7.9B.AE">関連項目</span></h2>
+<table class="mbox-small portal plainlinks noprint" style="border:1px solid #aaa; background-color:#f9f9f9; background:#f6ffff; width:200px;">
+<tr>
+<td style="width:1px;"></td>
+<td class="mbox-text" style="font-size:100%;"><b><a href="/wiki/Portal:FLOSS" title="Portal:FLOSS">ポータル&#160;FLOSS</a></b></td>
+</tr>
+</table>
+<ul>
+<li><a href="/wiki/%E3%83%A9%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB" title="ラリー・ウォール">ラリー・ウォール</a></li>
+<li><a href="/wiki/Artistic_License" title="Artistic License">Artistic License</a></li>
+<li><a href="/wiki/%E3%82%B0%E3%83%AB%E3%83%BC%E8%A8%80%E8%AA%9E" title="グルー言語">グルー言語</a></li>
+<li><a href="/wiki/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E8%A8%80%E8%AA%9E" title="スクリプト言語">スクリプト言語</a></li>
+<li><a href="/wiki/%E8%BB%BD%E9%87%8F%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="軽量プログラミング言語">軽量プログラミング言語</a></li>
+</ul>
+<h2><span class="editsection">[<a href="/w/index.php?title=Perl&amp;action=edit&amp;section=31" title="節を編集: 外部リンク">編集</a>]</span> <span class="mw-headline" id=".E5.A4.96.E9.83.A8.E3.83.AA.E3.83.B3.E3.82.AF">外部リンク</span></h2>
+<table class="mbox-small plainlinks sisterproject noprint" style="border:1px solid #aaa; background-color:#f9f9f9; width:20em;">
+<tr>
+<td class="mbox-image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/df/Wikibooks-logo-en-noslogan.svg/40px-Wikibooks-logo-en-noslogan.svg.png" width="40" height="40" /></td>
+<td class="mbox-text" style="font-size:100%;">ウィキブックスに<b><a class="external text" href="//ja.wikibooks.org/wiki/Perl">Perl</a></b>関連の解説書・教科書があります。</td>
+</tr>
+</table>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://www.perl.org/">The Perl Programming Language</a> - Perlの公式サイト</li>
+<li><a rel="nofollow" class="external text" href="http://perldoc.perl.org/">Perl programming documentation</a> - Perlの公式ドキュメント</li>
+<li><a rel="nofollow" class="external text" href="http://perldoc.jp/">perldoc.jp</a> - Perlの公式ドキュメントの日本語訳</li>
+<li><a rel="nofollow" class="external text" href="http://www.cpan.org/">CPAN</a> - Perlのモジュールの配布を行うサイト</li>
+<li><a rel="nofollow" class="external text" href="http://www.perl.com/">Perl.com</a> - <a href="/wiki/%E3%82%AA%E3%83%A9%E3%82%A4%E3%83%AA%E3%83%BC" title="オライリー" class="mw-redirect">オライリー</a>によるPerlのウェブサイト</li>
+<li><a rel="nofollow" class="external text" href="http://www.activestate.com/activeperl">ActivePerl</a> - <a href="/w/index.php?title=ActiveState&amp;action=edit&amp;redlink=1" class="new" title="ActiveState（存在しないページ）">ActiveState</a>社のPerlディストリビューション。<a href="/wiki/Windows_API#Win32" title="Windows API">Win32</a>版は<a href="/wiki/Microsoft_Windows" title="Microsoft Windows">Windows</a>環境で最も利用される。</li>
+<li><a rel="nofollow" class="external text" href="http://search.cpan.org/dist/Perl-Dist-Chocolate/">Chocolate Perl</a> - Perlのディストリビューションのひとつ</li>
+<li><a rel="nofollow" class="external text" href="http://vanillaperl.com/">Vanilla Perl</a> - Perlのディストリビューションのひとつ</li>
+<li><a rel="nofollow" class="external text" href="http://strawberryperl.com/">Strawberry Perl</a> - Perlのディストリビューションのひとつ</li>
+<li><a rel="nofollow" class="external text" href="http://plackperl.org">PSGI/Plack</a> - <a href="/wiki/Web_Server_Gateway_Interface" title="Web Server Gateway Interface">WSGI</a>のPerlによる実装</li>
+<li><a rel="nofollow" class="external text" href="http://japan.perlassociation.org/">Japan Perl Association</a> - YAPC::Asiaを主催する一般社団法人</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+<p><span id="interwiki-de-ga" style="display:none;"></span></p>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 4630/1000000
+Post-expand include size: 292608/2048000 bytes
+Template argument size: 170451/2048000 bytes
+Expensive parser function count: 0/500
+-->
+
+<!-- Saved in parser cache with key jawiki:pcache:idhash:1063-0!*!0!!ja!4!* and timestamp 20120407084346 -->
+</div>        <!-- /bodycontent -->
+                <!-- printfooter -->
+        <div class="printfooter">
+        「<a href="http://ja.wikipedia.org/w/index.php?title=Perl&amp;oldid=41637833">http://ja.wikipedia.org/w/index.php?title=Perl&amp;oldid=41637833</a>」より取得       </div>
+        <!-- /printfooter -->
+                        <!-- catlinks -->
+        <div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/%E7%89%B9%E5%88%A5:%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA" title="特別:カテゴリ">カテゴリ</a>：<ul><li><a href="/wiki/Category:%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E" title="Category:プログラミング言語">プログラミング言語</a></li><li><a href="/wiki/Category:%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E8%A8%80%E8%AA%9E" title="Category:スクリプト言語">スクリプト言語</a></li><li><a href="/wiki/Category:%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9" title="Category:オープンソース">オープンソース</a></li><li><a href="/wiki/Category:Perl" title="Category:Perl">Perl</a></li></ul></div></div>        <!-- /catlinks -->
+                        <div class="visualClear"></div>
+        <!-- debughtml -->
+                <!-- /debughtml -->
+      </div>
+      <!-- /bodyContent -->
+    </div>
+    <!-- /content -->
+    <!-- header -->
+    <div id="mw-head" class="noprint">
+      
+<!-- 0 -->
+<div id="p-personal" class="">
+  <h5>個人用ツール</h5>
+  <ul>
+    <li id="pt-login"><a href="/w/index.php?title=%E7%89%B9%E5%88%A5:%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3&amp;returnto=Perl" title="ログインすることが推奨されます。ただし、必須ではありません。 [o]" accesskey="o">ログインまたはアカウント作成</a></li>
+  </ul>
+</div>
+
+<!-- /0 -->
+      <div id="left-navigation">
+        
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+  <h5>名前空間</h5>
+  <ul>
+          <li  id="ca-nstab-main" class="selected"><span><a href="/wiki/Perl"  title="本文を表示 [c]" accesskey="c">ページ</a></span></li>
+          <li  id="ca-talk"><span><a href="/wiki/%E3%83%8E%E3%83%BC%E3%83%88:Perl"  title="記事についての議論 [t]" accesskey="t">ノート</a></span></li>
+      </ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+  <h4>
+    </h4>
+  <h5><span>変種</span><a href="#"></a></h5>
+  <div class="menu">
+    <ul>
+          </ul>
+  </div>
+</div>
+
+<!-- /1 -->
+      </div>
+      <div id="right-navigation">
+        
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+  <h5>表示</h5>
+  <ul>
+          <li id="ca-view" class="selected"><span><a href="/wiki/Perl" >閲覧</a></span></li>
+          <li id="ca-edit"><span><a href="/w/index.php?title=Perl&amp;action=edit"  title="このページを編集できます。保存する前にプレビューボタンを使ってください。 [e]" accesskey="e">編集</a></span></li>
+          <li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=Perl&amp;action=history"  title="このページの過去の版 [h]" accesskey="h">履歴表示</a></span></li>
+      </ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+  <h5><span>操作</span><a href="#"></a></h5>
+  <div class="menu">
+    <ul>
+          </ul>
+  </div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+  <h5><label for="searchInput">検索</label></h5>
+  <form action="/w/index.php" id="searchform">
+        <div id="simpleSearch">
+            <input type="text" name="search" value="" title="Wikipedia内を検索 [f]" accesskey="f" id="searchInput" />           <button type="submit" name="button" title="入力された文字列が含まれるページを検索します" id="searchButton"><img src="//bits.wikimedia.org/skins-1.19/vector/images/search-ltr.png?303-4" alt="検索" /></button>               <input type='hidden' name="title" value="特別:検索"/>
+    </div>
+  </form>
+</div>
+
+<!-- /2 -->
+      </div>
+    </div>
+    <!-- /header -->
+    <!-- panel -->
+      <div id="mw-panel" class="noprint">
+        <!-- logo -->
+          <div id="p-logo"><a style="background-image: url(//upload.wikimedia.org/wikipedia/commons/a/ad/Wikipedia-logo-v2-ja.png);" href="/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8"  title="メインページに移動"></a></div>
+        <!-- /logo -->
+        
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+  <h5>案内</h5>
+  <div class="body">
+    <ul>
+      <li id="n-mainpage"><a href="/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8" title="メインページに移動 [z]" accesskey="z">メインページ</a></li>
+      <li id="n-portal"><a href="/wiki/Wikipedia:%E3%82%B3%E3%83%9F%E3%83%A5%E3%83%8B%E3%83%86%E3%82%A3%E3%83%BB%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB" title="このプロジェクトについて、できること、情報を入手する場所">コミュニティ・ポータル</a></li>
+      <li id="n-currentevents"><a href="/wiki/Portal:%E6%9C%80%E8%BF%91%E3%81%AE%E5%87%BA%E6%9D%A5%E4%BA%8B" title="最近の出来事について予備知識を得る">最近の出来事</a></li>
+      <li id="n-newpages"><a href="/wiki/%E7%89%B9%E5%88%A5:%E6%96%B0%E3%81%97%E3%81%84%E3%83%9A%E3%83%BC%E3%82%B8" title="最近新規に作成されたページの一覧">新しいページ</a></li>
+      <li id="n-recentchanges"><a href="/wiki/%E7%89%B9%E5%88%A5:%E6%9C%80%E8%BF%91%E3%81%AE%E6%9B%B4%E6%96%B0" title="このウィキにおける最近の更新の一覧 [r]" accesskey="r">最近の更新</a></li>
+      <li id="n-randompage"><a href="/wiki/%E7%89%B9%E5%88%A5:%E3%81%8A%E3%81%BE%E3%81%8B%E3%81%9B%E8%A1%A8%E7%A4%BA" title="無作為に抽出されたページの読み込み [x]" accesskey="x">おまかせ表示</a></li>
+      <li id="n-sandbox"><a href="/wiki/Wikipedia:%E3%82%B5%E3%83%B3%E3%83%89%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9" title="練習用のページ">練習用ページ</a></li>
+      <li id="n-commonsupload"><a href="//commons.wikimedia.org/wiki/Special:UploadWizard?uselang=ja" title="画像やメディアファイルをウィキメディア・コモンズにアップロード">アップロード (ウィキメディア・コモンズ)</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- /navigation -->
+
+      </div>
+    <!-- /panel -->
+    <!-- footer -->
+    <div id="footer">
+              <ul id="footer-info">
+                      <li id="footer-info-lastmod"> 最終更新 2012年3月14日 (水) 10:41 （日時は<a href="/wiki/%E7%89%B9%E5%88%A5:%E5%80%8B%E4%BA%BA%E8%A8%AD%E5%AE%9A" title="特別:個人設定">個人設定</a>で未設定ならば<a href="/wiki/%E5%8D%94%E5%AE%9A%E4%B8%96%E7%95%8C%E6%99%82" title="協定世界時">UTC</a>）。<br /></li>
+                      <li id="footer-info-copyright">テキストは<a href="//ja.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">クリエイティブ・コモンズ 表示-継承ライセンス</a>の下で利用可能です。追加の条件が適用される場合があります。詳細は<a href="//wikimediafoundation.org/wiki/%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84">利用規約</a>を参照してください。<br /></li>
+                  </ul>
+              <ul id="footer-places">
+                      <li id="footer-places-privacy"><a href="//wikimediafoundation.org/wiki/%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%BB%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC" title="wikimedia:プライバシー・ポリシー">プライバシー・ポリシー</a></li>
+                      <li id="footer-places-about"><a href="/wiki/Wikipedia:%E3%82%A6%E3%82%A3%E3%82%AD%E3%83%9A%E3%83%87%E3%82%A3%E3%82%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" title="Wikipedia:ウィキペディアについて">ウィキペディアについて</a></li>
+                      <li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:%E5%85%8D%E8%B2%AC%E4%BA%8B%E9%A0%85" title="Wikipedia:免責事項">免責事項</a></li>
+                      <li id="footer-places-mobileview"><a href='//ja.m.wikipedia.org/w/index.php?title=Perl&amp;useformat=mobile' class='noprint'>モバイルビュー</a></li>
+                  </ul>
+                    <ul id="footer-icons" class="noprint">
+          <li id="footer-copyrightico">
+            <a href="//wikimediafoundation.org/"><img src="//bits.wikimedia.org/images/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"/></a>
+          </li>
+          <li id="footer-poweredbyico">
+            <a href="//www.mediawiki.org/"><img src="//bits.wikimedia.org/skins-1.19/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+          </li>
+        </ul>
+            <div style="clear:both"></div>
+    </div>
+    <!-- /footer -->
+    <script src="//bits.wikimedia.org/ja.wikipedia.org/load.php?debug=false&amp;lang=ja&amp;modules=skins.vector&amp;only=scripts&amp;skin=vector&amp;*" type="text/javascript"></script>
+<script type="text/javascript">if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready","mediawiki.legacy.mwsuggest","ext.vector.collapsibleNav","ext.vector.collapsibleTabs","ext.vector.editWarning","ext.vector.simpleSearch"], null, true);
+}</script>
+<script src="/w/index.php?title=%E7%89%B9%E5%88%A5:%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E5%BE%A1&amp;cache=/cn.js&amp;303-4" type="text/javascript"></script>
+<script src="//bits.wikimedia.org/ja.wikipedia.org/load.php?debug=false&amp;lang=ja&amp;modules=site&amp;only=scripts&amp;skin=vector&amp;*" type="text/javascript"></script>
+<script src="//geoiplookup.wikimedia.org/" type="text/javascript"></script><!-- Served by mw49 in 0.133 secs. -->
+  </body>
+</html>
+
+

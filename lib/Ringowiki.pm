@@ -72,6 +72,9 @@ sub startup {
   
   # Setup
   $b->get('/setup')->to('setup#default');
+  
+  # Wiki
+  $b->get('/wikies/:id/:page')->to('wikies#page', page => '');
 
   # Admin
   {
@@ -81,18 +84,6 @@ sub startup {
     {
       my $r2 = $w->route('/wiki')->to('admin-wiki#');
       $r2->get('/create')->to('#create');
-    }
-  }
-  
-  # Devel
-  {
-    my $r2 = $b->route('/devel');
-    
-    # Table
-    {
-      my $r3 = $r2->route('/table')->to('devel-table#');
-      $r3->get('list')->to('#list');
-      $r3->get('select')->to('#select');
     }
   }
   
@@ -114,6 +105,14 @@ sub startup {
     {
       $r2->post('/setup')->to('api-setup#default');
       $r2->post('/setup/resetup')->to('api-setup#resetup');
+    }
+
+    # Devel
+    if ($self->mode eq 'development') {
+      my $r2 = $b->route('/devel');
+      
+      # SQLite viewer lite
+      $self->plugin('SQLiteViewerLite', dbi => $dbi);
     }
   }
 }

@@ -1,9 +1,13 @@
-<html>
+<!DOCTYPE html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><%= $title %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <!-- スタイルシートがわからないので会席 -->
+    <link rel="stylesheet" href="//bits.wikimedia.org/ja.wikipedia.org/load.php?debug=false&amp;lang=ja&amp;modules=ext.geshi.local%7Cext.wikihiero%7Cmediawiki.legacy.commonPrint%2Cshared%7Cskins.vector&amp;only=styles&amp;skin=vector&amp;*" type="text/css" media="all" />
+
     %= javascript '/js/jquery-1.7.1.min.js';
     %= javascript '/js/ringowikiapi.js';
-    <title><%= $title %></title>
   </head>
   <body>
     %= content;
