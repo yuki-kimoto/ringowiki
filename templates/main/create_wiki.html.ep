@@ -5,25 +5,26 @@
     $('input[name="create"]').click(function () {
       // Initialize ringo wiki
       var params = ringowikiapi.create_form_data('#create_wiki_form');
-      $.post("<%= url_for "/api/admin/wiki/create" %>", params, function (result) {
+      $.post("<%= url_for "/api/create-wiki" %>", params, function (result) {
           alert(JSON.stringify(result));
         if (result.success) {
-          alert("成功");
+          alert("Wikiを作成しました。");
           window.location.href = "<%= url_for '/admin' %>";
         }
-        else { alert("失敗") }
+        else { alert("Wikiの作成に失敗しました。") }
       }, "json");
     });
   });
 % end
 
-<h1>ウィキの追加</h1>
+<h1>ウィキの作成</h1>
 
 <form id="create_wiki_form">
   <div>
     <div>
-      ID: <%= input_tag 'id' => 'main' %>
-      <input type="button" name="create" value="Wikiを作成">
+      <div>ID: <%= input_tag 'wiki_id' => 'main' %></div>
+      <div>タイトル: <%= input_tag 'wiki_name' => '未設定' %></div>
+      <div><input type="button" name="create" value="Wikiを作成"></div>
     </div>
   </div>
 </form>

@@ -79,69 +79,52 @@ sub startup {
       return 1;
     });
 
-    # Top page
-    $r->get('/')->to('main#index');
+    # SQLite viewer (only development)
+    $self->plugin('SQLiteViewerLite', dbi => $dbi)
+      if $self->mode eq 'development';
     
-    # Setup
-    $r->get('/setup')->to('setup#index');
-    
-    # Wiki page
-    $r->get('/wikies/:wiki_id/:page_name')->to('wikies#page', page_name => '')->name('page');
-    
-    # Admin
-    $r->get('/admin')->to('main#admin');
-
-
-    # Admin
+    # Main
     {
-      my $r = $r->waypoint('/admin')->via('get')->to('admin#index');
+      # Top
+      my $r = $r->waypoint('/')->via('get')->to('main#index');
       
-      # Wiki
-      {
-        my $r = $r->route('/wiki')->to('admin-wiki#');
-        $r->get('/create')->to('#create');
-      }
+      # Admin
+      $r->get('/admin')->to('#admin');
+
+      # Setup
+      $r->get('/setup')->to('#setup');
       
-      # Create wiki page
-      $r->get('create-wiki-page')->to('#create_wiki_page');
-      
-      # Edit wiki page
-      $r->get('edit-wiki-page')->to('#edit_wiki_page');
-    }
+      # Create wiki
+      $r->get('/create-wiki')->to('#create_wiki');
+
+      # Create page
+      $r->get('/create-page')->to('#create_page');
     
+      # Edit page
+      $r->get('/edit-page')->to('#edit_page');
+
+      # Page
+      $r->get('/wiki/:wiki_id/:page_name')->to('#page', page_name => '')->name('page');
+    }
+
     # API
     {
       my $r = $r->route('/api')->to('api#');
 
-      # Edit wiki page
-      $r->post('/edit-wiki-page')->to('#edit_wiki_page');
-
-      # Initialize
-      $r->post('/init-wiki')->to('#init_wiki');
+      # Initialize wiki
+      $r->post('/init')->to('#init');
       
-      # Setup
+      # Setup wiki
       $r->post('/setup')->to('#setup');
+      
+      # Re-setupt wiki
+      $r->post('/resetup')->to('#resetup');
+      
+      # Create wiki
+      $r->post('/create-wiki')->to('#create_wiki');
 
-      $r->post('/setup/resetup')->to('api-setup#resetup');
-      
-      # Admin
-      {
-        my $r = $r->route('/admin')->to('api-admin#');
-        
-        # Wiki
-        {
-          my $r = $r->route('/wiki')->to('api-admin-wiki#');
-          $r->post('create')->to('#create');
-        }
-      }
-      
-      # Devel
-      if ($self->mode eq 'development') {
-        my $r = $r->route('/devel');
-        
-        # SQLite viewer lite
-        $self->plugin('SQLiteViewerLite', dbi => $dbi);
-      }
+      # Edit page
+      $r->post('/edit-page')->to('#edit_page');
     }
   }
 }

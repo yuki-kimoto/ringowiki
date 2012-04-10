@@ -10,7 +10,7 @@
       }
       
       // Initialize ringo wiki
-      $.post("<%= url_for "/api/init-wiki" %>", {}, function (result) {
+      $.post("<%= url_for "/api/init" %>", {}, function (result) {
         if (result.success) {
           alert("初期化成功");
           window.location.href = "<%= url_for '/setup' %>";
@@ -26,7 +26,7 @@
       }
       
       // Overwritten setup
-      $.post("<%= url_for "/api/setup/resetup" %>", {}, function (result) {
+      $.post("<%= url_for "/api/resetup" %>", {}, function (result) {
         if (result.success) { alert("再セットアップ成功") }
         else { alert("再セットアップ失敗") }
       }, "json");
@@ -43,11 +43,8 @@
       <li>
         % my $id = $wiki->{id};
         % my $title = $wiki->{title};
-        <a href="<%= url_for "/wikies/$id" %>"><%= $id %></a>
+        <a href="<%= url_for "/wiki/$id" %>"><%= $id %></a>
         - <%= $title eq '' ? 'タイトル未設定' : $title %>
-        % if ($wiki->{main}) {
-          (メイン)
-        % }
       </li>
     % }
   </ul>
@@ -57,12 +54,14 @@
 
 <h2>ウィキ管理</h2>
 <ul>
-  <li><a href="<%= url_for '/admin/wiki/create' %>">ウィキの作成</a>
+  <li><a href="<%= url_for '/create-wiki' %>">ウィキの作成</a>
 </ul>
 
-<h2>開発用ユーティリティ</h2>
-<ul>
-  <li><input type="button" name="init" value="ウィキの初期化"></li>
-  <li><input type="button" name="resetup" value="再セットアップ" ></li>
-  <li><a href="<%= url_for '/sqliteviewerlite' %>">テーブル一覧</a></li>
-</ul>
+% if ($self->app->mode eq 'development') {
+  <h2>開発用ユーティリティ</h2>
+  <ul>
+    <li><input type="button" name="init" value="ウィキの初期化"></li>
+    <li><input type="button" name="resetup" value="再セットアップ" ></li>
+    <li><a href="<%= url_for '/sqliteviewerlite' %>">テーブル一覧</a></li>
+  </ul>
+% }

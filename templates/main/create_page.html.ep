@@ -8,7 +8,7 @@
         return;
       }
       location.href
-        = "<%= url_for("/admin/edit-wiki-page") . "?wiki_id=" . param('wiki_id') %>&page_name=" + page_name;
+        = "<%= url_for("/edit-page") . "?wiki_id=" . param('wiki_id') %>&page_name=" + page_name;
     });
   });
 

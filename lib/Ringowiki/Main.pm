@@ -1,6 +1,14 @@
 package Ringowiki::Main;
 use Mojo::Base 'Mojolicious::Controller';
 
+sub admin {
+  my $self = shift;
+  
+  my $wikies = $self->app->dbi->model('wiki')->select->all;
+  
+  return $self->render(wikies => $wikies);
+}
+
 sub index {
   my $self = shift;
   
@@ -11,12 +19,10 @@ sub index {
   $self->render;
 }
 
-sub admin {
+sub page {
   my $self = shift;
   
-  my $wikies = $self->app->dbi->model('wiki')->select->all;
-  
-  return $self->render(wikies => $wikies);
+  $self->render;
 }
 
 1;
