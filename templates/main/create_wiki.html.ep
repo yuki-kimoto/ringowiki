@@ -22,8 +22,8 @@
 <form id="create_wiki_form">
   <div>
     <div>
-      <div>ID: <%= input_tag 'wiki_id' => 'main' %></div>
-      <div>タイトル: <%= input_tag 'wiki_name' => '未設定' %></div>
+      <div>ID: <%= input_tag 'id' => 'main' %></div>
+      <div>タイトル: <%= input_tag 'title' => '未設定' %></div>
       <div><input type="button" name="create" value="Wikiを作成"></div>
     </div>
   </div>

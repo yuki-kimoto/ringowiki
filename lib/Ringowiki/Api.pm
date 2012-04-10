@@ -29,23 +29,17 @@ sub create_wiki {
   # Validation
   my $raw_params = {map { $_ => $self->param($_) } $self->param};
   my $rule = [
-    id => ['word']
+    id => ['word'],
+    title => ['any']
   ];
   my $vresult = $self->app->validator->validate($raw_params, $rule);
   return $self->render(json => {success => 0, validation => $vresult->to_hash})
     unless $vresult->is_ok;
   my $params = $vresult->data;
-  
-  # DBI
-  my $dbi = $self->app->dbi;
+  $params->{title} = '未設定' unless length $params->{title};
   
   # Create wiki
-  my $model = $dbi->model('wiki');
-  $dbi->connector->txn(sub {
-    my $wiki = $model->select->one;
-    $params->{main} = 1 unless $wiki;
-    $model->insert($params);
-  });
+  $self->app->dbi->model('wiki')->insert($params);
   
   $self->render(json => {success => 1});
 }
