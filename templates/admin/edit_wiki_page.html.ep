@@ -5,6 +5,9 @@
     
     $('input[name="save"]').on("click", function () {
       var data = ringowikiapi.create_form_data('form[name="edit_wiki_page"]');
+      $.post('<%= url_for '/api/edit-wiki-page' %>', data, function () {
+        alert('aaa');
+      }, 'json');
     });
     
   });

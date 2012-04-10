@@ -1,31 +1,34 @@
-package Ringowiki::Api::Admin::Wiki;
+package Ringowiki::Api;
 use Mojo::Base 'Mojolicious::Controller';
 
-sub create {
+sub edit_wiki_page {
   my $self = shift;
   
   # Validation
   my $raw_params = {map { $_ => $self->param($_) } $self->param};
   my $rule = [
-    id => ['word']
+    wiki_id => ['not_blank'],
+    name => ['not_blank'],
+    content => ['any']
   ];
   my $vresult = $self->app->validator->validate($raw_params, $rule);
   return $self->render(json => {success => 0, validation => $vresult->to_hash})
     unless $vresult->is_ok;
   my $params = $vresult->data;
+  my $wiki_id = $params->{wiki_id};
+  my $page_name = $params->{name};
+  my $content = $params->{content};
   
   # DBI
   my $dbi = $self->app->dbi;
   
-  # Create wiki
-  my $model = $dbi->model('wiki');
+  # Update or insert
+  my $model = $dbi->model('page');
   $dbi->connector->txn(sub {
-    my $wiki = $model->select->one;
-    $params->{main} = 1 unless $wiki;
-    $model->insert($params);
+    $model->update_or_insert({content => $content}, id => [$wiki_id, $page_name]);
   });
   
-  $self->render(json => {success => 1});
+  # Render
+  $self->render_json({success => 1});
 }
 
-1;

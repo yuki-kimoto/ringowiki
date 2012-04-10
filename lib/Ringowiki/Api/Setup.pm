@@ -15,10 +15,12 @@ our $TABLE_INFOS = {
     'admin not null',
   ],
   page => [
-    'name not null unique',
+    'wiki_id not null',
+    'name not null',
     "content not null default ''",
     "ctime not null default ''",
-    "mtime not null default ''"
+    "mtime not null default ''",
+    'unique (wiki_id, name)'
   ]
 };
 

@@ -34,8 +34,21 @@ sub startup {
   );
   $self->dbi($dbi);
   
-  # Model
-  $dbi->create_model(table => 'wiki', primary_key => 'id');
+  # Models
+  my $models = [
+    # Wiki
+    {
+      table => 'wiki',
+      primary_key => 'id'
+    },
+    
+    # Page
+    {
+      table => 'page',
+      primary_key => ['wiki_id', 'name']
+    }
+  ];
+  $dbi->create_model($_) for @$models;
   
   # Validator;
   my $vc = $self->validator;
@@ -72,8 +85,8 @@ sub startup {
     # Setup
     $r->get('/setup')->to('setup#default');
     
-    # Wiki
-    $r->get('/wikies/:id/:page')->to('wikies#page', page => '');
+    # Wiki page
+    $r->get('/wikies/:id/:page')->to('wikies#page', page => '')->name('page');
 
     # Admin
     {
@@ -95,11 +108,17 @@ sub startup {
     # API
     {
       my $r = $r->route('/api');
+
+      # Edit wiki page
+      $r->post('/edit-wiki-page')->to('#edit_wiki_page');
       
       # Admin
       {
         my $r = $r->route('/admin')->to('api-admin#');
+        
+        # Init
         $r->post('/init')->to('#init');
+        
         
         # Wiki
         {
