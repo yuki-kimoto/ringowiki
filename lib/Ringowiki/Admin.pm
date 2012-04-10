@@ -10,4 +10,10 @@ sub default {
   return $self->render(wikis => $wikis);
 }
 
+sub create_wiki_page {
+  my $self = shift;
+  
+  $self->render;
+}
+
 1;

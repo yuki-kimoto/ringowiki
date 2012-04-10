@@ -1,0 +1,12 @@
+% layout 'default', title => 'ページを作成', body_class => 'normal';
+  % my $wiki_id = '';
+  % my $page_title = '';
+  
+  <h1 class="header">新規作成</h1>
+  <form action="<%= url_for('/api/create_page')->query(wiki_id => $wiki_id, page_title => $page_title) %>"
+    method="post"
+  >
+      <strong>新しいページ名を入力してください。</strong><br>
+      <%= input_tag mypage => '', size => "20" %>
+      <input type="button" name="post_form" value="新規作成"><br>
+  </form>

@@ -1,5 +1,5 @@
 % layout 'default', title => '';
-
+% my $wiki_id = 'main';
 <div class="tools">
 
     <a title="このページを編集します（パスワードが必要）
@@ -8,7 +8,7 @@
     
     <a href="wiki.cgi?mycmd=diff&amp;mypage=FrontPage">差分
 </a> | 
-    <a href="wiki.cgi?CreatePage">新規作成
+    <a href="<%= url_for('/admin/create-wiki-page')->query(wiki_id => $wiki_id) %>">新規作成
 </a> |
     <a href="wiki.cgi?IndexPage">一覧
 </a> |

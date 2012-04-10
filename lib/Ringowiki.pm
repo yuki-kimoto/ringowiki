@@ -49,70 +49,75 @@ sub startup {
   
   # Route
   my $r = $self->routes;
-  
-  $self->dumper($self->util->setup_completed);
-  
+
   # Brige
-  my $b = $r->under(sub {
-    my $self = shift;
-    
-    # Database is setupped?
-    unless ($self->app->util->setup_completed) {
-      my $path = $self->req->url->path->to_string;
-      return 1 if $path =~ m|^(/api)?/setup|;
-      $self->redirect_to('/setup');
-      return 0; 
-    }
-    
-    return 1;
-  });
-
-  # Top page
-  $b->get('/')->to('default#default');
-  
-  # Setup
-  $b->get('/setup')->to('setup#default');
-  
-  # Wiki
-  $b->get('/wikies/:id/:page')->to('wikies#page', page => '');
-
-  # Admin
   {
-    my $w = $b->waypoint('/admin')->via('get')->to('admin#default');
-    
-    # Wiki
-    {
-      my $r2 = $w->route('/wiki')->to('admin-wiki#');
-      $r2->get('/create')->to('#create');
-    }
-  }
-  
-  # API
-  {
-    my $r2 = $b->route('/api');
-    
-    # Admin
-    {
-      my $r3 = $r2->route('/admin')->to('api-admin#');
-      $r3->post('/init')->to('#init');
+    my $r = $r->under(sub {
+      my $self = shift;
       
-      # Wiki
-      my $r4 = $r3->route('/wiki')->to('api-admin-wiki#');
-      $r4->post('create')->to('#create');
-    }
+      # Database is setupped?
+      unless ($self->app->util->setup_completed) {
+        my $path = $self->req->url->path->to_string;
+        return 1 if $path =~ m|^(/api)?/setup|;
+        $self->redirect_to('/setup');
+        return 0; 
+      }
+      
+      return 1;
+    });
+
+    # Top page
+    $r->get('/')->to('default#default');
     
     # Setup
-    {
-      $r2->post('/setup')->to('api-setup#default');
-      $r2->post('/setup/resetup')->to('api-setup#resetup');
-    }
+    $r->get('/setup')->to('setup#default');
+    
+    # Wiki
+    $r->get('/wikies/:id/:page')->to('wikies#page', page => '');
 
-    # Devel
-    if ($self->mode eq 'development') {
-      my $r2 = $b->route('/devel');
+    # Admin
+    {
+      my $r = $r->waypoint('/admin')->via('get')->to('admin#default');
       
-      # SQLite viewer lite
-      $self->plugin('SQLiteViewerLite', dbi => $dbi);
+      # Wiki
+      {
+        my $r = $r->route('/wiki')->to('admin-wiki#');
+        $r->get('/create')->to('#create');
+      }
+      
+      # Create wiki page
+      $r->get('create-wiki-page')->to('#create_wiki_page');
+    }
+    
+    # API
+    {
+      my $r = $r->route('/api');
+      
+      # Admin
+      {
+        my $r = $r->route('/admin')->to('api-admin#');
+        $r->post('/init')->to('#init');
+        
+        # Wiki
+        {
+          my $r = $r->route('/wiki')->to('api-admin-wiki#');
+          $r->post('create')->to('#create');
+        }
+      }
+      
+      # Setup
+      {
+        $r->post('/setup')->to('api-setup#default');
+        $r->post('/setup/resetup')->to('api-setup#resetup');
+      }
+
+      # Devel
+      if ($self->mode eq 'development') {
+        my $r = $r->route('/devel');
+        
+        # SQLite viewer lite
+        $self->plugin('SQLiteViewerLite', dbi => $dbi);
+      }
     }
   }
 }
