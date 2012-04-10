@@ -5,9 +5,9 @@ use utf8;
 sub default {
   my $self = shift;
   
-  my $wikis = $self->app->dbi->model('wiki')->select->all;
+  my $wikies = $self->app->dbi->model('wiki')->select->all;
   
-  return $self->render(wikis => $wikis);
+  return $self->render(wikies => $wikies);
 }
 
 sub create_wiki_page {

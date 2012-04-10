@@ -114,12 +114,11 @@ sub startup {
 
       # Initialize
       $r->post('/init-wiki')->to('#init_wiki');
-
+      
       # Setup
-      {
-        $r->post('/setup')->to('api-setup#default');
-        $r->post('/setup/resetup')->to('api-setup#resetup');
-      }
+      $r->post('/setup')->to('#setup');
+
+      $r->post('/setup/resetup')->to('api-setup#resetup');
       
       # Admin
       {

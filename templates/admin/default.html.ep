@@ -37,9 +37,9 @@
 <h1>りんごウィキ管理</h1>
 
 <h2>現在のWiki</h2>
-% if (@$wikis) {
+% if (@$wikies) {
   <ul>
-    % for my $wiki (@$wikis) {
+    % for my $wiki (@$wikies) {
       <li>
         % my $id = $wiki->{id};
         % my $title = $wiki->{title};
