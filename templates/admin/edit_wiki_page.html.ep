@@ -1,71 +1,26 @@
 % layout 'default', title => '編集';
 
-○○ページの編集
-
-<form action="wiki.cgi" method="post">
-  <input type="hidden" name="myConflictChecker" value="Fri Jun 18 22:55:53 2010">
-  <input type="hidden" name="mypage" value="FaqPage">
-  <textarea cols="80" rows="20" name="mymsg">
-YukiWikiに関する質問とそれに対する回答です。
-*質問とそれに対する回答です。
-
--- 例えば、質問の前に [済] と入れて頂ければよいのではないかと ..
--- そうすれば、後から、このページをみる人にも便利かと ..
---- [注意] このお願いは、単に、 sk 個人が思ったことを書いたものです。
-
-*使い方について
-**WikiNameで自動的にリンクされるのを解除するにはどうしたらいいですか？
-verbプラグインを利用するとリンクされずにすみます。　ex.&amp;verb(&amp;verb(WikiName)) → &amp;verb(WikiName)
-
-(2004-10-18追記)毎回&amp;verbを使うのが面倒であればwiki.cgiを編集して
-my $wiki_name = '\b([A-Z][a-z]+([A-Z][a-z]+)+)\b';
-この正規表現を好みの何かに書き換えると良いと思います。
-もともと英語で記述される前提のWikiNameなので
-日本語ドキュメントには適さない事がありますよね。
-私はWikiNameを自分で[[ ]]と書くほうが楽に思ったのでお手軽に(すごくいい加減ですが)
-my $wiki_name = '\b_([A-Z][a-z]+([A-Z][a-z]+)+)\b';
-こういう変更をしました。
-**URLリンクを別ページで開けませんか？
-気になったのでwiki.cgiを編集。
-649行目　return qq(&lt;a href=&quot;$chunk&quot;&gt;&lt;img src=&quot;$chunk&quot;&gt;&lt;/a&gt;); 
-⇒修正　 return qq(&lt;a href=&quot;$chunk&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;$chunk&quot;&gt;&lt;/a&gt;); 
-651行目　return qq(&lt;a href=&quot;$chunk&quot;&gt;$chunk&lt;/a&gt;); 
-⇒修正　 return qq(&lt;a href=&quot;$chunk&quot; target=&quot;_blank&quot;&gt;$chunk&lt;/a&gt;); 
-ついでに、フッター部分のリンクも別ページにするには 
-444行目付近
----(
-&lt;address class=&quot;footer&quot;&gt;
-  Powered by &lt;a href=&quot;http://www.hyuki.com/yukiwiki/&quot; target=&quot;_blank&quot;&gt;YukiWiki&lt;/a&gt; $version &lt;br /&gt;
-  Modified by &lt;a href=&quot;$modifier_url&quot; target=&quot;_blank&quot;&gt;$modifier_name&lt;/a&gt;.
-&lt;/address&gt;
-&lt;p class=&quot;footer&quot;&gt;
-  &lt;a href=&quot;http://www.hyuki.com/yukiwiki/&quot; target=&quot;_blank&quot;&gt;$icontag&lt;/a&gt;
-&lt;/p&gt;
----)
-**『FrontPage』部と、『目次』の間に、テキストを表示したい際は、どの様にすればよろしいのでしょうか？
-(2005/08/31 spcar.info)ちょっと強引ですが、wiki.cgiのサブルーチン(sub text_to_html)を下記のように変更することで、行頭にダラー4個($$$$)書くと『目次』が表示され、好きな位置に挿入することができます。副作用として逆に文頭にダラー4個($$$$)書かない限り、見出しがあっても『目次』が表示されなくなります。
----(
-sub text_to_html {
-
-  ...                                             # 省略
-
-      # Insert &quot;table of contents&quot;.
-      if (@tocresult) {
-          unshift(@tocresult, qq(&lt;h2&gt;$resource{table_of_contents}&lt;/h2&gt;));
-      }
-      #return join(&quot;\n&quot;, @tocresult, @result);    # DEL
-      foreach (@result) {                         # ADD
-          s/^\$\$\$\$/@tocresult/g;               # ADD
-      }                                           # ADD
-      return join(&quot;\n&quot;, @result);                 # ADD
-  } else {
-      return join(&quot;\n&quot;, @result);
-  }
-}
----)
-</textarea><br>
-
-<input type="submit" name="mypreview_adminedit" value="プレビュー">
-<input type="submit" name="mypreview_write" value="保存する"><br>
+%= javascript begin
+  $(document).ready(function () {
     
+    $('input[name="save"]').on("click", function () {
+      var data = ringowikiapi.create_form_data('form[name="edit_wiki_page"]');
+    });
+    
+  });
+% end
+
+% my $page_name = param('page_name');
+
+<%= $page_name %> の編集
+
+<form name="edit_wiki_page">
+  <input type="hidden" name="wiki_id" value="<%= param('wiki_id') %>">
+  <input type="hidden" name="page_name" value="<%= $page_name %>">
+  <%= text_area '', name => 'content', cols => "80", rows => "20" %>
+
+  <div>
+    <input type="button" name="preview" value="プレビュー">
+    <input type="button" name="save" value="保存する">
+  </div>
 </form>
