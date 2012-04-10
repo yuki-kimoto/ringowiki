@@ -13,6 +13,12 @@ our $TABLE_INFOS = {
     'id not null unique',
     'password not null',
     'admin not null',
+  ],
+  page => [
+    'name not null unique',
+    "content not null default ''",
+    "ctime not null default ''",
+    "mtime not null default ''"
   ]
 };
 
