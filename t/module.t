@@ -47,7 +47,7 @@ sub main {
   my $version_ok;
   my $version;
   
-  plan tests => 14;
+  plan tests => 16;
 
   # DBI
   $require_ok = require_ok('DBI');
@@ -90,6 +90,12 @@ sub main {
   $version_ok = is($DBIx::Connector::VERSION, '0.51', 'DBIx::Connector version: 0.51');
   push @$modules, ['DBIx::Connector' => '0.51'];
   push @$failed, ['DBIx::Connector' => '0.51'] unless $require_ok && $version_ok;
+
+  # Text::Markdown
+  $require_ok = require_ok('Text::Markdown');
+  $version_ok = is($Text::Markdown::VERSION, '1.000031', 'Text::Markdown version: 1.000031');
+  push @$modules, ['Text::Markdown' => '1.000031'];
+  push @$failed, ['Text::Markdown' => '1.000031'] unless $require_ok && $version_ok;
 
   # Print module URLs
   if (defined $command) {

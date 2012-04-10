@@ -87,6 +87,9 @@ sub startup {
       
       # Create wiki page
       $r->get('create-wiki-page')->to('#create_wiki_page');
+      
+      # Edit wiki page
+      $r->get('edit-wiki-page')->to('#edit_wiki_page');
     }
     
     # API

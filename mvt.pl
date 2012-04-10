@@ -25,7 +25,8 @@ $tm->modules([
   ['Validator::Custom' => '0.1426'],
   ['DBIx::Custom' => '0.24'],
   [Mojolicious => '2.51'],
-  ['DBIx::Connector' => '0.51']
+  ['DBIx::Connector' => '0.51'],
+  ['Text::Markdown' => '1.000031']
 ]);
 $tm->test_script(output => "$FindBin::Bin/t/module.t");
 
