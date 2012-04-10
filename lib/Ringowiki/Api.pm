@@ -8,7 +8,7 @@ sub edit_wiki_page {
   my $raw_params = {map { $_ => $self->param($_) } $self->param};
   my $rule = [
     wiki_id => ['not_blank'],
-    name => ['not_blank'],
+    page_name => ['not_blank'],
     content => ['any']
   ];
   my $vresult = $self->app->validator->validate($raw_params, $rule);
@@ -16,7 +16,7 @@ sub edit_wiki_page {
     unless $vresult->is_ok;
   my $params = $vresult->data;
   my $wiki_id = $params->{wiki_id};
-  my $page_name = $params->{name};
+  my $page_name = $params->{page_name};
   my $content = $params->{content};
   
   # DBI
@@ -32,3 +32,4 @@ sub edit_wiki_page {
   $self->render_json({success => 1});
 }
 
+1;

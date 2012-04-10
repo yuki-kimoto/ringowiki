@@ -86,7 +86,7 @@ sub startup {
     $r->get('/setup')->to('setup#default');
     
     # Wiki page
-    $r->get('/wikies/:id/:page')->to('wikies#page', page => '')->name('page');
+    $r->get('/wikies/:wiki_id/:page_name')->to('wikies#page', page_name => '')->name('page');
 
     # Admin
     {
@@ -107,7 +107,7 @@ sub startup {
     
     # API
     {
-      my $r = $r->route('/api');
+      my $r = $r->route('/api')->to('api#');
 
       # Edit wiki page
       $r->post('/edit-wiki-page')->to('#edit_wiki_page');

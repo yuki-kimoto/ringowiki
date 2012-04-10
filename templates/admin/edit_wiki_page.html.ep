@@ -1,19 +1,27 @@
 % layout 'default', title => '編集';
+% my $wiki_id = param('wiki_id');
+% my $page_name = param('page_name');
 
 %= javascript begin
   $(document).ready(function () {
     
     $('input[name="save"]').on("click", function () {
       var data = ringowikiapi.create_form_data('form[name="edit_wiki_page"]');
-      $.post('<%= url_for '/api/edit-wiki-page' %>', data, function () {
-        alert('aaa');
+      alert('aaa');
+      $.post('<%= url_for '/api/edit-wiki-page' %>', data, function (result) {
+        if (result.success === 1) {
+          alert('success');
+          location.href = "<%= url_for('page', wiki_id => $wiki_id, page_name => $page_name) %>";
+        }
+        else {
+          alert("ページの更新に失敗しました。");
+          alert(JSON.stringify(result));
+        }
       }, 'json');
     });
     
   });
 % end
-
-% my $page_name = param('page_name');
 
 <%= $page_name %> の編集
 
