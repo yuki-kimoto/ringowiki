@@ -11,4 +11,12 @@ sub default {
   $self->render;
 }
 
+sub admin {
+  my $self = shift;
+  
+  my $wikies = $self->app->dbi->model('wiki')->select->all;
+  
+  return $self->render(wikies => $wikies);
+}
+
 1;

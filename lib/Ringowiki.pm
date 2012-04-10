@@ -87,6 +87,10 @@ sub startup {
     
     # Wiki page
     $r->get('/wikies/:wiki_id/:page_name')->to('wikies#page', page_name => '')->name('page');
+    
+    # Admin
+    $r->get('/admin')->to('default#admin');
+
 
     # Admin
     {
