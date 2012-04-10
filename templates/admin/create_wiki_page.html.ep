@@ -1,12 +1,24 @@
 % layout 'default', title => 'ページを作成', body_class => 'normal';
-  % my $wiki_id = '';
-  % my $page_title = '';
-  
-  <h1 class="header">新規作成</h1>
-  <form action="<%= url_for('/api/create_page')->query(wiki_id => $wiki_id, page_title => $page_title) %>"
-    method="post"
-  >
-      <strong>新しいページ名を入力してください。</strong><br>
-      <%= input_tag mypage => '', size => "20" %>
-      <input type="button" name="post_form" value="新規作成"><br>
-  </form>
+%= javascript begin
+  $(document).ready(function () {
+    $('input[name="post_form"]').click(function () {
+      var page_name = $('input[name="page_name"]').val();
+      if (page_name === '') {
+        alert("ページ名が入力されていません。");
+        return;
+      }
+      location.href
+        = "<%= url_for("/admin/edit-wiki-page") . "/wiki_id=" . param('wiki_id') %>&page_name=" + page_name;
+    });
+  });
+
+% end
+
+<h1 class="header">新規作成</h1>
+<form name="create_wiki_page">
+  <div><strong>新しいページ名を入力してください。</strong></div>
+  <div>
+    <%= input_tag page_name => '', size => "20" %>
+    <input type="button" name="post_form" value="新規作成">
+  </div>
+</form>
