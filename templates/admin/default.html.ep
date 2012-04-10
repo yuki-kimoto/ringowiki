@@ -10,7 +10,7 @@
       }
       
       // Initialize ringo wiki
-      $.post("<%= url_for "/api/admin/init" %>", {}, function (result) {
+      $.post("<%= url_for "/api/init-wiki" %>", {}, function (result) {
         if (result.success) {
           alert("初期化成功");
           window.location.href = "<%= url_for '/setup' %>";

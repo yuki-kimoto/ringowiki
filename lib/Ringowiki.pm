@@ -111,14 +111,19 @@ sub startup {
 
       # Edit wiki page
       $r->post('/edit-wiki-page')->to('#edit_wiki_page');
+
+      # Initialize
+      $r->post('/init-wiki')->to('#init_wiki');
+
+      # Setup
+      {
+        $r->post('/setup')->to('api-setup#default');
+        $r->post('/setup/resetup')->to('api-setup#resetup');
+      }
       
       # Admin
       {
         my $r = $r->route('/admin')->to('api-admin#');
-        
-        # Init
-        $r->post('/init')->to('#init');
-        
         
         # Wiki
         {
@@ -127,12 +132,6 @@ sub startup {
         }
       }
       
-      # Setup
-      {
-        $r->post('/setup')->to('api-setup#default');
-        $r->post('/setup/resetup')->to('api-setup#resetup');
-      }
-
       # Devel
       if ($self->mode eq 'development') {
         my $r = $r->route('/devel');
