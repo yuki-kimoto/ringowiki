@@ -1,4 +1,4 @@
-% layout 'default', title => 'りんごウィキ管理';
+% layout 'common', title => 'りんごウィキ管理';
 
 %= javascript begin
   $(function () {

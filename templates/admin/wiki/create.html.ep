@@ -1,4 +1,4 @@
-% layout 'default', title => 'ウィキの作成';
+% layout 'common', title => 'ウィキの作成';
 
 %= javascript begin
   $(function () {

@@ -80,21 +80,21 @@ sub startup {
     });
 
     # Top page
-    $r->get('/')->to('default#default');
+    $r->get('/')->to('main#index');
     
     # Setup
-    $r->get('/setup')->to('setup#default');
+    $r->get('/setup')->to('setup#index');
     
     # Wiki page
     $r->get('/wikies/:wiki_id/:page_name')->to('wikies#page', page_name => '')->name('page');
     
     # Admin
-    $r->get('/admin')->to('default#admin');
+    $r->get('/admin')->to('main#admin');
 
 
     # Admin
     {
-      my $r = $r->waypoint('/admin')->via('get')->to('admin#default');
+      my $r = $r->waypoint('/admin')->via('get')->to('admin#index');
       
       # Wiki
       {

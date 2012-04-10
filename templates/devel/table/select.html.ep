@@ -1,4 +1,4 @@
-% layout 'default', title => "select from $table";
+% layout 'common', title => "select from $table";
 
 <h2>select from <%= $table %></h2>
 

@@ -1,7 +1,7 @@
-package Ringowiki::Default;
+package Ringowiki::Main;
 use Mojo::Base 'Mojolicious::Controller';
 
-sub default {
+sub index {
   my $self = shift;
   
   # Goto setup page

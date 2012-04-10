@@ -1,4 +1,4 @@
-% layout 'default', title => 'Table一覧';
+% layout 'common', title => 'Table一覧';
 
 <h2>Table一覧</h2>
 

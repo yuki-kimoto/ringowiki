@@ -1,4 +1,4 @@
-% layout 'default', title => 'あなたのウィキ';
+% layout 'common', title => 'あなたのウィキ';
 
 <h1>あなたのウィキ</h1>
 

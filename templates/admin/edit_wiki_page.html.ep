@@ -1,4 +1,4 @@
-% layout 'default', title => '編集';
+% layout 'common', title => '編集';
 % my $wiki_id = param('wiki_id');
 % my $page_name = param('page_name');
 

@@ -1,4 +1,4 @@
-% layout 'default', title => '';
+% layout 'common', title => '';
 % my $wiki_id = 'main';
 <div class="tools">
 

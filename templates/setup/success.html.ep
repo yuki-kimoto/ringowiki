@@ -1,4 +1,4 @@
-% layout 'default', title => 'セットアップ完了';
+% layout 'common', title => 'セットアップ完了';
 
 <h1>セットアップ完了</h1>
 

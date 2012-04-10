@@ -1,4 +1,4 @@
-% layout 'default', title => 'ページを作成', body_class => 'normal';
+% layout 'common', title => 'ページを作成', body_class => 'normal';
 %= javascript begin
   $(document).ready(function () {
     $('input[name="post_form"]').click(function () {
