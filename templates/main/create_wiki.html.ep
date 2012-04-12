@@ -6,7 +6,6 @@
       // Initialize ringo wiki
       var params = ringowikiapi.create_form_data('#create_wiki_form');
       $.post("<%= url_for "/api/create-wiki" %>", params, function (result) {
-          alert(JSON.stringify(result));
         if (result.success) {
           alert("Wikiを作成しました。");
           window.location.href = "<%= url_for '/admin' %>";

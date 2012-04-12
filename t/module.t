@@ -1,6 +1,6 @@
 use FindBin;
 use lib "$FindBin::Bin/../extlib/lib/perl5";
-use 5.010001;
+use 5.008007;
 
 =pod
 
@@ -75,9 +75,9 @@ sub main {
 
   # DBIx::Custom
   $require_ok = require_ok('DBIx::Custom');
-  $version_ok = is($DBIx::Custom::VERSION, '0.24', 'DBIx::Custom version: 0.24');
-  push @$modules, ['DBIx::Custom' => '0.24'];
-  push @$failed, ['DBIx::Custom' => '0.24'] unless $require_ok && $version_ok;
+  $version_ok = is($DBIx::Custom::VERSION, '0.25', 'DBIx::Custom version: 0.25');
+  push @$modules, ['DBIx::Custom' => '0.25'];
+  push @$failed, ['DBIx::Custom' => '0.25'] unless $require_ok && $version_ok;
 
   # Mojolicious
   $require_ok = require_ok('Mojolicious');

@@ -23,7 +23,7 @@ $tm->modules([
   ['DBD::SQLite' => '1.35'],
   ['Object::Simple' => '3.0625'],
   ['Validator::Custom' => '0.1426'],
-  ['DBIx::Custom' => '0.24'],
+  ['DBIx::Custom' => '0.25'],
   [Mojolicious => '2.51'],
   ['DBIx::Connector' => '0.51'],
   ['Text::Markdown' => '1.000031']

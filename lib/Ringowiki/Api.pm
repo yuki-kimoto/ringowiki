@@ -7,6 +7,7 @@ our $TABLE_INFOS = {
   wiki => [
     'id not null unique',
     "title not null default ''",
+    "main not null default 0"
   ],
   user => [
     'id not null unique',
@@ -38,8 +39,15 @@ sub create_wiki {
   my $params = $vresult->data;
   $params->{title} = '未設定' unless length $params->{title};
   
+  # DBI
+  my $dbi = $self->app->dbi;
+  
   # Create wiki
-  $self->app->dbi->model('wiki')->insert($params);
+  $dbi->connector->txn(sub {
+    my $mwiki = $dbi->model('wiki');
+    $params->{main} = 1 unless $mwiki->select->one;
+    $mwiki->insert($params);
+  });
   
   $self->render(json => {success => 1});
 }
@@ -114,7 +122,7 @@ sub resetup {
     column => 'name',
     table => 'main.sqlite_master',
     where => "type = 'table' and name like '$prefix_new%'"
-  )->column;
+  )->values;
   $dbi->execute("drop table $_") for @$new_tables;
 
   # Drop old tables
@@ -122,12 +130,17 @@ sub resetup {
     column => 'name',
     table => 'main.sqlite_master',
     where => "type = 'table' and name like '$prefix_old%'"
-  )->column;
+  )->values;
   $dbi->execute("drop tabe $_") for @$old_tables;
   
   # Create new tables
-  $DB::single = 1;
-  $self->_create_table("$prefix_new$_" => $TABLE_INFOS->{$_}) for keys %$TABLE_INFOS;
+  eval {
+    $self->_create_table("$prefix_new$_" => $TABLE_INFOS->{$_}) for keys %$TABLE_INFOS;
+  };
+  if ($@) {
+    $self->app->log->error($@);
+    return $self->render(json => {success => 0});
+  }
   
   # Get current tables
   my %current_tables = $dbi->select(
@@ -143,7 +156,7 @@ sub resetup {
     my $new_column_info_result = $dbi->execute("PRAGMA TABLE_INFO('$prefix_new$table')");
     my $new_columns = {};
     while (my $row = $new_column_info_result->fetch_hash) {
-      $new_columns->{$row->{name}};
+      $new_columns->{$row->{name}} = 1; 
     }
     
     my $current_column_info_result = $dbi->execute("PRAGMA TABLE_INFO('$table')");
@@ -177,6 +190,7 @@ sub resetup {
   $dbi->execute("drop table $prefix_old$_")
     for keys %current_tables;
   
+  # Cleanup
   $dbi->execute('vacuum');
   
   $self->render_json({success => 1});

@@ -12,9 +12,19 @@ sub admin {
 sub index {
   my $self = shift;
   
-  # Goto setup page
+  # Redirect to setup page
   return $self->redirect_to('/setup')
     unless $self->app->util->setup_completed;
+  
+  # Redirect to main wiki
+  my $wiki = $self->app->dbi->model('wiki')
+    ->select(append => 'order by main desc')->one;
+  if ($wiki) {
+    return $self->redirect_to(
+      'page',
+      wiki_id => $wiki->{id},
+    );
+  }
   
   $self->render;
 }

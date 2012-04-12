@@ -45,6 +45,9 @@
         % my $title = $wiki->{title};
         <a href="<%= url_for "/wiki/$id" %>"><%= $id %></a>
         - <%= $title eq '' ? 'タイトル未設定' : $title %>
+        % if ($wiki->{main}) {
+          (メイン)
+        % }
       </li>
     % }
   </ul>
