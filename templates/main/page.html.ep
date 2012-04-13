@@ -12,12 +12,13 @@
     <a href="wiki.cgi?RecentChanges">更新履歴
 </a>
 </div>
-<h1 class="header"><a
-    title="このページを検索
-"
-    href="wiki.cgi?mycmd=search&amp;mymsg=FrontPage">FrontPage</a> - RingoWikiへようこそ</h1>
-<h2>目次
-</h2>
+<h1 class="header"><a href="wiki.cgi?mycmd=search&amp;mymsg=FrontPage"><%= $page->{name} %></a></h1>
+
+<pre>
+  <%= $page->{content} %>
+</pre>
+
+<h2>目次</h2>
 <ul>
 <li> <a href="#i0">ごあいさつ</a></li>
 <li> <a href="#i1">お願い</a></li>
