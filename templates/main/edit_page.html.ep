@@ -6,16 +6,15 @@
   $(document).ready(function () {
     
     $('input[name="save"]').on("click", function () {
-      var data = ringowikiapi.create_form_data('form[name="edit_wiki_page"]');
-      alert('aaa');
-      $.post('<%= url_for '/api/edit-wiki-page' %>', data, function (result) {
+      var data = ringowikiapi.create_form_data('form[name="edit_page"]');
+      $.post('<%= url_for '/api/edit-page' %>', data, function (result) {
+        alert(JSON.stringify(result));
         if (result.success === 1) {
-          alert('success');
+          alert('ページを更新しました。');
           location.href = "<%= url_for('page', wiki_id => $wiki_id, page_name => $page_name) %>";
         }
         else {
           alert("ページの更新に失敗しました。");
-          alert(JSON.stringify(result));
         }
       }, 'json');
     });
@@ -25,7 +24,7 @@
 
 <%= $page_name %> の編集
 
-<form name="edit_wiki_page">
+<form name="edit_page">
   <input type="hidden" name="wiki_id" value="<%= param('wiki_id') %>">
   <input type="hidden" name="page_name" value="<%= $page_name %>">
   <%= text_area '', name => 'content', cols => "80", rows => "20" %>

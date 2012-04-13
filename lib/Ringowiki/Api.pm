@@ -18,6 +18,7 @@ our $TABLE_INFOS = {
     'wiki_id not null',
     'name not null',
     "content not null default ''",
+    'main not null default 0',
     "ctime not null default ''",
     "mtime not null default ''",
     'unique (wiki_id, name)'
@@ -42,24 +43,29 @@ sub create_wiki {
   # DBI
   my $dbi = $self->app->dbi;
   
-  # Create wiki
   $dbi->connector->txn(sub {
+  
+    # Create wiki
     my $mwiki = $dbi->model('wiki');
     $params->{main} = 1 unless $mwiki->select->one;
     $mwiki->insert($params);
+    
+    # Create index page
+    my $mpage = $dbi->model('page');
+    $mpage->insert({wiki_id => $params->{id}, name => 'index', content => 'Wikiをはじめよう', main => 1})
   });
   
   $self->render(json => {success => 1});
 }
 
-sub edit_wiki_page {
+sub edit_page {
   my $self = shift;
   
   # Validation
   my $raw_params = {map { $_ => $self->param($_) } $self->param};
   my $rule = [
     wiki_id => ['not_blank'],
-    page_name => ['not_blank'],
+    page_name => {require => ''} => ['not_blank'],
     content => ['any']
   ];
   my $vresult = $self->app->validator->validate($raw_params, $rule);

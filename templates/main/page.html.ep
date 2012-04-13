@@ -2,21 +2,13 @@
 % my $wiki_id = 'main';
 <div class="tools">
 
-    <a title="このページを編集します（パスワードが必要）
-" href="wiki.cgi?mycmd=adminedit&amp;mypage=FrontPage">編集(管理者用)
-</a> | 
-    
-    <a href="wiki.cgi?mycmd=diff&amp;mypage=FrontPage">差分
-</a> | 
-    <a href="<%= url_for('/admin/create-wiki-page')->query(wiki_id => $wiki_id) %>">新規作成
-</a> |
-    <a href="wiki.cgi?IndexPage">一覧
-</a> |
-    <a href="http://www.hyuki.com/yukiwiki/rss.xml">RSS
-</a> |
+    <a href="<%= url_for('/edit-page')->query(wiki_id => $wiki_id, page_name => $page_name) %>">編集</a> |
+    <a href="wiki.cgi?mycmd=diff&amp;mypage=FrontPage" title="aaa">差分</a> | 
+    <a href="<%= url_for('/create-page')->query(wiki_id => $wiki_id) %>">新規作成</a> |
+    <a href="wiki.cgi?IndexPage">一覧</a> |
+    <a href="http://www.hyuki.com/yukiwiki/rss.xml">RSS</a> |
     <a href="wiki.cgi?FrontPage">FrontPage</a> |
-    <a href="wiki.cgi?SearchPage">検索
-</a> |
+    <a href="wiki.cgi?SearchPage">検索</a> |
     <a href="wiki.cgi?RecentChanges">更新履歴
 </a>
 </div>

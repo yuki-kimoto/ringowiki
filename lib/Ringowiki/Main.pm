@@ -32,7 +32,10 @@ sub index {
 sub page {
   my $self = shift;
   
-  $self->render;
+  my $wiki_id = 'main';
+  my $page_name = '';
+  
+  $self->render(wiki_id => $wiki_id, page_name => $page_name);
 }
 
 1;
