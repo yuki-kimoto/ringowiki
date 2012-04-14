@@ -69,12 +69,223 @@ sub page {
   return $self->render_not_found unless defined $page;
   
   # Content to html
-  my $content = $page->{content};
+  $page->{content} = <<'EOS';
+<!-- ooooo -->
+<b>b</b>
+<script>script</script>
+EOS
+
+  my $content = $self->_sanity($page->{content});
   
   my $html = markdown $content;
   $page->{content} = $html;
   
   $self->render(page => $page);
+}
+
+my $COMMENT_TAG_RE =
+  qr/<!(?:--[^-]*-(?:[^-]+-)*?-(?:[^>-]*(?:-[^>-]+)*?)??)*(?:>|$(?!\n)|--.*$)/;
+
+# Safety tags
+my %SAFE_TAGS = map { $_ => 1 } qw/
+  a
+  abbr
+  acronym
+  address
+  area
+  b
+  big
+  blockquote
+  br
+  button
+  caption
+  center
+  cite
+  code
+  col
+  colgroup
+  dd
+  del
+  dfn
+  dir
+  div
+  dl
+  dt
+  em
+  fieldset
+  font
+  form
+  frameset
+  h1
+  h2
+  h3
+  h4
+  h5
+  h6
+  hr
+  i
+  img
+  input
+  button
+  ins
+  kbd
+  label
+  legend
+  li
+  map
+  menu
+  ol
+  optgroup
+  option
+  p
+  q
+  s
+  samp
+  select
+  small
+  span
+  strike
+  strong
+  sub
+  sup
+  table
+  tbody
+  td
+  textarea
+  tfoot
+  th
+  thead
+  tr
+  tt
+  u
+  ul
+  var
+  pre
+/;
+
+my @SAFE_ATTRS = qw/
+  abbr
+  accept-charset
+  accept
+  accesskey
+  action
+  align
+  alt
+  axis
+  border
+  cellpadding
+  cellspacing
+  char
+  charoff
+  charset
+  checked
+  cite
+  class
+  clear
+  color cols
+  colspan
+  compact
+  coords
+  datetime
+  dir
+  disabled
+  enctype
+  for
+  frame
+  headers
+  height
+  hreflang
+  hspace
+  ismap
+  label
+  lang
+  longdesc
+  maxlength
+  media
+  method
+  multiple
+  name
+  nohref
+  noshade
+  nowrap
+  prompt
+  readonly
+  rel
+  rev
+  rows
+  rowspan
+  rules
+  scope
+  selected
+  shape
+  size
+  span
+  start
+  summary
+  tabindex
+  target
+  title
+  type
+  usemap
+  valign
+  value
+  vspace
+  width
+/;
+
+my @UNI_ATTRS = qw/
+  checked
+  compact
+  multiple
+  nohref
+  noshade
+  nowrap
+  readonly
+  selected
+/;
+
+my $TAG_RE = q/(<[^"'<>]*(?:"[^"]*"[^"'<>]*|'[^']*'[^"'<>]*)*(?:>|(?=<)|$(?!\n)))/;
+
+sub _sanity {
+  my ($self, $content) = @_;
+  
+  # Remove comment tag
+  $content =~ s/$COMMENT_TAG_RE//go;
+  
+  my $content_new = '';
+  my $open_tag_pos = CORE::index($content, '<');
+  if ($open_tag_pos >= 0) {
+    while (1) {
+      $content_new .= substr($content, 0, $open_tag_pos, '');
+      
+      # Close tag
+      if ($content =~ s/$TAG_RE//) {
+        my $whool = $1;
+        $whool =~ s/^<\s*//;
+        
+        # Close tag
+        if ($whool =~ m#^\s*?/\s*?(.*?)(>|$)#) {
+          my $tag = $1;
+          if (defined $tag && $SAFE_TAGS{$tag}) {
+            $content_new .= "</$tag>";
+          }
+        }
+        else {
+          
+        }
+      }
+            
+      $open_tag_pos = CORE::index($content, '<');
+      if ($open_tag_pos == -1) {
+        $content_new .= $content;
+        last;
+      }
+    }
+  }
+  else { $content_new .= $content }
+          warn "$content_new";
+
+  return $content_new;
 }
 
 1;
