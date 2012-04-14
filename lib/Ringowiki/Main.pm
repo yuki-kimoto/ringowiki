@@ -264,17 +264,23 @@ sub _sanity {
         $whool =~ s/^<\s*//;
         
         # Close tag
-        if ($whool =~ m#^\s*?/\s*?(.*?)(>|$)#) {
+        if ($whool =~ s#^\s*?/\s*?(.*?)(>|$)##) {
           my $tag = $1;
           if (defined $tag && $SAFE_TAGS{$tag}) {
             $content_new .= "</$tag>";
           }
         }
-        else {
-          
+        # Open tag
+        elsif ($whool =~ s#^\s*?(.*?)([\s>]|$)##) {
+          my $tag = $1;
+          if (defined $tag && $SAFE_TAGS{$tag}) {
+            warn "$tag";
+            $content_new .= "<$tag>";
+          }
         }
       }
-            
+      elsif ($content =~ /^</) { $content =~ s/^<\s*// }
+      
       $open_tag_pos = CORE::index($content, '<');
       if ($open_tag_pos == -1) {
         $content_new .= $content;
@@ -283,7 +289,6 @@ sub _sanity {
     }
   }
   else { $content_new .= $content }
-          warn "$content_new";
 
   return $content_new;
 }
