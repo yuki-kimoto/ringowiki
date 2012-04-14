@@ -1,5 +1,6 @@
 package Ringowiki::Main;
 use Mojo::Base 'Mojolicious::Controller';
+use Text::Markdown 'markdown';
 
 sub admin {
   my $self = shift;
@@ -66,6 +67,12 @@ sub page {
   )->one;
 
   return $self->render_not_found unless defined $page;
+  
+  # Content to html
+  my $content = $page->{content};
+  
+  my $html = markdown $content;
+  $page->{content} = $html;
   
   $self->render(page => $page);
 }

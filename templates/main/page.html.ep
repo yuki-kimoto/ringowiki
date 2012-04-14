@@ -15,7 +15,7 @@
 <h1 class="header"><a href="wiki.cgi?mycmd=search&amp;mymsg=FrontPage"><%= $page->{name} %></a></h1>
 
 <pre>
-  <%= $page->{content} %>
+  <%= b($page->{content}) %>
 </pre>
 
 <h2>目次</h2>
