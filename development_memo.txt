@@ -145,3 +145,12 @@ Allowed attributes
  width="aaa"
 >pppppppppppppppppppppppppppppppppp</div>
 
+Test case
+
+aaa
+<!-- ooooo -->
+<!-- <b>b</b> -->
+<!-- <script>script</script> -->
+<!-- <b href="aaa" style="ppp" accept="pp'<>qq" action='pp"<>qq' readonly>Attrs1</b> -->
+<b href="aaa" style="ppp" accept="pp'<>qq" action='pp"<>qq' readonly/>
+

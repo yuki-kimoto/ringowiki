@@ -2,7 +2,7 @@
 % my $wiki_id = 'main';
 <div class="tools">
 
-    <a href="<%= url_for('/edit-page')->query(wiki_id => $wiki_id, page_name => $page_name) %>">編集</a> |
+    <a href="<%= url_for('/edit-page')->query(wiki_id => $wiki_id, page_name => $page->{name}) %>">編集</a> |
     <a href="wiki.cgi?mycmd=diff&amp;mypage=FrontPage" title="aaa">差分</a> | 
     <a href="<%= url_for('/create-page')->query(wiki_id => $wiki_id) %>">新規作成</a> |
     <a href="wiki.cgi?IndexPage">一覧</a> |
@@ -14,9 +14,7 @@
 </div>
 <h1 class="header"><a href="wiki.cgi?mycmd=search&amp;mymsg=FrontPage"><%= $page->{name} %></a></h1>
 
-<pre>
-  <%= b($page->{content}) %>
-</pre>
+<%= b($page->{content}) %>
 
 <h2>目次</h2>
 <ul>

@@ -68,17 +68,8 @@ sub page {
 
   return $self->render_not_found unless defined $page;
   
-  # Content to html
-  $page->{content} = <<'EOS';
-<!-- ooooo -->
-<b>b</b>
-<script>script</script>
-EOS
-
-  my $content = $self->_sanity($page->{content});
-  
-  my $html = markdown $content;
-  $page->{content} = $html;
+  # Content to html(Markdown)
+  $page->{content} = markdown $self->_sanity($page->{content});
   
   $self->render(page => $page);
 }
@@ -163,7 +154,7 @@ my %SAFE_TAGS = map { $_ => 1 } qw/
   pre
 /;
 
-my @SAFE_ATTRS = qw/
+my %SAFE_ATTRS = map { $_ => 1 } qw/
   abbr
   accept-charset
   accept
@@ -233,7 +224,7 @@ my @SAFE_ATTRS = qw/
   width
 /;
 
-my @UNI_ATTRS = qw/
+my %SAFE_UNI_ATTRS = map { $_ => 1 } qw/
   checked
   compact
   multiple
@@ -249,18 +240,26 @@ my $TAG_RE = q/(<[^"'<>]*(?:"[^"]*"[^"'<>]*|'[^']*'[^"'<>]*)*(?:>|(?=<)|$(?!\n))
 sub _sanity {
   my ($self, $content) = @_;
   
-  # Remove comment tag
+  # Remove comment tags
   $content =~ s/$COMMENT_TAG_RE//go;
   
+  # Remove unsafe tags
   my $content_new = '';
   my $open_tag_pos = CORE::index($content, '<');
   if ($open_tag_pos >= 0) {
     while (1) {
       $content_new .= substr($content, 0, $open_tag_pos, '');
       
-      # Close tag
+      # Tag
       if ($content =~ s/$TAG_RE//) {
         my $whool = $1;
+        
+        # End slash
+        my $end_slash;
+        if ($whool =~ m#\s*/\s*>$#) {
+          $end_slash = 1;
+        }
+        
         $whool =~ s/^<\s*//;
         
         # Close tag
@@ -274,8 +273,45 @@ sub _sanity {
         elsif ($whool =~ s#^\s*?(.*?)([\s>]|$)##) {
           my $tag = $1;
           if (defined $tag && $SAFE_TAGS{$tag}) {
-            warn "$tag";
-            $content_new .= "<$tag>";
+            # Attributes
+            my $attrs = {};
+            while ($whool =~ /(([^=\s]+)\s*=\s*"([^"]+)("))/
+              || $whool =~ /(([^=\s]+)\s*=\s*'([^']+)('))/
+              || $whool =~ /(([^=\s]+)\s*=\s*([^<>'"\s]+))/)
+            {
+              my $part = $1;
+              my $attr_name = $2;
+              my $attr_value = $3;
+              my $quote_type = $4 || '';
+              $whool =~ s/\Q$part//;
+              $attrs->{$attr_name}{value} = $attr_value;
+              $attrs->{$attr_name}{quote_type} = $quote_type;
+            }
+            
+            # Uni attributes
+            while ($whool =~ /([^"'\/<>\s]+)/) {
+              my $part = $1;
+              $whool =~ s/\Q$part//;
+              my $attr_name = $part;
+              $attrs->{$attr_name}{value} = undef;
+            }
+
+            my $tag_new = "<$tag ";
+            for my $attr_name (sort keys %$attrs) {
+              if ($SAFE_UNI_ATTRS{$attr_name}) {
+                $tag_new .= "$attr_name ";
+              }
+              elsif($SAFE_ATTRS{$attr_name}) {
+                my $attr_value = $attrs->{$attr_name}{value};
+                $attr_value = '' unless defined $attr_value;
+                my $q = $attrs->{$attr_name}{quote_type} || '';
+                $tag_new .= "$attr_name=$q$attr_value$q ";
+              }
+            }
+            $tag_new .= '/' if $end_slash;
+            $tag_new .= '>';
+            
+            $content_new .= $tag_new;
           }
         }
       }
