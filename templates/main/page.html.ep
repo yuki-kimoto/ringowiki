@@ -1,4 +1,4 @@
-% layout 'common', title => '';
+% layout 'common', title => $page->{name};
 % my $wiki_id = 'main';
 <div class="tools">
 
@@ -16,32 +16,6 @@
 
 <%= b($page->{content}) %>
 
-<h2>目次</h2>
-<ul>
-<li> <a href="#i0">ごあいさつ</a></li>
-<li> <a href="#i1">お願い</a></li>
-</ul>
-<p>
-<a title="http://www.hyuki.com/yukiwiki/" href="wiki.cgi?RingoWiki">RingoWiki</a>へようこそ
-</p>
-<h2><a name="i0"> </a>ごあいさつ</h2>
-このページはRingoWiki2の<a title="RingoWikiへようこそ" href="wiki.cgi?FrontPage">FrontPage</a>です。
-<ul>
-<li> <a title="" href="wiki.cgi?RecentChanges">RecentChanges</a>は最近更新されたページの一覧です。</li>
-<li> <a title="http://www.hyuki.com/yukiwiki/" href="wiki.cgi?RingoWiki">RingoWiki</a>のスクリプトのダウンロードは <a href="http://www.hyuki.com/yukiwiki/">http://www.hyuki.com/yukiwiki/</a> からどうぞ。</li>
-<li> <a title="IndexPage" href="wiki.cgi?IndexPage">IndexPage</a>は全ページの一覧です。</li>
-<li> <a title="RingoWiki作業記録" href="wiki.cgi?RingoWiki2%ba%ee%b6%c8%b5%ad%cf%bf">RingoWiki2作業記録</a></li>
-<li> <a title="[[RingoWiki2]]を使っていて気がついた不具合" href="wiki.cgi?RingoWiki2%c9%d4%b6%f1%b9%e7%ca%f3%b9%f0">RingoWiki2不具合報告</a></li>
-<li> <a title="RingoWiki2.1で導入予定の新しい機能。" href="wiki.cgi?RingoWiki2%2e1%bf%b7%b5%a1%c7%bd">RingoWiki2.1新機能</a></li>
-</ul>
-<h2><a name="i1"> </a>お願い</h2>
-<ul>
-<li> 悪意のあるいたずらはご遠慮ください。またそのような書き込みを見た方は修正していただけると助かります。</li>
-<li> 既存のページにあなたの情報を一言付け加えてみてください。</li>
-<li> 自由にページを新規作成してくださってもよいですが、他のページとの関連性が薄いものは削除される可能性があります。</li>
-<li> 実験的に作ったページはお帰りになる前に削除してくださいね。</li>
-</ul>
-<hr>
 <address class="footer">
 </address>
 <p class="footer">

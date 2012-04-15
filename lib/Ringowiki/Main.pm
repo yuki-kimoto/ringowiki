@@ -10,6 +10,27 @@ sub admin {
   return $self->render(wikies => $wikies);
 }
 
+sub edit_page {
+  my $self = shift;
+  
+  my $wiki_id = $self->param('wiki_id');
+  my $page_name = $self->param('page_name');
+  
+  # Exeption
+  return $self->render_exeption unless defined $wiki_id && defined $page_name;
+  
+  # Page
+  my $page = $self->app->dbi->model('page')->select(
+    where => {wiki_id => $wiki_id, name => $page_name}
+  )->one;
+  
+  # Not found
+  return $self->render_not_found unless $page;
+  
+  # Render
+  $self->render(page => $page);
+}
+
 sub index {
   my $self = shift;
   
