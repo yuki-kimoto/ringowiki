@@ -1,0 +1,56 @@
+りんごウィキ
+
+  (開発が始まったばかりでまだまだ未完成です。)
+
+  りんごウィキはPerlで書かれたWikiです。
+
+  Perl 5.10.1以上の環境であれば、Windows, Linux/Unix, Mac OS X
+  など多くのOSで利用が可能です。インストールも簡単です。
+
+  リンゴWikiはPerlで書かれているので、Perlが得意な人にとっては
+  とてもよいWikiでしょう。データベースはSQLiteを利用しています。
+
+セットアップ
+
+  いくつかのモジュールをインストールします。
+
+    perl cpanm -l extlib Module::CoreList
+    perl t/module.t list | perl -Iextlib/lib/perl5 cpanm -n -L extlib
+
+  もしいくつかのモジュールのインストールを失敗した場合に
+  原因を解決してから再びモジュールをインストール
+  するには次のコマンドが便利でしょう。
+
+    perl t/module.t list --fail | perl -Iextlib/lib/perl5 cpanm -n -L extlib
+
+テスト
+
+  セットアップが正しく行われているかどうかの
+  試験を行います。
+
+    prove t
+
+  すべてのテストがパスすれば、セットアップは成功しています。
+
+アプリケーションの実行 (Unix/Linux)
+
+  起動
+
+      ./hypnotoad
+
+    アプリケーションがバックグラウンドで起動します。
+    ポート番号はデフォルトで10001です。
+    以下のアドレスでアプリケーションにアクセスすることができます。
+
+      http://localhost:10001
+
+    ポート番号を変更したい場合は
+    ringowiki.confを編集します。
+
+    再起動も同じコマンドで行うことができます。
+
+  停止
+
+      ./hypnotoad --stop
+
+    --stopオプションで停止することができます。

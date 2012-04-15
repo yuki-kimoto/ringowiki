@@ -86,7 +86,7 @@ sub startup {
     # Main
     {
       # Top
-      my $r = $r->waypoint('/')->via('get')->to('main#index');
+      my $r = $r->waypoint('/')->via('get')->to('main#top');
       
       # Admin
       $r->get('/admin')->to('#admin');
@@ -96,6 +96,9 @@ sub startup {
       
       # Create wiki
       $r->get('/create-wiki')->to('#create_wiki');
+      
+      # List wiki
+      $r->get('/list-wiki/:wiki_id')->to('#list_wiki')->name('list-wiki');
 
       # Create page
       $r->get('/create-page')->to('#create_page');

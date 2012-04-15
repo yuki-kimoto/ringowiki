@@ -1,0 +1,11 @@
+% layout 'common', title => '一覧';
+
+<h2>ページ一覧</h2>
+
+% for my $page (@$pages) {
+  <li>
+    <a href="<%= url_for('page', wiki_id => $page->{wiki_id}, page_name => $page->{name}) %>">
+      <%= $page->{name} %>
+    </a>
+  </li>
+% }

@@ -50,9 +50,9 @@ sub create_wiki {
     $params->{main} = 1 unless $mwiki->select->one;
     $mwiki->insert($params);
     
-    # Create index page
+    # Create home page
     my $mpage = $dbi->model('page');
-    $mpage->insert({wiki_id => $params->{id}, name => 'index', content => 'Wikiをはじめよう', main => 1})
+    $mpage->insert({wiki_id => $params->{id}, name => 'Home', content => 'Wikiをはじめよう', main => 1})
   });
   
   $self->render(json => {success => 1});
