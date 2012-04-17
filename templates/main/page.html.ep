@@ -1,17 +1,20 @@
 % layout 'common', title => $page->{name};
 % my $wiki_id = 'main';
+
+
 <div class="tools">
 
-    <a href="<%= url_for('/edit-page')->query(wiki_id => $wiki_id, page_name => $page->{name}) %>">編集</a> |
-    <a href="#">差分</a> | 
     <a href="<%= url_for('/create-page')->query(wiki_id => $wiki_id) %>">新規作成</a> |
+    <a href="<%= url_for('/edit-page')->query(wiki_id => $wiki_id, page_name => $page->{name}) %>">編集</a> |
+    <a href="#">ページ履歴</a> | 
+    <a href="<%= url_for('page', wiki_id => $wiki_id) %>">ホーム</a> |
     <a href="<%= url_for('list-wiki', wiki_id => $wiki_id) %>">一覧</a> |
-    <a href="wiki.cgi?FrontPage">ホーム</a> |
     <a href="wiki.cgi?SearchPage">検索</a> |
-    <a href="wiki.cgi?RecentChanges">更新履歴
-</a>
+    <a href="wiki.cgi?RecentChanges">Wiki履歴</a>
 </div>
-<h1 class="header"><a href="wiki.cgi?mycmd=search&amp;mymsg=FrontPage"><%= $page->{name} %></a></h1>
+<h1 class="header">
+  <a href="<%= url_for('page', wiki_id => $wiki_id, page_name => $page->{name}) %>"><%= $page->{name} %></a>
+</h1>
 
 <%= b($page->{content}) %>
 

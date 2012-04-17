@@ -85,8 +85,10 @@ sub startup {
     
     # Main
     {
+      my $r = $r->route->to('main#');
+
       # Top
-      my $r = $r->waypoint('/')->via('get')->to('main#top');
+      $r->get('/')->to('#top');
       
       # Admin
       $r->get('/admin')->to('#admin');
