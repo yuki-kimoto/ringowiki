@@ -107,10 +107,30 @@ sub page {
 
   return $self->render_not_found unless defined $page;
   
+  # Wiki link to a
+  $page->{content} = $self->_wiki_link_to_a($page->{content}, $page->{wiki_id});
+  
   # Content to html(Markdown)
   $page->{content} = markdown(Ringowiki::HTMLFilter->new->filter($page->{content}));
   
   $self->render(page => $page);
+}
+
+sub _wiki_link_to_a {
+  my ($self, $content, $wiki_id) = @_;
+  
+  my $to_a = sub {
+    my ($page_name, $text) = @_;
+    my $link = '<a href="'
+      . $self->url_for('page', wiki_id => $wiki_id, page_name => $page_name)
+      . '">' . "$text</a>";
+    return $link;
+  };
+  
+  $content =~ s/\[\[\s*(.*?)\s*?\|\s*(.*?)\s*\]\]/$to_a->($1, $2)/ge;
+  $content =~ s/\[\[\s*(.*?)\s*\]\]/$to_a->($1, $1)/ge;
+  
+  return $content;
 }
 
 1;

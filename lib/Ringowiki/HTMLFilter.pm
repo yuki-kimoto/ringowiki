@@ -114,7 +114,8 @@ my %SAFE_ATTRS = map { $_ => 1 } qw/
   frame
   headers
   height
-  hreflang
+  href
+  lang
   hspace
   ismap
   label
