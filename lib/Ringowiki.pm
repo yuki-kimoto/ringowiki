@@ -106,7 +106,7 @@ sub startup {
       $r->get('/create-page')->to('#create_page');
     
       # Edit page
-      $r->get('/edit-page')->to('#edit_page');
+      $r->get('/edit-page/:wiki_id/:page_name')->to('#edit_page')->name('edit-page');
 
       # Page
       $r->get('/wiki/:wiki_id/:page_name')->to('#page', page_name => '')->name('page');

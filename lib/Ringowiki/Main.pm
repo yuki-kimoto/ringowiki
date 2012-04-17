@@ -20,13 +20,20 @@ sub edit_page {
   # Exeption
   return $self->render_exeption unless defined $wiki_id && defined $page_name;
   
+  # Wiki exists?
+  my $wiki = $self->app->dbi->model('wiki')->select(
+    where => {id => $wiki_id}
+  )->one;
+  
+  # Not found
+  return $self->render_not_found unless $wiki;
+  
   # Page
   my $page = $self->app->dbi->model('page')->select(
     where => {wiki_id => $wiki_id, name => $page_name}
   )->one;
-  
-  # Not found
-  return $self->render_not_found unless $page;
+  $page = {not_exists => 1, wiki_id => $wiki_id, name => $page_name, content => ''}
+    unless $page;
   
   # Render
   $self->render(page => $page);
@@ -127,9 +134,17 @@ sub _wiki_link_to_a {
       where => {wiki_id => $wiki_id, name => $page_name}
     )->one;
     
-    my $link = '<a href="'
-      . $self->url_for('page', wiki_id => $wiki_id, page_name => $page_name)
-      . '" class=' . ($page ? '"page_link"' : '"page_link_not_found"') . '>' . "$text</a>";
+    my $link;
+    if ($page) {
+      $link = '<a href="'
+        . $self->url_for('page', wiki_id => $wiki_id, page_name => $page_name)
+        . '" class=' . ($page ? '"page_link"' : '"page_link_not_found"') . '>' . "$text</a>";
+    }
+    else {
+      $link = '<a href="'
+        . $self->url_for('edit-page', wiki_id => $wiki_id, page_name => $page_name)
+        . '" class=' . ($page ? '"page_link"' : '"page_link_not_found"') . '>' . "$text</a>";
+    }
     
     return $link;
   };

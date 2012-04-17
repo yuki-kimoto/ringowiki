@@ -1,6 +1,8 @@
-% layout 'common', title => '編集';
-% my $wiki_id = param('wiki_id');
-% my $page_name = param('page_name');
+% my $wiki_id = $page->{'wiki_id'};
+% my $page_name = $page->{name};
+% my $title = "「$page_name」" . ($page->{not_exists} ? 'を新規作成' : 'を編集');
+% warn $title;
+% layout 'common', title => $title;
 
 %= javascript begin
   $(document).ready(function () {
@@ -21,7 +23,7 @@
   });
 % end
 
-<%= $page_name %> の編集
+<%= $title %>
 
 <form name="edit_page">
   <input type="hidden" name="wiki_id" value="<%= param('wiki_id') %>">
