@@ -121,9 +121,16 @@ sub _wiki_link_to_a {
   
   my $to_a = sub {
     my ($page_name, $text) = @_;
+    
+    # DBI
+    my $page = $self->app->dbi->model('page')->select(
+      where => {wiki_id => $wiki_id, name => $page_name}
+    )->one;
+    
     my $link = '<a href="'
       . $self->url_for('page', wiki_id => $wiki_id, page_name => $page_name)
-      . '">' . "$text</a>";
+      . '" class=' . ($page ? '"page_link"' : '"page_link_not_found"') . '>' . "$text</a>";
+    
     return $link;
   };
   
