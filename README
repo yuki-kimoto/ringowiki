@@ -15,7 +15,7 @@
   いくつかのモジュールをインストールします。
 
     perl cpanm -l extlib Module::CoreList
-    perl t/module.t list | perl -Iextlib/lib/perl5 cpanm -n -L extlib
+    perl t/module.t list | perl -Iextlib/lib/perl5 cpanm -n -l extlib
 
   もしいくつかのモジュールのインストールを失敗した場合に
   原因を解決してから再びモジュールをインストール

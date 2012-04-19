@@ -47,7 +47,13 @@ sub main {
   my $version_ok;
   my $version;
   
-  plan tests => 16;
+  plan tests => 28;
+
+  # List::MoreUtils
+  $require_ok = require_ok('List::MoreUtils');
+  $version_ok = is($List::MoreUtils::VERSION, '0.33', 'List::MoreUtils version: 0.33');
+  push @$modules, ['List::MoreUtils' => '0.33'];
+  push @$failed, ['List::MoreUtils' => '0.33'] unless $require_ok && $version_ok;
 
   # DBI
   $require_ok = require_ok('DBI');
@@ -81,9 +87,15 @@ sub main {
 
   # Mojolicious
   $require_ok = require_ok('Mojolicious');
-  $version_ok = is($Mojolicious::VERSION, '2.51', 'Mojolicious version: 2.51');
-  push @$modules, ['Mojolicious' => '2.51'];
-  push @$failed, ['Mojolicious' => '2.51'] unless $require_ok && $version_ok;
+  $version_ok = is($Mojolicious::VERSION, '2.84', 'Mojolicious version: 2.84');
+  push @$modules, ['Mojolicious' => '2.84'];
+  push @$failed, ['Mojolicious' => '2.84'] unless $require_ok && $version_ok;
+
+  # Sub::Uplevel
+  $require_ok = require_ok('Sub::Uplevel');
+  $version_ok = is($Sub::Uplevel::VERSION, '0.24', 'Sub::Uplevel version: 0.24');
+  push @$modules, ['Sub::Uplevel' => '0.24'];
+  push @$failed, ['Sub::Uplevel' => '0.24'] unless $require_ok && $version_ok;
 
   # DBIx::Connector
   $require_ok = require_ok('DBIx::Connector');
@@ -91,11 +103,35 @@ sub main {
   push @$modules, ['DBIx::Connector' => '0.51'];
   push @$failed, ['DBIx::Connector' => '0.51'] unless $require_ok && $version_ok;
 
+  # Algorithm::Diff
+  $require_ok = require_ok('Algorithm::Diff');
+  $version_ok = is($Algorithm::Diff::VERSION, '1.1902', 'Algorithm::Diff version: 1.1902');
+  push @$modules, ['Algorithm::Diff' => '1.1902'];
+  push @$failed, ['Algorithm::Diff' => '1.1902'] unless $require_ok && $version_ok;
+
+  # Text::Diff
+  $require_ok = require_ok('Text::Diff');
+  $version_ok = is($Text::Diff::VERSION, '1.41', 'Text::Diff version: 1.41');
+  push @$modules, ['Text::Diff' => '1.41'];
+  push @$failed, ['Text::Diff' => '1.41'] unless $require_ok && $version_ok;
+
+  # Test::Differences
+  $require_ok = require_ok('Test::Differences');
+  $version_ok = is($Test::Differences::VERSION, '0.61', 'Test::Differences version: 0.61');
+  push @$modules, ['Test::Differences' => '0.61'];
+  push @$failed, ['Test::Differences' => '0.61'] unless $require_ok && $version_ok;
+
   # Text::Markdown
   $require_ok = require_ok('Text::Markdown');
   $version_ok = is($Text::Markdown::VERSION, '1.000031', 'Text::Markdown version: 1.000031');
   push @$modules, ['Text::Markdown' => '1.000031'];
   push @$failed, ['Text::Markdown' => '1.000031'] unless $require_ok && $version_ok;
+
+  # Text::Patch
+  $require_ok = require_ok('Text::Patch');
+  $version_ok = is($Text::Patch::VERSION, '1.8', 'Text::Patch version: 1.8');
+  push @$modules, ['Text::Patch' => '1.8'];
+  push @$failed, ['Text::Patch' => '1.8'] unless $require_ok && $version_ok;
 
   # Print module URLs
   if (defined $command) {
