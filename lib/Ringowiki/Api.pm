@@ -34,6 +34,35 @@ our $TABLE_INFOS = {
   ]
 };
 
+sub _init_page {
+  my $self = shift;
+  
+  # DBI
+  my $dbi = $self->app->dbi;
+  
+  # Create home page
+  $dbi->connector->txn(sub {
+    my $wiki_id = $dbi->model('wiki')->select('id', where => {main => 1})->value;
+    
+    my $page_name = 'Home';
+    $dbi->model('page')->insert(
+      {
+        wiki_id => $wiki_id,
+        name => $page_name,
+        content => 'Wikiをはじめよう',
+        main => 1
+      }
+    );
+    $dbi->model('page_history')->insert(
+      {
+        wiki_id => $wiki_id,
+        page_name => $page_name,
+        version => 1
+      }
+    );
+  });
+}
+
 sub create_wiki {
   my $self = shift;
   
@@ -60,9 +89,8 @@ sub create_wiki {
     $params->{main} = 1 unless $mwiki->select->one;
     $mwiki->insert($params);
     
-    # Create home page
-    my $mpage = $dbi->model('page');
-    $mpage->insert({wiki_id => $params->{id}, name => 'Home', content => 'Wikiをはじめよう', main => 1})
+    # Initialize page
+    $dbi->_init_page;
   });
   
   $self->render(json => {success => 1});
@@ -189,11 +217,8 @@ sub init_pages {
       # Remove page histories
       $dbi->model('page_history')->delete_all;
       
-      # Create home page
-      my $wiki_id = $dbi->model('wiki')->select(where => {main => 1})->one->{id};
-      $dbi->model('page')->insert(
-        {wiki_id => $wiki_id, name => 'Home', content => 'Wikiをはじめよう', main => 1}
-      );
+      # Initialize page
+      $self->_init_page;
     });
   };
   

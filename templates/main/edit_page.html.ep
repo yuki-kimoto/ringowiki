@@ -18,7 +18,6 @@
         }
       }, 'json');
     });
-    
   });
 % end
 
@@ -33,6 +32,7 @@
 
   <div>
     <input type="button" name="preview" value="プレビュー">
+    <input type="button" name="diff" value="差分を表示">
     <input type="button" name="save" value="保存する">
   </div>
 </form>
