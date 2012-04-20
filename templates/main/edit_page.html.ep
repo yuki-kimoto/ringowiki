@@ -9,8 +9,11 @@
       var data = ringowikiapi.create_form_data('form[name="edit_page"]');
       $.post('<%= url_for '/api/preview' %>', data, function (result) {
         if (result.success === 1) {
-          
-          location.href = "<%= url_for('preview', wiki_id => $wiki_id, page_name => $page_name) %>";
+          var page = result.page;
+          $("#preview_header").text("プレビュー");
+          $("#preview_content").html(page.content);
+          $("#preview_area").show();
+          $('html, body').animate({scrollTop: 0}, 0);
         }
         else {
           alert("ページの更新に失敗しました。");
@@ -38,7 +41,16 @@
   <%= $title %>
 </h1>
 
-<div id="preview"></div>
+<div id="preview_area" style="display:none">
+  <div id="preview_header"></div>
+  <div id="preview_content"></div>
+</div>
+
+<div id="diff_area" style="display:none">
+  <div id="diff_header"></div>
+  <div id="diff_content"></div>
+</div>
+
 
 <form name="edit_page">
   <input type="hidden" name="wiki_id" value="<%= param('wiki_id') %>">

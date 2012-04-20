@@ -2,6 +2,7 @@ package Ringowiki::Api;
 use Mojo::Base 'Mojolicious::Controller';
 use utf8;
 use Text::Diff 'diff';
+use Text::Markdown 'markdown';
 use Ringowiki::HTMLFilter;
 
 our $TABLE_INFOS = {
@@ -201,10 +202,10 @@ sub preview {
   # HTML filter
   my $hf = Ringowiki::HTMLFilter->new;
   
-  # Wiki link to a
-  $content = $self->parse_wiki_link($self, $content, $wiki_id);
+  # Prase wiki link
+  $content = $hf->parse_wiki_link($self, $content, $wiki_id);
   
-  # Content to html(Markdown)
+  # Sanitize and Markdown
   $content = markdown $hf->sanitize_tag($content);
   
   # Render
