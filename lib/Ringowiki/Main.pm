@@ -76,39 +76,6 @@ sub list_wiki {
   $self->render(pages => $pages);
 }
 
-sub preview {
-  my $self = shift;
-  
-  # Validation
-  my $raw_params = {map { $_ => $self->param($_) } $self->param};
-  my $rule = [
-    wiki_id => ['word'],
-    page_name => ['not_blank'],
-    content => ['any']
-  ];
-  my $vresult = $self->app->validator->validate($raw_params, $rule);
-  my $params = $vresult->data;
-  my $wiki_id = $params->{wiki_id};
-  my $page_name = $params->{page_name};
-  my $content = $params->{content};
-  
-  # Exception
-  return $self->render('exception')
-    unless defined $wiki_id && defined $page_name && defined $content;
-  
-  # Wiki link to a
-  $content = $self->_wiki_link_to_a($content, $wiki_id);
-  
-  # Content to html(Markdown)
-  $content = markdown(Ringowiki::HTMLFilter->new->filter($content));
-  
-  $self->render(
-    wiki_id => $wiki_id,
-    name => $page_name,
-    content => $content
-  );
-}
-
 sub page {
   my $self = shift;
 
@@ -147,45 +114,16 @@ sub page {
 
   return $self->render_not_found unless defined $page;
   
+  # HTML Filter
+  my $hf = Ringowiki::HTMLFilter->new;
+  
   # Wiki link to a
-  $page->{content} = $self->_wiki_link_to_a($page->{content}, $page->{wiki_id});
+  $page->{content} = $hf->parse_wiki_link($self, $page->{content}, $page->{wiki_id});
   
   # Content to html(Markdown)
-  $page->{content} = markdown(Ringowiki::HTMLFilter->new->filter($page->{content}));
+  $page->{content} = markdown($hf->sanitize_tag($page->{content}));
   
   $self->render(page => $page);
-}
-
-sub _wiki_link_to_a {
-  my ($self, $content, $wiki_id) = @_;
-  
-  my $to_a = sub {
-    my ($page_name, $text) = @_;
-    
-    # DBI
-    my $page = $self->app->dbi->model('page')->select(
-      where => {wiki_id => $wiki_id, name => $page_name}
-    )->one;
-    
-    my $link;
-    if ($page) {
-      $link = '<a href="'
-        . $self->url_for('page', wiki_id => $wiki_id, page_name => $page_name)
-        . '" class=' . ($page ? '"page_link"' : '"page_link_not_found"') . '>' . "$text</a>";
-    }
-    else {
-      $link = '<a href="'
-        . $self->url_for('edit-page', wiki_id => $wiki_id, page_name => $page_name)
-        . '" class=' . ($page ? '"page_link"' : '"page_link_not_found"') . '>' . "$text</a>";
-    }
-    
-    return $link;
-  };
-  
-  $content =~ s/\[\[\s*(.*?)\s*?\|\s*(.*?)\s*\]\]/$to_a->($1, $2)/ge;
-  $content =~ s/\[\[\s*(.*?)\s*\]\]/$to_a->($1, $1)/ge;
-  
-  return $content;
 }
 
 1;

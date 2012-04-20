@@ -2,6 +2,7 @@ package Ringowiki::Api;
 use Mojo::Base 'Mojolicious::Controller';
 use utf8;
 use Text::Diff 'diff';
+use Ringowiki::HTMLFilter;
 
 our $TABLE_INFOS = {
   setup => [],
@@ -175,6 +176,46 @@ sub edit_page {
   
   # Render
   $self->render(json => {success => 1});
+}
+
+sub preview {
+  my $self = shift;
+  
+  # Validation
+  my $raw_params = {map { $_ => $self->param($_) } $self->param};
+  my $rule = [
+    wiki_id => ['word'],
+    page_name => ['not_blank'],
+    content => ['any']
+  ];
+  my $vresult = $self->app->validator->validate($raw_params, $rule);
+  my $params = $vresult->data;
+  my $wiki_id = $params->{wiki_id};
+  my $page_name = $params->{page_name};
+  my $content = $params->{content};
+  
+  # Exception
+  return $self->render(json => {success => 0})
+    unless defined $wiki_id && defined $page_name && defined $content;
+  
+  # HTML filter
+  my $hf = Ringowiki::HTMLFilter->new;
+  
+  # Wiki link to a
+  $content = $self->parse_wiki_link($self, $content, $wiki_id);
+  
+  # Content to html(Markdown)
+  $content = markdown $hf->sanitize_tag($content);
+  
+  # Render
+  $self->render(json => {
+    success => 1,
+    page => {
+      wiki_id => $wiki_id,
+      name => $page_name,
+      content => $content
+    }
+  });
 }
 
 sub init {

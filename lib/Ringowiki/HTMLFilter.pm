@@ -165,7 +165,7 @@ my %SAFE_UNI_ATTRS = map { $_ => 1 } qw/
   selected
 /;
 
-sub filter {
+sub sanitize_tag {
   my ($self, $content) = @_;
   
   # Remove comment tags
@@ -256,3 +256,36 @@ sub filter {
 
   return $content_new;
 }
+
+sub parse_wiki_link {
+  my ($self, $c, $content, $wiki_id) = @_;
+  
+  my $to_a = sub {
+    my ($page_name, $text) = @_;
+    
+    # DBI
+    my $page = $c->app->dbi->model('page')->select(
+      where => {wiki_id => $wiki_id, name => $page_name}
+    )->one;
+    
+    my $link;
+    if ($page) {
+      $link = '<a href="'
+        . $c->url_for('page', wiki_id => $wiki_id, page_name => $page_name)
+        . '" class=' . ($page ? '"page_link"' : '"page_link_not_found"') . '>' . "$text</a>";
+    }
+    else {
+      $link = '<a href="'
+        . $c->url_for('edit-page', wiki_id => $wiki_id, page_name => $page_name)
+        . '" class=' . ($page ? '"page_link"' : '"page_link_not_found"') . '>' . "$text</a>";
+    }
+    
+    return $link;
+  };
+  
+  $content =~ s/\[\[\s*(.*?)\s*?\|\s*(.*?)\s*\]\]/$to_a->($1, $2)/ge;
+  $content =~ s/\[\[\s*(.*?)\s*\]\]/$to_a->($1, $1)/ge;
+  
+  return $content;
+}
+

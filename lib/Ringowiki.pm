@@ -120,8 +120,6 @@ sub startup {
       # Page
       $r->get('/wiki/:wiki_id/:page_name')->to('#page', page_name => '')->name('page');
       
-      # Preview
-      $r->post('/preview')->to('#preview');
     }
 
     # API
@@ -133,6 +131,9 @@ sub startup {
 
       # Edit page
       $r->post('/edit-page')->to('#edit_page');
+
+      # Preview
+      $r->post('/preview')->to('#preview');
 
       if ($self->mode eq 'development') {
         # Initialize wiki
