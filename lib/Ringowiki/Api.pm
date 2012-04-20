@@ -1,6 +1,7 @@
 package Ringowiki::Api;
 use Mojo::Base 'Mojolicious::Controller';
 use utf8;
+use Text::Diff 'diff';
 
 our $TABLE_INFOS = {
   setup => [],
@@ -51,6 +52,7 @@ sub create_wiki {
   # DBI
   my $dbi = $self->app->dbi;
   
+  # Transaction
   $dbi->connector->txn(sub {
   
     # Create wiki
@@ -82,19 +84,69 @@ sub edit_page {
   my $params = $vresult->data;
   my $wiki_id = $params->{wiki_id};
   my $page_name = $params->{page_name};
-  my $content = $params->{content};
   
   # DBI
   my $dbi = $self->app->dbi;
   
-  # Update or insert
-  my $model = $dbi->model('page');
+  # Transaction
+  my $mpage = $dbi->model('page');
+  my $mpage_history = $dbi->model('page_history');
   $dbi->connector->txn(sub {
-    $model->update_or_insert({content => $content}, id => [$wiki_id, $page_name]);
+
+    # Page exists?
+    my $page_history = $mpage_history->select(
+      id => [$wiki_id, $page_name])->one;
+    my $page_exists = $page_history ? 1 : 0;
+    
+    # Edit page
+    if ($page_exists) {
+      # Content
+      my $page = $mpage->select(id => [$wiki_id, $page_name])->one;
+      my $content = $page->{content};
+      my $content_new = $params->{content};
+    
+      # No change
+      return $self->render_json({success => 1})
+        if $content eq $content_new;
+      
+      # Content diff
+      my $content_diff = diff(\$content, \$content_new, {STYLE => 'Unified'});
+      my $max_version = $mpage_history->select(
+        'max(version) as max',
+        id => [$wiki_id, $page_name]
+      )->value;
+      
+      # Create page history
+      $mpage_history->insert(
+        {content_diff => $content_diff, version => $max_version + 1},
+        id => [$wiki_id, $page_name]
+      );
+      
+      # Update page
+      $mpage->update(
+        {content => $content_new},
+        id => [$wiki_id, $page_name]
+      );
+    }
+    # Create page
+    else {
+      my $content_new = $params->{content};
+      my $empty = '';
+
+      my $content_diff = diff \$empty, \$content_new, {STYLE => 'Unified'};
+      $mpage_history->insert(
+        {wiki_id => $wiki_id, page_name => $page_name, version => 1});
+      $mpage->insert(
+        {wiki_id => $wiki_id, name => $page_name, content => $content_new});
+    }
   });
+  if ($@) {
+    $self->app->log->error($@);
+    return $self->render(json => {success => 0});
+  }
   
   # Render
-  $self->render_json({success => 1});
+  $self->render(json => {success => 1});
 }
 
 sub init {
@@ -120,6 +172,39 @@ sub init {
   my $success = !$@ ? 1 : 0;
   return $self->render_json({success => $success});
 }
+
+sub init_pages {
+  my $self = shift;
+  
+  # DBI
+  my $dbi = $self->app->dbi;
+  
+  eval {
+    # Remove all page
+    $dbi->connector->txn(sub {
+      
+      # Remove pages
+      $dbi->model('page')->delete_all;
+      
+      # Remove page histories
+      $dbi->model('page_history')->delete_all;
+      
+      # Create home page
+      my $wiki_id = $dbi->model('wiki')->select(where => {main => 1})->one->{id};
+      $dbi->model('page')->insert(
+        {wiki_id => $wiki_id, name => 'Home', content => 'Wikiをはじめよう', main => 1}
+      );
+    });
+  };
+  
+  if ($@) {
+    $self->app->log->error($@);
+    return $self->render(json => {success => 0});
+  }
+  
+  return $self->render(json => {success => 1});
+}
+
 
 sub resetup {
   my $self = shift;

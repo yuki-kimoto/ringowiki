@@ -125,20 +125,25 @@ sub startup {
     {
       my $r = $r->route('/api')->to('api#');
 
-      # Initialize wiki
-      $r->post('/init')->to('#init');
-      
       # Setup wiki
       $r->post('/setup')->to('#setup');
-      
-      # Re-setupt wiki
-      $r->post('/resetup')->to('#resetup');
-      
-      # Create wiki
-      $r->post('/create-wiki')->to('#create_wiki');
 
       # Edit page
       $r->post('/edit-page')->to('#edit_page');
+
+      if ($self->mode eq 'development') {
+        # Initialize wiki
+        $r->post('/init')->to('#init');
+        
+        # Re-setupt wiki
+        $r->post('/resetup')->to('#resetup');
+        
+        # Create wiki
+        $r->post('/create-wiki')->to('#create_wiki');
+        
+        # Remove all pages
+        $r->post('/init-pages')->to('#init_pages');
+      }
     }
   }
 }

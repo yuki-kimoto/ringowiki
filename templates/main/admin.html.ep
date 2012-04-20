@@ -12,7 +12,6 @@
       // Initialize ringo wiki
       $.post("<%= url_for "/api/init" %>", {}, function (result) {
         if (result.success) {
-          alert("初期化成功");
           window.location.href = "<%= url_for '/setup' %>";
         }
         else { alert("初期化失敗") }
@@ -29,6 +28,19 @@
       $.post("<%= url_for "/api/resetup" %>", {}, function (result) {
         if (result.success) { alert("再セットアップ成功") }
         else { alert("再セットアップ失敗") }
+      }, "json");
+    });
+
+    // Remove all pages
+    $('input[name="init_pages"]').click(function () {
+      if (!window.confirm("ページを初期化しますか。")) {
+        return false;
+      }
+      
+      // Overwritten setup
+      $.post("<%= url_for "/api/init-pages" %>", {}, function (result) {
+        if (result.success) { alert("ページを初期化しました。") }
+        else { alert("ページの初期化に失敗しました。") }
       }, "json");
     });
   });
@@ -64,6 +76,7 @@
   <h2>開発用ユーティリティ</h2>
   <ul>
     <li><input type="button" name="init" value="ウィキの初期化"></li>
+    <li><input type="button" name="init_pages" value="ページの初期化"></li>
     <li><input type="button" name="resetup" value="再セットアップ" ></li>
     <li><a href="<%= url_for '/sqliteviewerlite' %>">テーブル一覧</a></li>
   </ul>
