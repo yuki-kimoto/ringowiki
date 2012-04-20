@@ -45,7 +45,16 @@ sub startup {
     # Page
     {
       table => 'page',
-      primary_key => ['wiki_id', 'name']
+      primary_key => ['wiki_id', 'name'],
+      ctime => 'ctime',
+      mtime => 'mtime'
+    },
+    
+    # Page History
+    {
+      table => 'page_history',
+      primary_key => ['wiki_id', 'page_name', 'version'],
+      ctime => 'ctime'
     }
   ];
   $dbi->create_model($_) for @$models;
