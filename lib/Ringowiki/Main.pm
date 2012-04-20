@@ -76,6 +76,39 @@ sub list_wiki {
   $self->render(pages => $pages);
 }
 
+sub preview {
+  my $self = shift;
+  
+  # Validation
+  my $raw_params = {map { $_ => $self->param($_) } $self->param};
+  my $rule = [
+    wiki_id => ['word'],
+    page_name => ['not_blank'],
+    content => ['any']
+  ];
+  my $vresult = $self->app->validator->validate($raw_params, $rule);
+  my $params = $vresult->data;
+  my $wiki_id = $params->{wiki_id};
+  my $page_name = $params->{page_name};
+  my $content = $params->{content};
+  
+  # Exception
+  return $self->render('exception')
+    unless defined $wiki_id && defined $page_name && defined $content;
+  
+  # Wiki link to a
+  $content = $self->_wiki_link_to_a($content, $wiki_id);
+  
+  # Content to html(Markdown)
+  $content = markdown(Ringowiki::HTMLFilter->new->filter($content));
+  
+  $self->render(
+    wiki_id => $wiki_id,
+    name => $page_name,
+    content => $content
+  );
+}
+
 sub page {
   my $self = shift;
 

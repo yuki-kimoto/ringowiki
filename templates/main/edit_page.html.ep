@@ -5,12 +5,24 @@
 
 %= javascript begin
   $(document).ready(function () {
-    
+    $('input[name="preview"]').on("click", function () {
+      var data = ringowikiapi.create_form_data('form[name="edit_page"]');
+      $.post('<%= url_for '/api/edit-page' %>', data, function (result) {
+        if (result.success === 1) {
+          location.href = "<%= url_for('page', wiki_id => $wiki_id, page_name => $page_name) %>";
+        }
+        else {
+          alert("ページの更新に失敗しました。");
+        }
+      }, 'json');
+    });
+  });
+  
+  $(document).ready(function () {
     $('input[name="save"]').on("click", function () {
       var data = ringowikiapi.create_form_data('form[name="edit_page"]');
       $.post('<%= url_for '/api/edit-page' %>', data, function (result) {
         if (result.success === 1) {
-          // alert('ページを更新しました。');
           location.href = "<%= url_for('page', wiki_id => $wiki_id, page_name => $page_name) %>";
         }
         else {
