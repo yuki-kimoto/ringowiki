@@ -134,6 +134,9 @@ sub startup {
 
       # Preview
       $r->post('/preview')->to('#preview');
+      
+      # Diff
+      $r->post('/content-diff')->to('#content_diff');
 
       if ($self->mode eq 'development') {
         # Initialize wiki

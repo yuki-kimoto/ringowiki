@@ -219,6 +219,57 @@ sub preview {
   });
 }
 
+sub content_diff {
+  my $self = shift;
+  
+  # Validation
+  my $raw_params = {map { $_ => $self->param($_) } $self->param};
+  my $rule = [
+    wiki_id => ['word'],
+    page_name => ['not_blank'],
+    content => ['any']
+  ];
+  my $vresult = $self->app->validator->validate($raw_params, $rule);
+  my $params = $vresult->data;
+  my $wiki_id = $params->{wiki_id};
+  my $page_name = $params->{page_name};
+  my $content_new = $params->{content};
+  
+  # Exception
+  return $self->render(json => {success => 0})
+    unless defined $wiki_id && defined $page_name && defined $content_new;
+  
+  # Content diff
+  my $content = $self->app->dbi->model('page')
+    ->select('content', where => {wiki_id => $wiki_id, name => $page_name})
+    ->value;
+  $content = '' unless defined $content;
+  my $content_diff = diff \$content, \$content_new, {STYLE => 'Unified'};
+  my @diff_lines = split /\n/, $content_diff;
+  shift @diff_lines;
+  my @lines;
+  my $line_number = 1;
+  for my $diff_line (@diff_lines) {
+    warn "aaaaaaaaaaaaaaa";
+    my $line = {};
+    if ($diff_line =~ s/^\+//) { $line->{type} = 'add' }
+    elsif ($diff_line =~ s/^\-//) { $line->{type} = 'del' }
+    elsif ($diff_line =~ s/^ //) { $line->{type} = 'none' }
+    $line->{value} = $diff_line;
+    $line->{number} = $line_number;
+    push @lines, $line;
+    $line_number++;
+  }
+  
+  warn $self->dumper(\@lines);
+  
+  # Render
+  $self->render(json => {
+    success => 1,
+    lines => \@lines
+  });
+}
+
 sub init {
   my $self = shift;
   
