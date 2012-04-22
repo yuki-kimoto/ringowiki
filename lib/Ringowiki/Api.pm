@@ -31,6 +31,8 @@ our $TABLE_INFOS = {
     "page_name not null default ''",
     "version not null default ''",
     "content_diff not null default ''",
+    "user not null default ''",
+    "message not null default ''",
     "ctime not null default ''",
     "unique (wiki_id, page_name, version)"
   ]

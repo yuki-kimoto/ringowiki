@@ -5,7 +5,7 @@
 
     <a href="<%= url_for('/create-page')->query(wiki_id => $wiki_id) %>">新規作成</a> |
     <a href="<%= url_for('edit-page', wiki_id => $wiki_id, page_name => $page->{name}) %>">編集</a> |
-    <a href="#">ページ履歴</a> | 
+    <a href="<%= url_for('page_history', wiki_id => $wiki_id, page_name => $page->{name}) %>">ページ履歴</a> | 
     <a href="<%= url_for('page', wiki_id => $wiki_id) %>">ホーム</a> |
     <a href="<%= url_for('list-wiki', wiki_id => $wiki_id) %>">一覧</a> |
     <a href="wiki.cgi?SearchPage">検索</a> |

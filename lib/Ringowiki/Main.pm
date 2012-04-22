@@ -91,21 +91,9 @@ sub page {
   # DBI
   my $dbi = $self->app->dbi;
   
-  # Wiki id
-  my $wiki_id = $params->{wiki_id};
-  unless (defined $wiki_id) {
-    $wiki_id = $dbi->model('wiki')->select('id', append => 'order by main desc')->value;
-  }
-  
-  # Page name
-  my $page_name = $params->{page_name};
-  unless (defined $page_name) {
-    $page_name = $dbi->model('page')->select(
-      'name',
-      where => {wiki_id => $wiki_id},
-      append => 'order by main desc'
-    )->value;
-  }
+  # Wiki id and page name
+  my ($wiki_id, $page_name)
+    = $self->_get_default_page($params->{wiki_id}, $params->{page_name});
   
   # Page
   my $page = $dbi->model('page')->select(
@@ -124,6 +112,64 @@ sub page {
   $page->{content} = markdown($hf->sanitize_tag($page->{content}));
   
   $self->render(page => $page);
+}
+
+sub page_history {
+  my $self = shift;
+  
+  # Validation
+  my $raw_params = {map { $_ => $self->param($_) } $self->param};
+  my $rule = [
+    wiki_id => ['word'],
+    page_name => ['not_blank']
+  ];
+  my $vresult = $self->app->validator->validate($raw_params, $rule);
+  my $params = $vresult->data;
+  
+  # DBI
+  my $dbi = $self->app->dbi;
+  
+  # Wiki id and page name
+  my ($wiki_id, $page_name)
+    = $self->_get_default_page($params->{wiki_id}, $params->{page_name});
+
+  # Page history
+  my $page_histories = $dbi->model('page_history')->select(
+    where => {wiki_id => $wiki_id, page_name => $page_name},
+  )->all;
+  
+  # Not found
+  return $self->render_not_found unless @$page_histories;
+  
+  # Render
+  $self->render(
+    page_histories => $page_histories,
+    wiki_id => $wiki_id,
+    page_name => $page_name
+  );
+}
+
+sub _get_default_page {
+  my ($self, $wiki_id, $page_name) = @_;
+  
+  #DBI
+  my $dbi = $self->app->dbi;
+  
+  # Wiki id
+  unless (defined $wiki_id) {
+    $wiki_id = $dbi->model('wiki')->select('id', append => 'order by main desc')->value;
+  }
+  
+  # Page name
+  unless (defined $page_name) {
+    $page_name = $dbi->model('page')->select(
+      'name',
+      where => {wiki_id => $wiki_id},
+      append => 'order by main desc'
+    )->value;
+  }
+  
+  return ($wiki_id, $page_name);
 }
 
 1;

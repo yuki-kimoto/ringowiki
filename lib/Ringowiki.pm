@@ -120,6 +120,10 @@ sub startup {
       # Page
       $r->get('/wiki/:wiki_id/:page_name')->to('#page', page_name => '')->name('page');
       
+      # Page history
+      $r->get('/page-history/:wiki_id/:page_name')
+        ->to('#page_history', page_name => '')->name('page_history');
+      
     }
 
     # API
