@@ -11,6 +11,19 @@ sub admin {
   return $self->render(wikies => $wikies);
 }
 
+sub admin_user {
+  my $self = shift;
+  
+  # DBI
+  my $dbi = $self->app->dbi;
+  
+  # Users
+  my $muser = $dbi->model('user');
+  my $users = $muser->select->all;
+  
+  $self->render(users => $users);
+}
+
 sub edit_page {
   my $self = shift;
   

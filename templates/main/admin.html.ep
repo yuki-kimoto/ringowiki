@@ -72,6 +72,11 @@
   <li><a href="<%= url_for '/create-wiki' %>">ウィキの作成</a>
 </ul>
 
+<h2>ユーザー管理</h2>
+<ul>
+  <li><a href="<%= url_for('/admin/user') %>">ユーザー管理</li>
+</ul>
+
 % if ($self->app->mode eq 'development') {
   <h2>開発用ユーティリティ</h2>
   <ul>

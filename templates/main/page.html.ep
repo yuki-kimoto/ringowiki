@@ -3,6 +3,7 @@
 
 <div class="tools">
 
+    <a href="<%= url_for('admin') %>">管理</a> |
     <a href="<%= url_for('/create-page')->query(wiki_id => $wiki_id) %>">新規作成</a> |
     <a href="<%= url_for('edit-page', wiki_id => $wiki_id, page_name => $page->{name}) %>">編集</a> |
     <a href="<%= url_for('page_history', wiki_id => $wiki_id, page_name => $page->{name}) %>">ページ履歴</a> | 

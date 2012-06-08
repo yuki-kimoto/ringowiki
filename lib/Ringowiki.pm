@@ -55,6 +55,11 @@ sub startup {
       table => 'page_history',
       primary_key => ['wiki_id', 'page_name', 'version'],
       ctime => 'ctime'
+    },
+    
+    # User
+    {
+      table => 'user'
     }
   ];
   $dbi->create_model($_) for @$models;
@@ -97,10 +102,13 @@ sub startup {
       my $r = $r->route->to('main#');
 
       # Top
-      $r->get('/')->to('#top');
+      $r->get('/')->to('#top')->name('top');
       
       # Admin
       $r->get('/admin')->to('#admin');
+      
+      # Admin user
+      $r->get('/admin/user')->to('#admin_user');
 
       # Setup
       $r->get('/setup')->to('#setup');
@@ -123,7 +131,6 @@ sub startup {
       # Page history
       $r->get('/page-history/:wiki_id/:page_name')
         ->to('#page_history', page_name => '')->name('page_history');
-      
     }
 
     # API
