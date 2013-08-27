@@ -41,7 +41,17 @@
       </div>
     </div>
     <div class="container">
-      %= content
+      <div class="row">
+        <!-- Content -->
+        <div class="col-md-9">
+            %= content
+        </div>
+        <!-- Sidebar -->
+        <div class="col-md-3">
+          %= include 'includes/sidebar'
+        </div>
+        <!---->
+      </div>
     </div> <!-- /container -->
   </body>
 </html>

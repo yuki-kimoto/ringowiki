@@ -1,0 +1,5 @@
+<div class="well sidebar-nav">
+  <ul class="nav">
+    <li><a href="<%= url_for '/' %>">ホーム</a></li>
+  </ul>
+</div>
