@@ -94,7 +94,7 @@ sub create_wiki {
     $mwiki->insert($params);
     
     # Initialize page
-    $dbi->_init_page;
+    $self->_init_page;
   });
   
   $self->render(json => {success => 1});
