@@ -1,0 +1,11 @@
+% layout 'common', title => 'ログイン';
+
+<h2>ログイン</h2>
+
+<form>
+  <div>ID:</div>
+  <div><%= input_tag 'ID' %></div>
+  <div>Password:</div>
+  <div><%= password_field 'password' %></div>
+  <input type="button" value="ログイン">
+</form>

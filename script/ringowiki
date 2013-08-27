@@ -2,10 +2,12 @@
 use Mojo::Base -strict;
 
 use File::Basename 'dirname';
-use File::Spec;
+use File::Spec::Functions qw/catdir splitdir/;
 
-use lib join '/', File::Spec->splitdir(dirname(__FILE__)), 'lib';
-use lib join '/', File::Spec->splitdir(dirname(__FILE__)), '..', 'lib';
+# Source directory has precedence
+my @base = (splitdir(dirname(__FILE__)), '..');
+my $lib = join('/', @base, 'lib');
+-e catdir(@base, 't') ? unshift(@INC, $lib) : push(@INC, $lib);
 
 # Check if Mojolicious is installed;
 die <<EOF unless eval 'use Mojolicious::Commands; 1';
@@ -14,8 +16,5 @@ Please visit http://mojolicio.us for detailed installation instructions.
 
 EOF
 
-# Application
-$ENV{MOJO_APP} ||= 'Ringowiki';
-
 # Start commands
-Mojolicious::Commands->start;
+Mojolicious::Commands->start_app('Ringowiki');

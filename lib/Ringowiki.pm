@@ -94,7 +94,7 @@ sub startup {
     });
 
     # SQLite viewer (only development)
-    $self->plugin('SQLiteViewerLite', dbi => $dbi)
+    $self->plugin('DBViewer', dsn => "dbi:SQLite:$dbpath", option => {sqlite_unicode => 1})
       if $self->mode eq 'development';
     
     # Main
@@ -103,6 +103,9 @@ sub startup {
 
       # Top
       $r->get('/')->to('#top')->name('top');
+      
+      # Login
+      $r->get('/login')->to('#login');
       
       # Admin
       $r->get('/admin')->to('#admin');
