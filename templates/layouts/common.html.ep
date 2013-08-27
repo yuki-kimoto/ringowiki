@@ -1,15 +1,47 @@
 <!DOCTYPE html>
+<html>
   <head>
-    <title><%= $title %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title><%= $title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     %= javascript '/js/jquery-1.7.1.min.js';
+    %= javascript '/js/bootstrap.min.js';
     %= javascript '/js/ringowikiapi.js';
     
-    %= stylesheet '/css/common.css';
-    
+    %= stylesheet '/css/bootstrap.css';
+    %# stylesheet '/css/common.css';
+    <style>
+      .navbar-static-top {
+        margin-bottom: 19px;
+      }
+    </style>
   </head>
-  <body class="frozen">
-    %= content;
+
+  <body>
+    <!-- Static navbar -->
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><%= $title %></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li> <a href="<%= url_for '/' %>">ホーム</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li> <a href="<%= url_for '/admin' %>">管理</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+      %= content
+    </div> <!-- /container -->
   </body>
 </html>
