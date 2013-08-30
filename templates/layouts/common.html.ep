@@ -1,5 +1,9 @@
-% my $wiki_id = $self->stash('wiki_id') || undef;
-% my $page_name = $self->stash('page_name') || undef;
+<%
+  my $wiki_id = stash('wiki_id');
+  my $page_name = stash('page_name');
+  
+  my $wiki_title = app->dbi->model('wiki')->select('title', id => $wiki_id)->value // 'None';
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,11 +34,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<%= url_for '/' %>"><%= $title %></a>
+          <a class="navbar-brand" href="<%= url_for '/' %>"><%= $wiki_title %></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li> <a href="<%= url_for '/' %>">ホーム</a> </li>
             % if (defined $wiki_id) {
               <!-- Menu for wiki page -->
               <li> <a href="<%= url_for('list-wiki', wiki_id => $wiki_id) %>">一覧</a> </li>

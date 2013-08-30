@@ -103,7 +103,7 @@ sub startup {
     });
 
     # SQLite viewer (only development)
-    $self->plugin('DBViewer', dsn => "dbi:SQLite:$dbpath", option => {sqlite_unicode => 1})
+    $self->plugin('DBViewer', dsn => "dbi:SQLite:$dbpath")
       if $self->mode eq 'development';
     
     # Main

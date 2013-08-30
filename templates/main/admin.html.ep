@@ -83,6 +83,6 @@
     <li><input type="button" name="init" value="ウィキの初期化"></li>
     <li><input type="button" name="init_pages" value="ページの初期化"></li>
     <li><input type="button" name="resetup" value="再セットアップ" ></li>
-    <li><a href="<%= url_for '/sqliteviewerlite' %>">テーブル一覧</a></li>
+    <li><a href="<%= url_for '/dbviewer' %>">テーブル一覧</a></li>
   </ul>
 % }

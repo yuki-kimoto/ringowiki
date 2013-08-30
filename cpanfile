@@ -28,3 +28,6 @@ requires 'Test::Differences', '== 0.61';
 requires 'Text::Diff', '== 1.41';
 requires 'Algorithm::Diff', '== 1.1902';
 requires 'List::MoreUtils', '== 0.33';
+requires 'Data::Page', '== 2.02';
+requires 'Class::Accessor::Chained', '== 0.01';
+requires 'Class::Accessor', '== 0.34';
