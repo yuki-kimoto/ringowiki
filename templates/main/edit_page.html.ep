@@ -68,9 +68,9 @@
   });
 % end
 
-<h1 class="header">
+<h2 class="header">
   <%= $title %>
-</h1>
+</h2>
 
 <div id="preview_area" style="display:none">
   <div id="preview_header">プレビュー</div>
@@ -83,16 +83,16 @@
 </div>
 
 
-<form name="edit_page">
+<form name="edit_page" class="edit_form" role="form">
   <input type="hidden" name="wiki_id" value="<%= param('wiki_id') %>">
   <input type="hidden" name="page_name" value="<%= $page_name %>">
-  <%= text_area 'content', cols => "80", rows => "20", begin %>\
+  <%= text_area 'content', class => "form-control", => cols => "80", rows => "20", begin %>
     <%= $page->{content} =%>
   % end
 
-  <div>
-    <input type="button" name="preview" value="プレビュー">
-    <input type="button" name="diff" value="差分を表示">
-    <input type="button" name="save" value="保存する">
+  <div class="bottom_btns">
+    <input type="button" name="preview" class="btn btn-default" value="プレビュー" />
+    <input type="button" name="diff" class="btn btn-default" value="差分を表示" />
+    <input type="button" name="save" class="btn btn-primary" value="保存する" />
   </div>
 </form>

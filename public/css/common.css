@@ -33,6 +33,10 @@ h2.header {
 	border-bottom: 1px solid #eeeeee;
 }
 
+/**
+*	Wiki page
+*/
+
 .page_content {
 	margin-top:		1%;
 	margin-left:		-5%;
@@ -132,9 +136,28 @@ h2.header {
 	border-radius:	2px;
 }
 
-.login {
+/**
+*	Edit page
+*/
 
+.edit_form {
+	margin-left:		-3%;
+	padding:			1% 1% 3% 3%;
 }
+
+.edit_form > .bottom_btns {
+	padding-top:	10px;
+	/* float:		right; */
+	text-align:	right;
+}
+
+.edit_form > .bottom_btns:after {
+	clear:	both;
+}
+
+/**
+*	Login page
+*/
 
 .login_form {
 	margin-top:		2%;

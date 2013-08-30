@@ -1,15 +1,33 @@
 % layout 'common', title => 'ページ履歴';
-<h1 class="header">「<%= $page_name %>」の履歴</h1>
 
-<input type="button" value="リビジョンの比較">
-<table>
+<h2 class="header">
+  「<%= $page_name %>」の履歴
+</h2>
+
+<p>
+  <a class="btn btn-info pull-right">リビジョンの比較</a>
+  <br style="clear:both;">
+</p>
+
+<table class="table table-striped">
+    <tr>
+      <th>比較</th>
+      <th>ユーザ</th>
+      <th>編集日時</th>
+      <th>メッセージ</th>
+      <th>操作</th>
+    </tr>
   % for my $history (@$page_histories) {
     <tr>
       <td><input type="checkbox"></td>
       <td><%= $history->{user} || 'unknown' %></td>
       <td>
         %= $history->{ctime};
+      </td>
+      <td>
         %= $history->{message} || 'no message';
+      </td>
+      <td>
         <a href="#">見る</a>
       </td>
     </tr>
