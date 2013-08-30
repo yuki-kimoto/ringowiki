@@ -133,6 +133,15 @@ h1.header:not(.wiki_page_header){
 }
 
 /**
+*	New page
+*/
+
+.create_page_form {
+	margin-top:		2%;
+	padding:			3.5% 3% 3% 3%;
+}
+
+/**
 *	Edit page
 */
 
