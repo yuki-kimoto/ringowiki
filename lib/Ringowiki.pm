@@ -176,6 +176,21 @@ sub startup {
       }
     }
   }
+  # Reverse proxy support
+  my $reverse_proxy_on = $self->config->{reverse_proxy}{on};
+  my $path_depth = $self->config->{reverse_proxy}{path_depth};
+  if ($reverse_proxy_on) {
+    $ENV{MOJO_REVERSE_PROXY} = 1;
+    if ($path_depth) {
+      $self->hook('before_dispatch' => sub {
+        my $self = shift;
+        for (1 .. $path_depth) {
+          my $prefix = shift @{$self->req->url->path->parts};
+          push @{$self->req->url->base->path->parts}, $prefix;
+        }
+      });
+    }
+  }
 }
 
 1;
