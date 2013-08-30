@@ -1,8 +1,8 @@
 % layout 'common', title => '一覧';
 
-<h2 class="header">
+<h1 class="header">
   ページ一覧
-</h2>
+</h1>
 
 <table class="table table-striped">
 % for my $page (@$pages) {

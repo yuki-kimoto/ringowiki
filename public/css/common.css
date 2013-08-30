@@ -14,17 +14,13 @@ hr {
 	border-top: 1px solid #eeeeee;
 }
 
-h2.header {
-	font-size:		36px;
-	margin-top:		20px;
-	margin-bottom:	20px;
-	margin-left:		-3rem;
-	padding-left:	5rem;
-	padding-top:		1rem;
+h1.header {
+	color:		#669900;
+}
+
+h1.header:not(.wiki_page_header){
 	padding-bottom:	1rem;
-	color:			#ffffff;
-	background-color: #ffa79e;
-	border-bottom:	2px solid #fafafa;
+	border-bottom:	2px solid #eeeeee;
 }
 
 .navbar-default {
@@ -163,6 +159,4 @@ h2.header {
 	margin-top:		2%;
 	margin-left:		-3%;
 	padding:			3.5% 3% 3% 3%;
-	border-top:		2px solid #eeeeee;
-	border-bottom:	2px solid #eeeeee;
 }

@@ -2,7 +2,7 @@
 % $self->stash('wiki_id', 'main');
 % $self->stash('page_name', $page->{name});
 
-<h1 class="header">
+<h1 class="header wiki_page_header">
   <a href="<%= url_for('page', wiki_id => $wiki_id, page_name => $page->{name}) %>"><%= $page->{name} %></a>
 </h1>
 

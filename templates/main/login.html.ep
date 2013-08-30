@@ -1,6 +1,6 @@
 % layout 'common', title => 'ログイン';
 
-<h2 class="header">
+<h1 class="header">
 	ログイン
 </h1>
 

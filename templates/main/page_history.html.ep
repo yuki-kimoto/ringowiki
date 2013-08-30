@@ -1,8 +1,8 @@
 % layout 'common', title => 'ページ履歴';
 
-<h2 class="header">
+<h1 class="header">
   「<%= $page_name %>」の履歴
-</h2>
+</h1>
 
 <p>
   <a class="btn btn-info pull-right">リビジョンの比較</a>

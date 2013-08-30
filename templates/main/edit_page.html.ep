@@ -68,9 +68,9 @@
   });
 % end
 
-<h2 class="header">
+<h1 class="header">
   <%= $title %>
-</h2>
+</h1>
 
 <div id="preview_area" style="display:none">
   <div id="preview_header">プレビュー</div>
