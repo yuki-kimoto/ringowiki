@@ -15,11 +15,20 @@ has 'dbpath';
 sub startup {
   my $self = shift;
   
-  # Config
-  my $config = $self->plugin('Config');
+  # Config file
+  $self->plugin('INIConfig', {ext => 'conf'});
   
-  # Secret
-  $self->secret($config->{secret});
+  # Config file for developper
+  unless ($ENV{RINGOWIKI_NO_MYCONFIG}) {
+    my $my_conf_file = $self->home->rel_file('ringowiki.my.conf');
+    $self->plugin('INIConfig', {file => $my_conf_file}) if -f $my_conf_file;
+  }
+  
+  # Listen
+  my $conf = $self->config;
+  my $listen = $conf->{hypnotoad}{listen} ||= ['http://*:10050'];
+  $listen = [split /,/, $listen] unless ref $listen eq 'ARRAY';
+  $conf->{hypnotoad}{listen} = $listen;  
   
   # Database
   my $db = "ringowiki";
