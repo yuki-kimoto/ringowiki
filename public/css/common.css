@@ -1,180 +1,122 @@
 body {
-  margin: .5em .5em .5em .5em;
-  color: black;
-  font-family: "Verdana";
-}
-
-body.normal {
-  background-color: white;
-}
-
-body.frozen {
-  background-color: #eee;
-}
-
-.preview {
-  color: black;
-  background-color: #fcc;
-}
-
-p, dl {
-  margin: 5pt;
-  padding: 5pt;
-}
-
-p, pre, ul, li, dl, dt, dd {
-  line-height: 140%;
-}
-
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin: 5pt;
-  padding: 5pt;
-}
-
-a img {
-  border: none;
-}
-
-.tools {
-  margin: 1pt;
-  padding: 1pt;
-  text-align: right;
-}
-
-.header {
-  margin: 10pt 0 5pt 0;
-  padding: 5pt 5pt 5pt 5pt;
-  text-align: left;
-  /* border: #999 1px solid; */
-  color: black;
-  background-color: #ccf;
-}
-
-.footer {
-  font-style: normal;
-  text-align: right;
-}
-
-.InterWiki {
-  color: black;
-  background-color: #eee;
-}
-
-h2 {
-  margin: 10pt 0 5pt 0;
-  padding: 5pt 5pt 5pt 5pt;
-  text-align: left;
-  color: black;
-  background-color: #ccf;
-}
-
-h3 {
-  margin: 10pt 0 5pt 0;
-  padding: 5pt 5pt 5pt 5pt;
-  text-align: left;
-  color: black;
-  border-left: #ccf 10pt solid;
-  border-bottom: #ccf 1pt solid;
-}
-
-h4 {
-  margin: 10pt 0 5pt 0;
-  padding: 5pt 5pt 5pt 5pt;
-  text-align: left;
-  color: black;
-  border-bottom: #ccf 1px solid;
-}
-
-.date {
-  font-family: monospace;
-}
-
-pre.verbatim-hard {
-  margin: 5pt;
-  padding: 5pt;
-  background-color: #eef;
-  border: #ccf 1px solid;
-  padding: 1em 1em 1em 1em;
-}
-
-pre.verbatim-soft {
-  margin: 5pt;
-  padding: 5pt;
-  background-color: #eef;
-  border: #ccf 1px solid;
-}
-
-.added {
-  color: blue;
-}
-
-.deleted {
-  color: red;
-}
-
-.same {
-  color: #666;
-}
-
-.diff {
-  color: black;
-  background-color: #eee;
-}
-
-table {
-  margin: 5pt;
-  padding: 5pt;
-  background-color: #ccf;
-}
-
-td {
-  margin: 1px;
-  padding: 5px;
-  background-color: #eef;
-}
-
-.error {
-}
-
-a.page_link {
-  color: blue;
-  text-decoration: none;
-}
-
-a.page_link:hover {
-  color: blue;
-  text-decoration: underline;
+	color:		#333333;
+	font-size:	14px;
 }
 
 a {
-  color: blue;
-  text-decoration: none;
+	color:		#75a800;
 }
 
-a:hover {
-  color: blue;
-  text-decoration: underline;
+hr {
+	height:			0px;
+	margin-top:		20px;
+	margin-bottom:	20px;
+	border-top: 1px solid #eeeeee;
 }
 
-a:visited {
-  color:blue;
+.navbar-default {
+	border-top: 2px solid #ffa79e;
+	background-color: #fcfcfc;
+	border-bottom: 1px solid #eeeeee;
 }
 
-a.page_link_not_found {
-  color: red;
-  text-decoration: none;
+.page_content {
+	margin-top:		1%;
+	margin-left:		-5%;
+	padding:			2% 2% 2% 2.5%;
+	border-top:		2px solid #eeeeee;
+	border-bottom:	2px solid #eeeeee;
 }
 
-a.page_link_not_found:hover {
-  color: red;
-  text-decoration: underline;
+.page_content > h1 {
+	font-size:		36px;
+	margin-top:		20px;
+	margin-bottom:	20px;
+	margin-left:		-3rem;
+	padding-left:	5rem;
+	padding-top:		1rem;
+	padding-bottom:	1rem;
+	color:			#ffffff;
+	background-color: #ffa79e;
+	border-bottom:	2px solid #fafafa;
 }
 
-a:page_link_not_found:visited {
-  color:red;
+.page_content > h2 {
+	font-size:		30px;
+	color:			#cc0000;
+	margin-top:		25px;
+	margin-bottom:	10px;
+	padding-left:	2rem;
+	padding-top:		1rem;
+	padding-bottom:	1rem;
+	border-left:		5px solid #ffa79e;
+	border-bottom:	1px solid #fafafa;
 }
 
+.page_content > h3 {
+	font-size:		24px;
+	color:			#cc0000;
+	margin-top:		20px;
+	margin-bottom:	10px;
+	padding-left:	2rem;
+	padding-top:		1rem;
+	padding-bottom:	1rem;
+	border-left:		5px solid #ffa79e;
+}
+
+.page_content > h4 {
+	font-size:		18px;
+	color:			#cc0000;
+	margin-top:		10px;
+	margin-bottom:	10px;
+	padding-left:	2rem;
+	padding-top:		1rem;
+	padding-bottom:	1rem;
+	border-left:		5px solid #ffa79e;
+}
+
+.page_content > h5 {
+	font-size:		14px;
+	color:			#cc0000;
+	margin-top:		10px;
+	margin-bottom:	10px;
+	padding-left:	2rem;
+	padding-top:		1rem;
+	padding-bottom:	1rem;
+	border-left:		5px solid #ffa79e;
+}
+
+.page_content > h6 {
+	font-size:		12px;
+	color:			#cc0000;
+	margin-top:		10px;
+	margin-bottom:	10px;
+	padding-left:	2rem;
+	padding-top:		1rem;
+	padding-bottom:	1rem;
+	border-left:		5px solid #ffa79e;
+}
+
+.page_content > p {
+	margin:		0 0 10px 0;
+}
+
+.page_content > blockquote {
+	padding:		10px 20px 10px 20px;
+	margin:		0 0 20px 0;
+	border-left:	5px solid #eeeeee;
+}
+
+.page_content > blockquote > p {
+	font-size:	14px;
+}
+
+.page_content > pre {
+	display:		block;
+	padding:		12px;
+	margin:		0 0 10px 0;
+	font-size:	13px;
+	background-color: #fafafa;
+	border:		1px solid #eeeeee;
+	border-radius:	2px;
+}

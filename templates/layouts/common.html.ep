@@ -16,7 +16,7 @@
     %= javascript '/js/ringowikiapi.js';
     
     %= stylesheet '/css/bootstrap.css';
-    %# stylesheet '/css/common.css';
+    %= stylesheet '/css/common.css';
     <style>
       .navbar-static-top {
         margin-bottom: 19px;

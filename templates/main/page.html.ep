@@ -6,7 +6,9 @@
   <a href="<%= url_for('page', wiki_id => $wiki_id, page_name => $page->{name}) %>"><%= $page->{name} %></a>
 </h1>
 
+<div class="page_content">
 <%= Mojo::ByteStream->new($page->{content}) %>
+</div>
 
 <address class="footer">
 </address>
