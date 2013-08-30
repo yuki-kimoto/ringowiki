@@ -14,6 +14,19 @@ hr {
 	border-top: 1px solid #eeeeee;
 }
 
+h2.header {
+	font-size:		36px;
+	margin-top:		20px;
+	margin-bottom:	20px;
+	margin-left:		-3rem;
+	padding-left:	5rem;
+	padding-top:		1rem;
+	padding-bottom:	1rem;
+	color:			#ffffff;
+	background-color: #ffa79e;
+	border-bottom:	2px solid #fafafa;
+}
+
 .navbar-default {
 	border-top: 2px solid #ffa79e;
 	background-color: #fcfcfc;
@@ -30,9 +43,7 @@ hr {
 
 .page_content > h1 {
 	font-size:		36px;
-	margin-top:		20px;
-	margin-bottom:	20px;
-	margin-left:		-3rem;
+	margin:			20px 0 20px -3rem;
 	padding-left:	5rem;
 	padding-top:		1rem;
 	padding-bottom:	1rem;
@@ -44,11 +55,11 @@ hr {
 .page_content > h2 {
 	font-size:		30px;
 	color:			#cc0000;
-	margin-top:		25px;
-	margin-bottom:	10px;
+	margin:			25px 0 10px;
 	padding-left:	2rem;
 	padding-top:		1rem;
 	padding-bottom:	1rem;
+	background-color: #ffffff;
 	border-left:		5px solid #ffa79e;
 	border-bottom:	1px solid #fafafa;
 }
@@ -119,4 +130,16 @@ hr {
 	background-color: #fafafa;
 	border:		1px solid #eeeeee;
 	border-radius:	2px;
+}
+
+.login {
+
+}
+
+.login_form {
+	margin-top:		2%;
+	margin-left:		-3%;
+	padding:			3.5% 3% 3% 3%;
+	border-top:		2px solid #eeeeee;
+	border-bottom:	2px solid #eeeeee;
 }
