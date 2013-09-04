@@ -90,8 +90,19 @@ sub startup {
       my $value = shift;
       return 0 unless defined $value;
       return $value =~ /^[a-zA-Z_]+$/ ? 1 : 0;
+    },
+    user_name => sub {
+      my $value = shift;
+      
+      return ($value || '') =~ /^[a-zA-Z0-9_\-]+$/
+    },
+    wiki_name => sub {
+      my $value = shift;
+      
+      return ($value || '') =~ /^[a-zA-Z0-9_\-]+$/
     }
   );
+  $self->validator($vc);
   
   # Route
   my $r = $self->routes;
@@ -125,9 +136,6 @@ sub startup {
 
       # Top
       $r->get('/')->to('#top')->name('top');
-      
-      # Login
-      $r->get('/login')->to('#login');
       
       # Admin
       $r->get('/admin')->to('#admin');
@@ -192,7 +200,7 @@ sub startup {
   
   # Helper
   $self->helper(wiki_api => sub { Ringowiki::API->new(shift) });
-  
+
   # Reverse proxy support
   my $reverse_proxy_on = $self->config->{reverse_proxy}{on};
   my $path_depth = $self->config->{reverse_proxy}{path_depth};

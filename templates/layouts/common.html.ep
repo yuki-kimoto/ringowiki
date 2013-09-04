@@ -1,4 +1,6 @@
 <%
+  my $api = wiki_api;
+  
   my $wiki_id = stash('wiki_id');
   my $page_name = stash('page_name');
   
@@ -56,7 +58,11 @@
               % }
             % }
             <li> <a href="<%= url_for '/admin' %>">管理</a></li>
-            <li> <a href="<%= url_for '/_login' %>">ログイン</a></li>
+            % if ($api->logined) {
+              <li> <a href="<%= url_for '/_logout' %>">ログアウト</a></li>
+            % } else {
+              <li> <a href="<%= url_for '/_login' %>">ログイン</a></li>
+            % }
           </ul>
         </div><!--/.nav-collapse -->
       </div>
