@@ -1,15 +1,11 @@
 # りんごウィキ
 
 (開発が始まったばかりでまだまだ未完成です。)
-
 りんごウィキはPerlで書かれたWikiです。
-
 Perl 5.10.1以上の環境であれば、Windows, Linux/Unix, Mac OS X
 など多くのOSで利用が可能です。インストールも簡単です。
-
 リンゴWikiはPerlで書かれているので、Perlが得意な人にとっては
 とてもよいWikiでしょう。
-
 データベースはSQLiteを利用しています。
 
 <img src="https://f.cloud.github.com/assets/1780223/1058346/41884da2-1187-11e3-96db-8f43c5661d11.png">
