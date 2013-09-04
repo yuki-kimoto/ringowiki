@@ -6,11 +6,15 @@ use Mojo::Base 'Mojolicious';
 use DBIx::Custom;
 use Validator::Custom;
 use Ringowiki::Util;
+use Ringowiki::API;
+use Ringowiki::Manager;
+use Scalar::Util 'weaken';
 
 has util => sub { RingoWiki::Util->new(app => shift) };
 has validator => sub { Validator::Custom->new };
 has 'dbi';
 has 'dbpath';
+has 'manager';
 
 sub startup {
   my $self = shift;
@@ -29,6 +33,11 @@ sub startup {
   my $listen = $conf->{hypnotoad}{listen} ||= ['http://*:10050'];
   $listen = [split /,/, $listen] unless ref $listen eq 'ARRAY';
   $conf->{hypnotoad}{listen} = $listen;  
+
+  # Repository Manager
+  my $manager = Ringowiki::Manager->new(app => $self);
+  weaken $manager->{app};
+  $self->manager($manager);
   
   # Database
   my $db = "ringowiki";
@@ -68,7 +77,8 @@ sub startup {
     
     # User
     {
-      table => 'user'
+      table => 'user',
+      primary_key => 'id'
     }
   ];
   $dbi->create_model($_) for @$models;
@@ -105,6 +115,9 @@ sub startup {
     # SQLite viewer (only development)
     $self->plugin('DBViewer', dsn => "dbi:SQLite:$dbpath")
       if $self->mode eq 'development';
+    
+    # Auto routes
+    $self->plugin('AutoRoute');
     
     # Main
     {
@@ -176,6 +189,10 @@ sub startup {
       }
     }
   }
+  
+  # Helper
+  $self->helper(wiki_api => sub { Ringowiki::API->new(shift) });
+  
   # Reverse proxy support
   my $reverse_proxy_on = $self->config->{reverse_proxy}{on};
   my $path_depth = $self->config->{reverse_proxy}{path_depth};

@@ -1,0 +1,114 @@
+<%
+  # API
+  my $api = wiki_api;
+
+  my $op = param('op') || '';
+
+  # Authentication
+  unless ($api->logined) {
+    $self->redirect_to('/');
+    return;
+  }
+  
+  my $errors;
+  if ($op eq 'create') {
+    # API
+    my $api = wiki_api;
+    
+    # Validation
+    my $params = $api->params;
+    my $rule = [
+      project => [
+        ['not_blank' => 'Repository name is empty'],
+        ['project_name' => 'Invalid repository name']
+      ],
+      description => [
+        'any'
+      ],
+      readme => {require => 0} => [
+        'any'
+      ]
+    ];
+    my $validator = app->validator;
+    my $vresult = $validator->validate($params, $rule);
+    
+    # Git
+    my $git = app->git;
+    if ($vresult->is_ok) {
+      # Not logined
+      unless ($api->logined) {
+        return $self->render_exception;
+      }
+      
+      my $data = $vresult->data;
+      my $user = session('user');
+      my $project = $data->{project};
+      my $description = $data->{description};
+      my $readme = $data->{readme};
+      
+      my $manager = app->manager;
+      if ($manager->exists_project($user, $project)) {
+        $errors = ['Repositry already exists'];
+      }
+      else {
+        # Create repository
+        eval {
+          $manager->create_project(
+            $user,
+            $project,
+            {description => $description, readme => $readme}
+          );
+        };
+        
+        if ($@) {
+          app->log->fatal($@);
+          $errors = ['Internal error'];
+        }
+        else {
+          $self->redirect_to("/$user/$project");
+          return;
+        }
+      }
+    }
+    else { $errors = $vresult->messages }
+  }
+%>
+
+% layout 'common', title => 'Create a New Repository';
+
+  %= include '/include/header';
+  
+  <div class="container">
+    <ul class="breadcrumb" style="margin-top:10px">
+      <li><a href="<%= url_for('/') %>"><i class="icon-home"></i></a></li>
+      /
+      % my $user = session('user');
+      <li><a href="<%= url_for("/$user") %>"><%= $user %></a></li>
+    </ul>
+  
+    % if ($errors) {
+      <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        % for my $error (@$errors) {
+          <p><%= $error %></p>
+        % }
+      </div>
+    % }
+    <form action="<%= url_for->query(op => 'create') %>" method="post">
+      <div><b>Repository name</b></div>
+      <div><%= input_tag 'project', type => 'text', style => 'width:300px' %></div>
+
+      <div><b>Description</b> (optional)</div>
+      <div><%= input_tag 'description', type => 'text', style => 'width:600px' %></div>
+      
+      <div>
+        <label class="checkbox" style="margin-bottom:0">
+          <%= check_box readme => 1 %><b>Initialize this repository with a README</b>
+        </label>
+      </div>
+      <div class="muted" style="margin-bottom:10px;margin-left:20px">This will allow you to git clone the repository immediately.</div>
+
+      <input type="submit" class="btn" value="Create repository">
+    </form>
+  </div>
+  %= include '/include/footer';

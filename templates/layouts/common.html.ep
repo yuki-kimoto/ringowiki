@@ -56,7 +56,7 @@
               % }
             % }
             <li> <a href="<%= url_for '/admin' %>">管理</a></li>
-            <li> <a href="<%= url_for '/login' %>">ログイン</a></li>
+            <li> <a href="<%= url_for '/_login' %>">ログイン</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

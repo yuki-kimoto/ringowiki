@@ -1,0 +1,104 @@
+<%
+  my $api = wiki_api;
+  
+  my $op = param('op') || '';
+  
+  my $errors;
+  if ($op eq 'create') {
+    
+    # Validation
+    my $params = $api->params;
+    my $validator = $self->app->validator;
+    my $rule = [
+      id => [
+        ['not_blank' => 'User name is empty.'],
+        [user_name => 'User name contain invalid character.'],
+        [{'length' => {max => 20}} => 'User name is too long.']
+      ],
+      password => [
+        ['not_blank' => 'Password is empty.'],
+        ['ascii' => 'Password contain invalid character.'],
+        [{'length' => {max => 20}} => 'Password is too long.']
+      ],
+      {password_check => [qw/password password2/]}
+        => {copy => 0}
+        => [
+          ['duplication' => "Two password don't match"]
+        ]
+    ];
+    my $vresult = $validator->validate($params, $rule);
+    
+    if ($vresult->is_ok) {
+      
+      # Valid parameters
+      my $params = $vresult->data;
+      my $id = delete $params->{id};
+      my ($password_encrypted, $salt)
+        = $api->encrypt_password($params->{password});
+      $params->{password} = $password_encrypted;
+      $params->{salt} = $salt;
+      
+      # Create user
+      eval { app->manager->create_user($id, $params) };
+      if ($@) {
+        app->log->error($@);
+        $errors = ['Internal Error'];
+      }
+      else {
+        $self->flash(success => 1);
+        $self->flash(id => $id);
+        $self->redirect_to('current');
+      }
+    }
+    else { $errors = $vresult->messages }
+  }
+%>
+
+% layout 'common', title => 'Create User';
+
+  %= include '/include/header';
+
+  <div class="container">
+    % my $id = '';
+    % if (flash('success')) {
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        Success: User <b><%= flash('id') %></b> is created.
+      </div>
+    % }
+    
+    % if ($errors) {
+      <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        % for my $error (@$errors) {
+          <p><%= $error %></p>
+        % }
+      </div>
+    % }
+    
+    <div class="text-center"><h3>Create User</h3></div>
+    <div class="well" style="background:white;padding-top:15px;padding-left:60px;width:300px;margin-left:auto;margin-right:auto">
+      <form action="<%= url_for->query(op => 'create') %>" method="post">
+        <div class="control-group">
+          <label class="control-label" for="user-name">User name</label>
+          <div class="controls">
+            <%= text_field id => $id, placeholder => 'User', id =>'user-name'%>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="input-password">Password</label>
+          <div class="controls">
+            <%= password_field 'password', id => 'input-password', placeholder => 'Password' %>
+            <%= password_field 'password2', id => 'input-password', placeholder => 'Password Again' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn">Create User</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="text-center" style="margin-bottom:20px"><big><a href="<%= url_for('/_admin/users') %>">Users</a></big></div>
+  </div>
+  %= include '/include/footer';
