@@ -1,3 +1,34 @@
+<%
+  my $api = wiki_api;
+
+  # Validation
+  my $raw_params = $api->params;
+  my $rule = [
+    wiki_id => ['word'],
+    page_name => ['not_blank']
+  ];
+  my $vresult = app->validator->validate($raw_params, $rule);
+  my $params = $vresult->data;
+  
+  # DBI
+  my $dbi = app->dbi;
+  
+  # Wiki id and page name
+  my ($wiki_id, $page_name)
+    = $api->_get_default_page($params->{wiki_id}, $params->{page_name});
+
+  # Page history
+  my $page_histories = $dbi->model('page_history')->select(
+    where => {wiki_id => $wiki_id, page_name => $page_name},
+  )->all;
+  
+  # Not found
+  unless (@$page_histories) {
+    $self->render_not_found;
+    return;
+  }
+%>
+
 % layout 'common', title => 'ページ履歴';
 
 <h1 class="header">

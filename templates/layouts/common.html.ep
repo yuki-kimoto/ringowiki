@@ -53,8 +53,8 @@
               <!-- Menu for wiki page -->
               <li> <a href="<%= url_for('/create-page')->query(wiki_id => $wiki_id) %>">新規作成</a> </li>
               % if (defined $page_name) {
-                <li> <a href="<%= url_for('edit-page', wiki_id => $wiki_id, page_name => $page_name) %>">編集</a> </li>
-                <li> <a href="<%= url_for('page_history', wiki_id => $wiki_id, page_name => $page_name) %>">ページ履歴</a> </li>
+                <li> <a href="<%= url_for("/edit-page/$wiki_id/$page_name") %>">編集</a> </li>
+                <li> <a href="<%= url_for("/page-history/$wiki_id/$page_name") %>">ページ履歴</a> </li>
               % }
             % }
             <li> <a href="<%= url_for '/admin' %>">管理</a></li>

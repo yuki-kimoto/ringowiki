@@ -1,3 +1,12 @@
+<%
+  # DBI
+  my $dbi = app->dbi;
+  
+  # Users
+  my $muser = $dbi->model('user');
+  my $users = $muser->select->all;
+%>
+
 % layout 'common', title => 'りんごウィキ管理';
 
 <h2>ユーザー管理</h2>

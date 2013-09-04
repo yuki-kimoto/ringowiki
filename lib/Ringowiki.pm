@@ -9,6 +9,7 @@ use Ringowiki::Util;
 use Ringowiki::API;
 use Ringowiki::Manager;
 use Scalar::Util 'weaken';
+use Mojolicious::Plugin::AutoRoute::Util 'template';
 
 has util => sub { RingoWiki::Util->new(app => shift) };
 has validator => sub { Validator::Custom->new };
@@ -132,38 +133,17 @@ sub startup {
     
     # Main
     {
-      my $r = $r->route->to('main#');
-
-      # Top
-      $r->get('/')->to('#top')->name('top');
-      
-      # Admin
-      $r->get('/admin')->to('#admin');
-      
-      # Admin user
-      $r->get('/admin/user')->to('#admin_user');
-
-      # Setup
-      $r->get('/setup')->to('#setup');
-      
-      # Create wiki
-      $r->get('/create-wiki')->to('#create_wiki');
-      
       # List wiki
-      $r->get('/list-wiki/:wiki_id')->to('#list_wiki')->name('list-wiki');
-
-      # Create page
-      $r->get('/create-page')->to('#create_page');
+      $r->get('/list-wiki/:wiki_id' => template 'list-wiki');
     
       # Edit page
-      $r->get('/edit-page/:wiki_id/:page_name')->to('#edit_page')->name('edit-page');
+      $r->get('/edit-page/:wiki_id/:page_name' => template 'edit-page');
 
       # Page
-      $r->get('/wiki/:wiki_id/:page_name')->to('#page', page_name => '')->name('page');
+      $r->get('/wiki/:wiki_id/:page_name' => {page_name => undef} => template 'page');
       
       # Page history
-      $r->get('/page-history/:wiki_id/:page_name')
-        ->to('#page_history', page_name => '')->name('page_history');
+      $r->get('/page-history/:wiki_id/:page_name' => {page_name => undef} => template 'page-history');
     }
 
     # API

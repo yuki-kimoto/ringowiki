@@ -557,4 +557,27 @@ sub _create_table {
   }
 }
 
+sub _get_default_page {
+  my ($self, $wiki_id, $page_name) = @_;
+  
+  #DBI
+  my $dbi = $self->app->dbi;
+  
+  # Wiki id
+  unless (defined $wiki_id) {
+    $wiki_id = $dbi->model('wiki')->select('id', append => 'order by main desc')->value;
+  }
+  
+  # Page name
+  unless (defined $page_name) {
+    $page_name = $dbi->model('page')->select(
+      'name',
+      where => {wiki_id => $wiki_id},
+      append => 'order by main desc'
+    )->value;
+  }
+  
+  return ($wiki_id, $page_name);
+}
+
 1;

@@ -1,3 +1,32 @@
+<%
+  my $wiki_id = param('wiki_id');
+  my $page_name = param('page_name');
+  
+  # Exeption
+  unless (defined $wiki_id && defined $page_name) {
+    $self->render_exeption;
+    return;
+  }
+  
+  # Wiki exists?
+  my $wiki = $self->app->dbi->model('wiki')->select(
+    where => {id => $wiki_id}
+  )->one;
+  
+  # Not found
+  unless ($wiki) {
+    $self->render_not_found;
+    return;
+  }
+  
+  # Page
+  my $page = $self->app->dbi->model('page')->select(
+    where => {wiki_id => $wiki_id, name => $page_name}
+  )->one;
+  $page = {not_exists => 1, wiki_id => $wiki_id, name => $page_name, content => ''}
+    unless $page;
+%>
+
 % my $wiki_id = $page->{'wiki_id'};
 % my $page_name = $page->{name};
 % my $title = "「$page_name」" . ($page->{not_exists} ? 'を新規作成' : 'を編集');

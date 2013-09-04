@@ -1,0 +1,61 @@
+<%
+  use Text::Markdown ();
+  
+  my $api = wiki_api;
+  
+  # Validation
+  my $raw_params = $api->params;
+  
+  warn dumper $raw_params;
+  my $rule = [
+    wiki_id => ['word'],
+    page_name => ['not_blank']
+  ];
+  my $vresult = app->validator->validate($raw_params, $rule);
+  my $params = $vresult->data;
+
+  # DBI
+  my $dbi = app->dbi;
+  
+  # Wiki id and page name
+  my ($wiki_id, $page_name)
+    = $api->_get_default_page($params->{wiki_id}, $params->{page_name});
+  
+  # Page
+  my $page = $dbi->model('page')->select(
+    where => {wiki_id => $wiki_id, name => $page_name},
+  )->one;
+  
+  unless (defined $page) {
+    $self->render_not_found;
+    return;
+  }
+  
+  # HTML Filter
+  my $hf = Ringowiki::HTMLFilter->new;
+  
+  # Wiki link to a
+  $page->{content} = $hf->parse_wiki_link($self, $page->{content}, $page->{wiki_id});
+  
+  # Content to html(Markdown)
+  $page->{content} = Text::Markdown::markdown($hf->sanitize_tag($page->{content}));
+
+
+%>
+
+% layout 'common', title => $page->{name};
+% $self->stash('wiki_id', 'main');
+% $self->stash('page_name', $page->{name});
+
+<h1 class="header wiki_page_header">
+  <a href="<%= url_for('page', wiki_id => $wiki_id, page_name => $page->{name}) %>"><%= $page->{name} %></a>
+</h1>
+
+<div class="page_content">
+<%= Mojo::ByteStream->new($page->{content}) %>
+</div>
+
+<address class="footer">
+</address>
+<p class="footer">
+</p>

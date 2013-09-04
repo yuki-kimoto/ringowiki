@@ -1,0 +1,13 @@
+<%
+  # Redirect to setup page
+  return $self->redirect_to('/setup')
+    unless app->util->setup_completed;
+  
+  # Redirect to main wiki
+  my $wiki = app->dbi->model('wiki')
+    ->select(append => 'order by main desc')->one;
+  if ($wiki) {
+    $self->redirect_to("/wiki/$wiki->{id}");
+    return;
+  }
+%>

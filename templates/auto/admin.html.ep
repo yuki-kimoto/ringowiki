@@ -1,3 +1,7 @@
+<%
+  my $wikies = app->dbi->model('wiki')->select->all;
+%>
+
 % layout 'common', title => 'りんごウィキ管理';
 
 %= javascript begin
