@@ -58,7 +58,7 @@
                 <li> <a href="<%= url_for("/page-history/$wiki_id/$page_name") %>">ページ履歴</a> </li>
               % }
             % }
-            <li> <a href="<%= url_for '/admin' %>">管理</a></li>
+            <li> <a href="<%= url_for '/_admin' %>">管理</a></li>
             % if ($api->logined) {
               <li> <a href="<%= url_for '/_logout' %>">ログアウト</a></li>
             % } else {
