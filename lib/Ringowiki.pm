@@ -134,7 +134,7 @@ sub startup {
     # Main
     {
       # List wiki
-      $r->get('/list-wiki/:wiki_id' => template 'list-wiki');
+      $r->get('/list-page/:wiki_id' => template 'list-page');
     
       # Edit page
       $r->get('/edit-page/:wiki_id/:page_name' => template 'edit-page');

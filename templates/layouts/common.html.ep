@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav">
             % if (defined $wiki_id) {
               <!-- Menu for wiki page -->
-              <li> <a href="<%= url_for('list-wiki', wiki_id => $wiki_id) %>">一覧</a> </li>
+              <li> <a href="<%= url_for("/list-page/$wiki_id") %>">一覧</a> </li>
               <li> <a href="wiki.cgi?SearchPage">検索</a> </li>
               <li> <a href="wiki.cgi?RecentChanges">Wiki履歴</a> </li>
               <!---->
