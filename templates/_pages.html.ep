@@ -23,7 +23,7 @@
 % for my $page (@$pages) {
   <tr>
     <td>
-      <a href="<%= url_for('page', wiki_id => $page->{wiki_id}, page_name => $page->{name}) %>">
+      <a href="<%= url_for("/$page->{wiki_id}/$page->{name}") %>">
       <%= $page->{name} %>
       </a>
     </td>

@@ -19,8 +19,8 @@
     % for my $wiki (@$wikis) {
       % my $wiki_id = $wiki->{id};
       <tr>
-        <td><a href="<%= url_for("/wiki/$wiki_id") %>"><%= $wiki_id %></a></td>
-        <td><a href="<%= url_for("/wiki/$wiki_id") %>"><%= $wiki->{title} %></a></td>
+        <td><a href="<%= url_for("/$wiki_id") %>"><%= $wiki_id %></a></td>
+        <td><a href="<%= url_for("/$wiki_id") %>"><%= $wiki->{title} %></a></td>
       </tr>
     % }
   </table>

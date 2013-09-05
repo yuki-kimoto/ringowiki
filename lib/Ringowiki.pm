@@ -129,21 +129,28 @@ sub startup {
       if $self->mode eq 'development';
     
     # Auto routes
-    $self->plugin('AutoRoute');
+    $self->plugin('AutoRoute', route => $r);
     
-    # Main
     {
-      # List wiki
-      $r->get('/list-page/:wiki_id' => template 'list-page');
+      # Wiki
+      my $r = $r->route("/:wiki_id");
     
-      # Edit page
-      $r->get('/edit-page/:wiki_id/:page_name' => template 'edit-page');
-
-      # Page
-      $r->get('/wiki/:wiki_id/:page_name' => {page_name => undef} => template 'page');
+      # List page
+      $r->get('/_pages' => template '_pages');
       
-      # Page history
-      $r->get('/page-history/:wiki_id/:page_name' => {page_name => undef} => template 'page-history');
+      {
+        # Page
+        $r->get("/_create/:page_name" => {page_name => undef} => template '_create');
+        
+        # Edit page
+        $r->get('/_edit/:page_name' => template '_edit');
+
+        # Page history
+        $r->get('/_page-history/:page_name' => {page_name => undef} => template '_page-history');
+
+        # Page
+        $r->get("/:page_name" => {page_name => undef} => template 'page');
+      }
     }
 
     # API

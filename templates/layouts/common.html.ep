@@ -43,19 +43,19 @@
           <ul class="nav navbar-nav">
             % if (defined $wiki_id) {
               <!-- Menu for wiki page -->
-              <li> <a href="<%= url_for("/list-page/$wiki_id") %>">一覧</a> </li>
-              <li> <a href="wiki.cgi?SearchPage">検索</a> </li>
-              <li> <a href="wiki.cgi?RecentChanges">Wiki履歴</a> </li>
+              <li> <a href="<%= url_for("/$wiki_id/_pages") %>">一覧</a> </li>
+              <li> <a href="<%= url_for("/$wiki_id/_search") %>">検索</a> </li>
+              <li> <a href="<%= url_for("/$wiki_id/_wiki-history") %>">Wiki履歴</a> </li>
               <!---->
             % }
           </ul>
           <ul class="nav navbar-nav navbar-right">
             % if (defined $wiki_id) {
               <!-- Menu for wiki page -->
-              <li> <a href="<%= url_for('/create-page')->query(wiki_id => $wiki_id) %>">新規作成</a> </li>
+              <li> <a href="<%= url_for("/$wiki_id/_create") %>">新規作成</a> </li>
               % if (defined $page_name) {
-                <li> <a href="<%= url_for("/edit-page/$wiki_id/$page_name") %>">編集</a> </li>
-                <li> <a href="<%= url_for("/page-history/$wiki_id/$page_name") %>">ページ履歴</a> </li>
+                <li> <a href="<%= url_for("/$wiki_id/_edit/$page_name") %>">編集</a> </li>
+                <li> <a href="<%= url_for("/$wiki_id/_page-history/$page_name") %>">ページ履歴</a> </li>
               % }
             % }
             <li> <a href="<%= url_for '/_admin' %>">管理</a></li>
