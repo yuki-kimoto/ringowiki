@@ -3,6 +3,11 @@ body {
 	font-size:	14px;
 }
 
+.footer {
+  text-align:center;
+  margin:10px;
+}
+
 a {
 	color:		#75a800;
 }
