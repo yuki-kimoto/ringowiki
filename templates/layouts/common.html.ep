@@ -5,6 +5,7 @@
   my $page_name = stash('page_name');
   
   my $wiki_title = app->dbi->model('wiki')->select('title', id => $wiki_id)->value // 'None';
+  my $title = stash('title') || 'RingoWiki';
 %>
 <!DOCTYPE html>
 <html>

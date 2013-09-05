@@ -6,7 +6,6 @@
   # Validation
   my $raw_params = $api->params;
   
-  warn dumper $raw_params;
   my $rule = [
     wiki_id => ['word'],
     page_name => ['not_blank']

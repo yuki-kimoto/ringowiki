@@ -1,13 +1,27 @@
 <%
-  # Redirect to setup page
-  return $self->redirect_to('/setup')
-    unless app->util->setup_completed;
-  
   # Redirect to main wiki
-  my $wiki = app->dbi->model('wiki')
-    ->select(append => 'order by main desc')->one;
-  if ($wiki) {
-    $self->redirect_to("/wiki/$wiki->{id}");
-    return;
-  }
+  my $wikis = app->dbi->model('wiki')
+    ->select(append => 'order by main desc')->all;
 %>
+
+% layout 'common';
+
+<h1 class="header wiki_page_header">
+  Wiki一覧
+</h1>
+
+<div class="container">
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+    </tr>
+    % for my $wiki (@$wikis) {
+      % my $wiki_id = $wiki->{id};
+      <tr>
+        <td><a href="<%= url_for("/wiki/$wiki_id") %>"><%= $wiki_id %></a></td>
+        <td><a href="<%= url_for("/wiki/$wiki_id") %>"><%= $wiki->{title} %></a></td>
+      </tr>
+    % }
+  </table>
+</div>
