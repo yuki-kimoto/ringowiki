@@ -1,0 +1,97 @@
+<%
+  my $api = wiki_api;
+
+  my $wiki_count = app->dbi->model('wiki')->select('count(*)')->value;
+  
+  my $op = param('op') || '';
+  my $errors;
+  if ($op eq 'create' && lc $self->req->method eq 'post') {
+    # Paramters
+    my $params = $api->params;
+    
+    # Check wiki existence
+    my $wiki_exists_check = sub {
+      my $id = shift;
+      
+      my $wiki = app->dbi->model('wiki')->select(id => $id)->one;
+      
+      return !$wiki ? 1 : 0;
+    };
+    
+    # Validation
+    my $rule = [
+      id => [
+        [not_blank => 'Wiki ID is empty'],
+        [$wiki_exists_check => 'Wiki already exists']
+      ],
+      title => {require => 0, default => ''} => [
+        'any'
+      ]
+    ];
+    my $vresult = app->validator->validate($params, $rule);
+    if ($vresult->is_ok) {
+      # Safe parameters
+      my $p = $vresult->data;
+      
+      # Create wiki
+      eval {
+        app->dbi->model('wiki')->insert($p);
+      };
+      
+      # Error check
+      if (my $e = $@) {
+        $errors = ['Internal Error'];
+        app->log->error(url_with . " $@");
+      }
+      else {
+        flash(message => "Success: Wiki created($p->{id}, $p->{title}).");
+        $self->redirect_to('current');
+        return;
+      }
+    }
+    else {
+      $errors = $vresult->messages;
+    }
+  }
+%>
+
+% layout 'common', title => 'Create Wiki';
+
+  <h1 class="header">
+    Create Wiki
+  </h1>
+
+  % if (my $message = flash('message')) {
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= $message %>
+    </div>
+  % }
+  % if ($errors) {
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      % for my $error (@$errors) {
+        <p><%= $error %></p>
+      % }
+    </div>
+  % }
+  
+  <form role="form" class="login_form form-horizontal" action="<%= url_for->query(op => 'create') %>" method="post">
+    <div class="form-group">
+      <label class="col-lg-2 control-label" for="wiki_id">Wiki ID</label>
+      <div class="col-lg-8">
+        %= text_field id => ($wiki_count ? '' : 'main'), class => "form-control", id => "wiki_id", placeholder => "Wiki ID";
+      </div>
+     </div>
+     <div class="form-group">
+      <label class="col-lg-2 control-label" for="login_pw">Title</label>
+      <div class="col-lg-8">
+        <input type="title" class="form-control" name="title" id="login_pw" placeholder="Title">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <button type="submit" class="btn btn-primary">Create Wiki</button>
+      </div>
+    </div>
+  </form>
