@@ -1,0 +1,103 @@
+<%
+  # API
+  my $api = wiki_api;
+  
+  # Parameters
+  my $op = param('op') || '';
+  my $wiki_id = param('wiki') || '';
+  
+  # Authentication
+  unless ($api->logined_admin) {
+    $self->redirect_to('/');
+    return;
+  }
+  
+  my $errors;
+  if ($op eq 'update' && lc $self->req->method eq 'post') {
+    my $params = $api->params;
+    
+    my $rule = [
+      id => [
+        ['not_blank' => 'Wiki name is empty'],
+        ['wiki_name' => 'Wiki name is invalid']
+      ],
+      title => {require => 0, default => ''} => [
+        'any'
+      ]
+    ];
+    
+    my $vresult = app->validator->validate($params, $rule);
+    
+    if ($vresult->is_ok) {
+      my $p = $vresult->data;
+      my $id = delete $p->{id};
+      eval {
+        app->dbi->model('wiki')->update($p, id => $id);
+      };
+      
+      if (my $e = $@) {
+        $errors = ['Internal Error'];
+        app->log->error(url_with . " $e");
+      }
+      else {
+        flash(message => 'Updated setting');
+        my $url = url_for->query(wiki => $id);
+        $self->redirect_to($url);
+        return;
+      }
+    }
+    else {
+      $errors = $vresult->messages;
+    }
+  }
+  
+  # Wiki
+  my $wiki = app->dbi->model('wiki')->select(id => $wiki_id)->one;
+%>
+
+% layout 'common', title => 'Your Profile';
+  
+  <div class="container">
+    % if (my $message = flash('message')) {
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        %= $message;
+      </div>
+    % }
+    
+    % if ($errors) {
+      <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        % for my $error (@$errors) {
+          <p><%= $error %></p>
+        % }
+      </div>
+    % }
+    
+    <div><h3>Wiki Setting</h3></div>
+    <div class="border-gray bk-gray-light" style="padding:5px;font-weight:bold;font-size:17px">
+      
+    </div>
+    <form role="form" class="login_form form-horizontal" action="<%= url_for->query(op => 'update') %>" method="post">
+      <div class="form-group">
+        <label class="col-lg-2 control-label" for="wiki_id">Wiki ID</label>
+        <div class="col-lg-8">
+          <%= $wiki_id %>
+          %= hidden_field id => $wiki_id;
+        </div>
+       </div>
+       <div class="form-group">
+        <label class="col-lg-2 control-label" for="login_pw">Title</label>
+        <div class="col-lg-8">
+          %= text_field title => $wiki->{title}, class => "form-control", id => "title",  placeholder => "title";
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  %= include '/include/footer';
