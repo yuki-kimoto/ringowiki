@@ -55,8 +55,8 @@
 <h2>ウィキ管理</h2>
 <table class="table">
   <tr>
-    <th><a href="<%= url_for '/_admin/create-wiki' %>">ウィキの作成</a></th>
-    <td>新しいウィキを作成します。</td>
+    <th><a href="<%= url_for '/_admin/wikis' %>">ウィキの管理</a></th>
+    <td>ウィキを管理します。</td>
   </tr>
 </table>
 
@@ -64,7 +64,7 @@
 <table class="table">
   <tr>
     <th><a href="<%= url_for('/_admin/users') %>">ユーザー管理</a></th>
-    <td>ユーザの追加と削除が行えます</td>
+    <td>ユーザを管理します。</td>
   </tr>
 </table>
 

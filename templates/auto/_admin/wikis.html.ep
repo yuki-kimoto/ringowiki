@@ -1,0 +1,116 @@
+<%
+  my $op = param('op') || '';
+  my $api = wiki_api;
+  
+  my $errors;
+  if ($op eq 'delete' && lc $self->req->method eq 'post') {
+
+    # Validation
+    my $params = $api->params;
+    my $validator = $self->app->validator;
+    my $rule = [
+      wiki => [
+        ['not_blank' => 'Wiki name is empty.'],
+      ]
+    ];
+    my $vresult = $validator->validate($params, $rule);
+    
+    if ($vresult->is_ok) {
+      
+      # Valid parameters
+      my $params = $vresult->data;
+      my $wiki = $params->{wiki};
+      
+      # Delete wiki
+      my $count;
+      eval { $count = app->manager->delete_wiki($wiki) };
+      if ($@) {
+        app->log->error("/_admin/wikis?op=delete: $@");
+        $errors = ['Internal Error'];
+      }
+      elsif ($count == 0) {
+        app->log->error("/_admin/wikis?op=delete: Wiki $wiki not exists");
+        $errors = ['Internal Error'];
+      }
+      else {
+        $self->flash(message => "Wiki $wiki is deleted.");
+        $self->redirect_to('current');
+        return;
+      }
+    }
+    else { $errors = $vresult->messages }
+  }
+  
+  my $wikis = app->dbi->model('wiki')->select->all;
+%>
+
+% layout 'common', title => 'Admin Wikis';
+
+  %= javascript begin
+    $(document).ready(function () {
+      
+      // Confirm delete
+      $('.delete-btn').on('click', function () {
+        var wiki = $(this).attr('wiki');
+        
+        var input = window.prompt(
+          'Are you really delete wiki "' + wiki
+          + '". Wiki and wiki\'s all repositories are deleted. Please input wiki name.'
+        );
+        
+        if (wiki === input) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      });
+    });
+  % end
+
+  %= include '/include/header';
+
+  <div class="container">
+
+    % if (my $message = flash('message')) {
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        %= $message;
+      </div>
+    % }
+    
+    % if ($errors) {
+      <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        % for my $error (@$errors) {
+          <p><%= $error %></p>
+        % }
+      </div>
+    % }
+    
+    <div><h3>Admin Wikis</h3></div>
+    <div style="margin-bottom:10px"><a class="btn" href="<%= url_for('/_admin/wiki/create') %>">Create Wiki</a></div>
+    <div class="container">
+      <table class="table">
+        % for my $wiki (@$wikis) {
+          % my $wid = $wiki->{id};
+          <tr>
+            <td>
+              <a href="<%= url_for("/$wid") %>"><%= $wid %></a>
+            </td>
+            <td style="text-align:right">
+              <a class="btn btn-mini" href="<%= url_for('/_admin/wiki/setting')->query(wiki => $wid) %>">Setting</a>
+              <form style="display:inline-block" action="<%= url_for->query(op => 'delete') %>" method="post">
+                %= hidden_field wiki => $wid;
+                <input type="submit" class="btn btn-mini delete-btn" wiki="<%= $wid %>" value="Delete">
+              </form>
+            </td>
+          </tr>
+        % }
+      </table>
+    </div>
+  </div>
+  <div class="text-center" style="margin-bottom:20px"><big><a href="<%= url_for('/_admin') %>">Admin page</a></big></div>
+  
+  %= include '/include/footer';
+  
