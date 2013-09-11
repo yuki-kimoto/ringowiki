@@ -214,8 +214,6 @@ sub setup_database {
     my $table_info = $table_infos->{$table_name};
     my $primary_keys = $table_info->{primary_keys};
     
-    use Data::Dumper;
-    
     my $columns = $table_info->{columns};
     
     # Create table

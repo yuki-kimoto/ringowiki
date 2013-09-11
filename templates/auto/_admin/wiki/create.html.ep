@@ -34,8 +34,12 @@
       my $p = $vresult->data;
       
       # Create wiki
+      my $dbi = app->dbi;
       eval {
-        app->dbi->model('wiki')->insert($p);
+        $dbi->connector->txn(sub {
+          $dbi->model('wiki')->insert($p);
+          $api->_init_page($p->{id});
+        });
       };
       
       # Error check

@@ -96,14 +96,13 @@ sub params {
 }
 
 sub _init_page {
-  my $self = shift;
+  my ($self, $wiki_id) = @_;
   
   # DBI
   my $dbi = $self->app->dbi;
   
   # Create home page
   $dbi->connector->txn(sub {
-    my $wiki_id = $dbi->model('wiki')->select('id', where => {main => 1})->value;
     
     my $page_name = 'Home';
     $dbi->model('page')->insert(
@@ -122,39 +121,6 @@ sub _init_page {
       }
     );
   });
-}
-
-sub create_wiki {
-  my $self = shift;
-  
-  # Validation
-  my $raw_params = {map { $_ => $self->param($_) } $self->param};
-  my $rule = [
-    id => ['word'],
-    title => ['any']
-  ];
-  my $vresult = $self->app->validator->validate($raw_params, $rule);
-  return $self->render(json => {success => 0, validation => $vresult->to_hash})
-    unless $vresult->is_ok;
-  my $params = $vresult->data;
-  $params->{title} = '未設定' unless length $params->{title};
-  
-  # DBI
-  my $dbi = $self->app->dbi;
-  
-  # Transaction
-  $dbi->connector->txn(sub {
-  
-    # Create wiki
-    my $mwiki = $dbi->model('wiki');
-    $params->{main} = 1 unless $mwiki->select->one;
-    $mwiki->insert($params);
-    
-    # Initialize page
-    $self->_init_page;
-  });
-  
-  $self->render(json => {success => 1});
 }
 
 sub _get_default_page {
