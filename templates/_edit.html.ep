@@ -1,5 +1,6 @@
 <%
   use Text::Markdown ();
+  use Text::Diff ();
   
   my $api = wiki_api;
   
@@ -35,6 +36,7 @@
   my $op = param('op') || '';
   my $errors;
   my $html_content;
+  my @lines;
   if (lc $self->req->method eq 'post') {
     if ($op eq 'preview') {
       
@@ -67,7 +69,44 @@
       }
     }
     elsif ($op eq 'diff') {
+
+      # Validation
+      my $raw_params = {map { $_ => $self->param($_) } $self->param};
+      my $rule = [
+        wiki_id => ['word'],
+        page_name => ['not_blank'],
+        content => ['any']
+      ];
+      my $vresult = $self->app->validator->validate($raw_params, $rule);
+      my $params = $vresult->data;
+      my $wiki_id = $params->{wiki_id};
+      my $page_name = $params->{page_name};
+      my $content_new = $params->{content};
       
+      # Exception
+      return $self->render(json => {success => 0})
+        unless defined $wiki_id && defined $page_name && defined $content_new;
+      
+      # Content diff
+      my $content = $self->app->dbi->model('page')
+        ->select('content', where => {wiki_id => $wiki_id, name => $page_name})
+        ->value;
+      $content = '' unless defined $content;
+      
+      $content =~ s/\x0D\x0A/\x0A/g;
+      $content_new =~ s/\x0D\x0A/\x0A/g;
+      
+      my $content_diff = Text::Diff::diff \$content, \$content_new, {STYLE => 'Unified'};
+      
+      warn $content_diff;
+      
+      my @diff_lines = split /\n/, $content_diff;
+      shift @diff_lines;
+      my $line_number = 1;
+      for my $diff_line (@diff_lines) {
+        push @lines, $diff_line;
+        $line_number++;
+      }
     }
     elsif ($op eq 'save') {
       
@@ -89,11 +128,16 @@
   </div>
 % }
 
-<div id="diff_area" style="display:none">
-  <div id="diff_header">差分</div>
-  <div id="diff_content"></div>
-</div>
-
+% if ($op eq 'diff') {
+  <div id="diff_area">
+    <div id="diff_header">差分</div>
+    <div id="diff_content">
+      % for my $line (@lines) {
+        <pre style="border:none;background:white;padding:0px;margin:0px;"><%= $line %></pre>
+      % }
+    </div>
+  </div>
+% }
 
 <form name="edit_page" class="edit_form" role="form" action="<%= url_for('current') %>" method="post" >
   <input type="hidden" name="wiki_id" value="<%= param('wiki_id') %>">
@@ -104,7 +148,7 @@
 
   <div class="bottom_btns">
     <input type="button" onclick="$(this).closest('form').attr('action', '<%= url_for->query(op => 'preview') %>').submit();" class="btn btn-default" value="プレビュー" />
-    <input type="button" onclick="$(this).closest('form').find('op').val('diff');$(this).closest('form').submit();" class="btn btn-default" value="差分を表示" />
+    <input type="button" onclick="$(this).closest('form').attr('action', '<%= url_for->query(op => 'diff') %>').submit();" class="btn btn-default" value="差分を表示" />
     <input type="button" onclick="$(this).closest('form').find('op').val('save');$(this).closest('form').submit();" class="btn btn-primary" value="保存する" />
   </div>
 </form>
