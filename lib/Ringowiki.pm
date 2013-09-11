@@ -9,6 +9,7 @@ use Ringowiki::API;
 use Ringowiki::Manager;
 use Scalar::Util 'weaken';
 use Mojolicious::Plugin::AutoRoute::Util 'template';
+use Carp 'croak';
 
 has util => sub { RingoWiki::Util->new(app => shift) };
 has validator => sub { Validator::Custom->new };
@@ -161,6 +162,80 @@ sub startup {
           push @{$self->req->url->base->path->parts}, $prefix;
         }
       });
+    }
+  }
+  
+  # Setup database
+  $self->setup_database;
+}
+
+my $table_infos = {
+  wiki => {
+    primary_keys => ['id'],
+    columns => [
+      ["title", "not null default ''"],
+      ["main",  "not null default 0"]
+    ]
+  },
+  user => {
+    primary_keys => ['id'],
+    columns => [
+      ["password", "not null default ''"],
+      ["admin", "not null default ''"],
+      ["salt", "not null default ''"]
+    ]
+  },
+  page => {
+    primary_keys => ['wiki_id', 'name'],
+    columns => [
+      ["content", "not null default ''"],
+      ["main", "not null default 0"],
+      ["ctime", "not null default ''"],
+      ["mtime", "not null default ''"]
+    ]
+  },
+  page_history => {
+    primary_keys => ['wiki_id', 'page_name', 'version'],
+    columns => [
+      ["content_diff", "not null default ''"],
+      ["user", "not null default ''"],
+      ["message", "not null default ''"],
+      ["ctime", "not null default ''"],
+    ]
+  }
+};
+
+sub setup_database {
+  my $self = shift;
+  
+  my $dbi = $self->app->dbi;
+  
+  for my $table_name (keys %$table_infos) {
+    my $table_info = $table_infos->{$table_name};
+    my $primary_keys = $table_info->{primary_keys};
+    
+    use Data::Dumper;
+    
+    my $columns = $table_info->{columns};
+    
+    # Create table
+    my $create_table = "create table $table_name (row_id integer primary key autoincrement, ";
+    $create_table .= join ',', map { "$_ not null" } @$primary_keys;
+    $create_table .= ', unique(' . join(',', @$primary_keys) . '))';
+    eval { $dbi->execute($create_table) };
+    
+    # Add columns
+    for my $column (@$columns) {
+      my $add_column = "alter table $table_name add column $column->[0] $column->[1]";
+      eval { $dbi->execute($add_column) };
+    }
+
+    # Check user table
+    eval { $dbi->select([@$primary_keys, map { $_->[0] } @$columns], table => $table_name) };
+    if ($@) {
+      my $error = "Can't create $table_name table properly: $@";
+      $self->app->log->error($error);
+      croak $error;
     }
   }
 }

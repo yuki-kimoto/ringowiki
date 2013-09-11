@@ -9,40 +9,6 @@ use Digest::MD5 'md5_hex';
 
 has 'cntl';
 
-our $TABLE_INFOS = {
-  setup => [],
-  wiki => [
-    'id not null unique',
-    "title not null default ''",
-    "main not null default 0"
-  ],
-  user => [
-    'id not null unique',
-    'password not null',
-    'admin not null',
-    'salt not null'
-  ],
-  page => [
-    'wiki_id not null',
-    'name not null',
-    "content not null default ''",
-    'main not null default 0',
-    "ctime not null default ''",
-    "mtime not null default ''",
-    'unique (wiki_id, name)'
-  ],
-  page_history => [
-    "wiki_id not null default ''",
-    "page_name not null default ''",
-    "version not null default ''",
-    "content_diff not null default ''",
-    "user not null default ''",
-    "message not null default ''",
-    "ctime not null default ''",
-    "unique (wiki_id, page_name, version)"
-  ]
-};
-
 sub app { shift->cntl->app }
 
 sub encrypt_password {
@@ -189,26 +155,6 @@ sub create_wiki {
   });
   
   $self->render(json => {success => 1});
-}
-
-sub _create_table {
-  my ($self, $table, $columns) = @_;
-  
-  # DBI
-  my $dbi = $self->app->dbi;
-  
-  # Check table existance
-  my $table_exist = 
-    eval { $dbi->select(table => $table, where => '1 <> 1'); 1};
-  
-  # Create table
-  $columns = ['rowid integer primary key autoincrement', @$columns];
-  unless ($table_exist) {
-    my $sql = "create table $table (";
-    $sql .= join ', ', @$columns;
-    $sql .= ')';
-    $dbi->execute($sql);
-  }
 }
 
 sub _get_default_page {
