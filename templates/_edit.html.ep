@@ -98,8 +98,6 @@
       
       my $content_diff = Text::Diff::diff \$content, \$content_new, {STYLE => 'Unified'};
       
-      warn $content_diff;
-      
       my @diff_lines = split /\n/, $content_diff;
       shift @diff_lines;
       my $line_number = 1;
@@ -109,7 +107,82 @@
       }
     }
     elsif ($op eq 'save') {
-      
+      # Validation
+      my $raw_params = {map { $_ => $self->param($_) } $self->param};
+      my $rule = [
+        wiki_id => ['not_blank'],
+        page_name => {require => ''} => ['not_blank'],
+        content => ['any']
+      ];
+      my $vresult = $self->app->validator->validate($raw_params, $rule);
+      if ($vresult->is_ok) {
+        my $params = $vresult->data;
+        my $wiki_id = $params->{wiki_id};
+        my $page_name = $params->{page_name};
+        
+        # DBI
+        my $dbi = $self->app->dbi;
+        
+        # Transaction
+        my $mpage = $dbi->model('page');
+        my $mpage_history = $dbi->model('page_history');
+        $dbi->connector->txn(sub {
+
+          # Page exists?
+          my $page_history = $mpage_history->select(
+            id => [$wiki_id, $page_name])->one;
+          my $page_exists = $page_history ? 1 : 0;
+          
+          # Edit page
+          if ($page_exists) {
+            # Content
+            my $page = $mpage->select(id => [$wiki_id, $page_name])->one;
+            my $content = $page->{content};
+            my $content_new = $params->{content};
+          
+            # No change
+            return $self->render_json({success => 1})
+              if $content eq $content_new;
+            
+            # Content diff
+            my $content_diff = Text::Diff::diff(\$content, \$content_new, {STYLE => 'Unified'});
+            my $max_version = $mpage_history->select(
+              'max(version) as max',
+              id => [$wiki_id, $page_name]
+            )->value;
+            
+            # Create page history
+            $mpage_history->insert(
+              {content_diff => $content_diff, version => $max_version + 1},
+              id => [$wiki_id, $page_name]
+            );
+            
+            # Update page
+            $mpage->update(
+              {content => $content_new},
+              id => [$wiki_id, $page_name]
+            );
+          }
+          # Create page
+          else {
+            my $content_new = $params->{content};
+            my $empty = '';
+
+            my $content_diff = Text::Diff::diff \$empty, \$content_new, {STYLE => 'Unified'};
+            $mpage_history->insert(
+              {wiki_id => $wiki_id, page_name => $page_name, version => 1});
+            $mpage->insert(
+              {wiki_id => $wiki_id, name => $page_name, content => $content_new});
+          }
+        });
+        if (my $e = $@) {
+          $errors = ['Internal Error'];
+          $self->app->log->error(url_with . " $e");
+        }
+      }
+      else {
+        $errors = $vresult->messages;
+      }
     }
   }
 %>
@@ -149,6 +222,6 @@
   <div class="bottom_btns">
     <input type="button" onclick="$(this).closest('form').attr('action', '<%= url_for->query(op => 'preview') %>').submit();" class="btn btn-default" value="プレビュー" />
     <input type="button" onclick="$(this).closest('form').attr('action', '<%= url_for->query(op => 'diff') %>').submit();" class="btn btn-default" value="差分を表示" />
-    <input type="button" onclick="$(this).closest('form').find('op').val('save');$(this).closest('form').submit();" class="btn btn-primary" value="保存する" />
+    <input type="button" onclick="$(this).closest('form').attr('action', '<%= url_for->query(op => 'save') %>').submit();" class="btn btn-primary" value="保存する" />
   </div>
 </form>
