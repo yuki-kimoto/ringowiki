@@ -416,96 +416,6 @@ sub init_pages {
   return $self->render(json => {success => 1});
 }
 
-
-sub resetup {
-  my $self = shift;
-  
-  # Prefix
-  my $prefix_new = '__ringowiki_new__';
-  my $prefix_old = '__ringowiki_old__';
-  
-  # DBI
-  my $dbi = $self->app->dbi;
-  
-  # Drop new tables
-  my $new_tables = $dbi->select(
-    column => 'name',
-    table => 'main.sqlite_master',
-    where => "type = 'table' and name like '$prefix_new%'"
-  )->values;
-  $dbi->execute("drop table $_") for @$new_tables;
-
-  # Drop old tables
-  my $old_tables = $dbi->select(
-    column => 'name',
-    table => 'main.sqlite_master',
-    where => "type = 'table' and name like '$prefix_old%'"
-  )->values;
-  $dbi->execute("drop tabe $_") for @$old_tables;
-  
-  # Create new tables
-  eval {
-    $self->_create_table("$prefix_new$_" => $TABLE_INFOS->{$_}) for keys %$TABLE_INFOS;
-  };
-  if ($@) {
-    $self->app->log->error($@);
-    return $self->render(json => {success => 0});
-  }
-  
-  # Get current tables
-  my %current_tables = $dbi->select(
-    column => 'name, 1',
-    table => 'main.sqlite_master',
-    where => "type = 'table' and name <> 'sqlite_sequence' and not name like '$prefix_new%'"
-  )->flat;
-
-  # Copy current table to new table
-  for my $table (keys %$TABLE_INFOS) {
-    next unless $current_tables{$table};
-    
-    my $new_column_info_result = $dbi->execute("PRAGMA TABLE_INFO('$prefix_new$table')");
-    my $new_columns = {};
-    while (my $row = $new_column_info_result->fetch_hash) {
-      $new_columns->{$row->{name}} = 1; 
-    }
-    
-    my $current_column_info_result = $dbi->execute("PRAGMA TABLE_INFO('$table')");
-    my @current_columns;
-    while (my $row = $current_column_info_result->fetch_hash) {
-      push @current_columns, $row->{name};
-    }
-    
-    my @columns = grep { $new_columns->{$_} } @current_columns;
-    my $columns = join ', ', @current_columns;
-    
-    my $result = $dbi->select($columns, table => $table);
-    my $new_table = "$prefix_new$table";
-    while (my $row = $result->fetch_hash) {
-      $dbi->insert($row, table => $new_table);
-    }
-  }
-  
-  # Rename table
-  $dbi->connector->txn(sub {
-    # Rename current table to old
-    $dbi->execute("alter table $_ rename to $prefix_old$_")
-      for keys %current_tables;
-    
-    # Rename new table to current
-    $dbi->execute("alter table $prefix_new$_  rename to $_")
-      for keys %$TABLE_INFOS;
-  });
-  
-  # Drop old table
-  $dbi->execute("drop table $prefix_old$_")
-    for keys %current_tables;
-  
-  # Cleanup
-  $dbi->execute('vacuum');
-  
-  $self->render_json({success => 1});
-}
-
 sub setup {
   my $self = shift;
   
@@ -578,6 +488,47 @@ sub _get_default_page {
   }
   
   return ($wiki_id, $page_name);
+}
+
+sub admin_user {
+  my $self = shift;
+  
+  # Admin user
+  my $admin_user = $self->app->dbi->model('user')
+    ->select(where => {admin => 1})->one;
+  
+  return $admin_user;
+}
+
+sub is_admin {
+  my ($self, $user) = @_;
+  
+  # Check admin
+  my $is_admin = $self->app->dbi->model('user')
+    ->select('admin', id => $user)->value;
+  
+  return $is_admin;
+}
+
+sub users {
+  my $self = shift;
+  
+  # Users
+  my $users = $self->app->dbi->model('user')->select(
+    where => [':admin{<>}',{admin => 1}],
+    append => 'order by id'
+  )->all;
+  
+  return $users;
+}
+
+sub exists_user {
+  my ($self, $user) = @_;
+  
+  # Exists project
+  my $row = $self->app->dbi->model('user')->select(id => $user)->one;
+  
+  return $row ? 1 : 0;
 }
 
 1;

@@ -23,7 +23,7 @@
       
       # Delete wiki
       my $count;
-      eval { $count = app->manager->delete_wiki($wiki) };
+      eval { $count = $api->delete_wiki($wiki) };
       if ($@) {
         app->log->error("/_admin/wikis?op=delete: $@");
         $errors = ['Internal Error'];

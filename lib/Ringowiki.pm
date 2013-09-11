@@ -5,7 +5,6 @@ our $VERSION = '0.01';
 use Mojo::Base 'Mojolicious';
 use DBIx::Custom;
 use Validator::Custom;
-use Ringowiki::Util;
 use Ringowiki::API;
 use Ringowiki::Manager;
 use Scalar::Util 'weaken';
@@ -113,19 +112,11 @@ sub startup {
     my $r = $r->under(sub {
       my $self = shift;
       
-      # Database is setupped?
-      unless ($self->app->util->setup_completed) {
-        my $path = $self->req->url->path->to_string;
-        return 1 if $path =~ m|^(/api)?/setup|;
-        $self->redirect_to('/setup');
-        return 0; 
-      }
-      
       return 1;
     });
 
-    # SQLite viewer (only development)
-    $self->plugin('DBViewer', dsn => "dbi:SQLite:$dbpath")
+    # DBViewer (/dbviewer)
+    $self->plugin('DBViewer', dsn => "dbi:SQLite:$dbpath", route => $r)
       if $self->mode eq 'development';
     
     # Auto routes
@@ -136,51 +127,20 @@ sub startup {
       my $r = $r->route("/:wiki_id");
     
       # List page
-      $r->get('/_pages' => template '_pages');
+      $r->any('/_pages' => template '_pages');
       
       {
         # Page
-        $r->get("/_create/:page_name" => {page_name => undef} => template '_create');
+        $r->any("/_create/:page_name" => {page_name => undef} => template '_create');
         
         # Edit page
-        $r->get('/_edit/:page_name' => template '_edit');
+        $r->any('/_edit/:page_name' => template '_edit');
 
         # Page history
-        $r->get('/_page-history/:page_name' => {page_name => undef} => template '_page-history');
+        $r->any('/_page-history/:page_name' => {page_name => undef} => template '_page-history');
 
         # Page
-        $r->get("/:page_name" => {page_name => undef} => template 'page');
-      }
-    }
-
-    # API
-    {
-      my $r = $r->route('/api')->to('api#');
-
-      # Setup wiki
-      $r->post('/setup')->to('#setup');
-
-      # Edit page
-      $r->post('/edit-page')->to('#edit_page');
-
-      # Preview
-      $r->post('/preview')->to('#preview');
-      
-      # Diff
-      $r->post('/content-diff')->to('#content_diff');
-
-      if ($self->mode eq 'development') {
-        # Initialize wiki
-        $r->post('/init')->to('#init');
-        
-        # Re-setupt wiki
-        $r->post('/resetup')->to('#resetup');
-        
-        # Create wiki
-        $r->post('/create-wiki')->to('#create_wiki');
-        
-        # Remove all pages
-        $r->post('/init-pages')->to('#init_pages');
+        $r->any("/:page_name" => {page_name => undef} => template 'page');
       }
     }
   }

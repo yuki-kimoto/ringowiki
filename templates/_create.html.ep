@@ -1,24 +1,27 @@
 % layout 'common', title => 'ページを作成', body_class => 'normal';
 %= javascript begin
   $(document).ready(function () {
-    $('input[name="post_form"]').click(function () {
+    $('#create_btn').click(function () {
       var page_name = $('input[name="page_name"]').val();
       if (page_name === '') {
         alert("ページ名が入力されていません。");
-        return;
+        return false;
       }
-      location.href
-        = "<%= url_for("/edit-page") . "?wiki_id=" . param('wiki_id') %>&page_name=" + page_name;
+      else {
+        location.href
+          = "<%= url_for("/$wiki_id/_edit/") %>" + page_name;
+        return false;
+      }
     });
   });
 
 % end
 
 <h1 class="header">新規作成</h1>
-<form name="create_wiki_page" class="create_page_form form-inline" role="form">
+<form class="create_page_form form-inline" role="form">
   <p><strong>新しいページ名を入力してください。</strong></p>
   <div class="form-group">
     <%= input_tag page_name => '', class=> 'form-control', placeholder=> 'Page name' %>
   </div>
-  <input type="submit" name="post_form" class="btn btn-primary" value="新規作成">
+  <input type="submit" id="create_btn" name="post_form" class="btn btn-primary" value="新規作成">
 </form>
