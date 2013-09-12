@@ -23,13 +23,13 @@
       
       # Delete user
       my $count;
-      eval { $count = $api->delete_user($user) };
-      if ($@) {
-        app->log->error("/_admin/users?op=delete: $@");
+      eval { $count = app->dbi->model('user')->delete(id => $user) };
+      if (my $e = $@) {
+        app->log->error(url_with . " $e");
         $errors = ['Internal Error'];
       }
       elsif ($count == 0) {
-        app->log->error("/_admin/users?op=delete: User $user not exists");
+        app->log->error(url_with . " User $user not exists");
         $errors = ['Internal Error'];
       }
       else {

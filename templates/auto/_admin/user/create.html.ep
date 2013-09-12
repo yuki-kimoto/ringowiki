@@ -32,16 +32,16 @@
       
       # Valid parameters
       my $params = $vresult->data;
-      my $id = delete $params->{id};
+      my $id = $params->{id};
       my ($password_encrypted, $salt)
         = $api->encrypt_password($params->{password});
       $params->{password} = $password_encrypted;
       $params->{salt} = $salt;
       
       # Create user
-      eval { $api->create_user($id, $params) };
-      if ($@) {
-        app->log->error($@);
+      eval { app->dbi->model('user')->insert($params) };
+      if (my $e = $@) {
+        app->log->error(url_with . " $e");
         $errors = ['Internal Error'];
       }
       else {
@@ -96,7 +96,7 @@
       </div>
       <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-primary">Create User</button>
         </div>
       </div>
     </form>

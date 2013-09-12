@@ -6,7 +6,6 @@ use Mojo::Base 'Mojolicious';
 use DBIx::Custom;
 use Validator::Custom;
 use Ringowiki::API;
-use Ringowiki::Manager;
 use Scalar::Util 'weaken';
 use Mojolicious::Plugin::AutoRoute::Util 'template';
 use Carp 'croak';
@@ -15,7 +14,6 @@ has util => sub { RingoWiki::Util->new(app => shift) };
 has validator => sub { Validator::Custom->new };
 has 'dbi';
 has 'dbpath';
-has 'manager';
 
 sub startup {
   my $self = shift;
@@ -35,11 +33,6 @@ sub startup {
   $listen = [split /,/, $listen] unless ref $listen eq 'ARRAY';
   $conf->{hypnotoad}{listen} = $listen;  
 
-  # Repository Manager
-  my $manager = Ringowiki::Manager->new(app => $self);
-  weaken $manager->{app};
-  $self->manager($manager);
-  
   # Database
   my $db = "ringowiki";
   my $dbpath = $ENV{RINGOWIKI_DBPATH} // $self->home->rel_file("db/$db");
