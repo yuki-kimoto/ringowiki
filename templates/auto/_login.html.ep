@@ -77,7 +77,8 @@
       }
       # Go to user page
       else {
-        $self->redirect_to("/$id");
+        my $back_url = param('back') || '/';
+        $self->redirect_to($back_url);
         return 1;
       }
     }
@@ -92,7 +93,7 @@
   <h1 class="header">
     ログイン
   </h1>
-  <form role="form" class="login_form form-horizontal" action="<%= url_for->query(op => 'login') %>" method="post">
+  <form role="form" class="login_form form-horizontal" action="<%= url_with->query({op => 'login'}) %>" method="post">
     <div class="form-group">
       <label class="col-lg-2 control-label" for="login_id">Login ID</label>
       <div class="col-lg-8">

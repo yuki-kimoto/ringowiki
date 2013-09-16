@@ -52,9 +52,13 @@
           <ul class="nav navbar-nav navbar-right">
             % if (defined $wiki_id) {
               <!-- Menu for wiki page -->
-              <li> <a href="<%= url_for("/$wiki_id/_create") %>">New</a> </li>
+              % if ($api->logined) {
+                <li> <a href="<%= url_for("/$wiki_id/_create") %>">New</a> </li>
+              % }
               % if (defined $page_name) {
-                <li> <a href="<%= url_for("/$wiki_id/_edit/$page_name") %>">Edit</a> </li>
+                % if ($api->logined) {
+                  <li> <a href="<%= url_for("/$wiki_id/_edit/$page_name") %>">Edit</a> </li>
+                % }
                 <li> <a href="<%= url_for("/$wiki_id/_page-history/$page_name") %>">Page History</a> </li>
               % }
             % }
@@ -64,7 +68,7 @@
             % if ($api->logined) {
               <li> <a href="<%= url_for '/_logout' %>">Sign out</a></li>
             % } else {
-              <li> <a href="<%= url_for '/_login' %>">Sign in</a></li>
+              <li> <a href="<%= url_for('/_login')->query(back => url_with->to_abs->to_string) %>">Sign in</a></li>
             % }
           </ul>
         </div><!--/.nav-collapse -->
