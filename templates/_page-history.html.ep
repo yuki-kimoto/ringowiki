@@ -29,24 +29,24 @@
   }
 %>
 
-% layout 'common', title => 'ページ履歴';
+% layout 'common', title => 'Page History';
 
 <h1 class="header">
-  「<%= $page_name %>」の履歴
+  Page history "<%= $page_name %>"
 </h1>
 
 <p>
-  <a class="btn btn-info pull-right">リビジョンの比較</a>
+  <a class="btn btn-info pull-right">Compare Revision</a>
   <br style="clear:both;">
 </p>
 
 <table class="table table-striped">
     <tr>
-      <th>比較</th>
-      <th>ユーザ</th>
-      <th>編集日時</th>
-      <th>メッセージ</th>
-      <th>操作</th>
+      <th>Compare</th>
+      <th>User</th>
+      <th>Time</th>
+      <th>Message</th>
+      <th>Operation</th>
     </tr>
   % for my $history (@$page_histories) {
     <tr>
@@ -59,7 +59,7 @@
         %= $history->{message} || 'no message';
       </td>
       <td>
-        <a href="#">見る</a>
+        <a href="#">See</a>
       </td>
     </tr>
   % }

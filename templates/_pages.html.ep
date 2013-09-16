@@ -13,10 +13,10 @@
   }
 %>
 
-% layout 'common', title => '一覧';
+% layout 'common', title => 'Pages';
 
 <h1 class="header">
-  ページ一覧
+  Pages
 </h1>
 
 <table class="table table-striped">

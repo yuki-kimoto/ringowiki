@@ -7,14 +7,14 @@
 % layout 'common';
 
 <h1 class="header wiki_page_header">
-  Wiki一覧
+  Wikis
 </h1>
 
 <div class="container">
   <table class="table">
     <tr>
       <th>ID</th>
-      <th>タイトル</th>
+      <th>Title</th>
     </tr>
     % for my $wiki (@$wikis) {
       % my $wiki_id = $wiki->{id};
