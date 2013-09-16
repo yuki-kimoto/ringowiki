@@ -1,8 +1,8 @@
 <%
   my $api = wiki_api;
   
-  my $wiki_id = stash('wiki_id');
-  my $page_name = stash('page_name');
+  my $wiki_id = param('wiki_id');
+  my $page_name = param('page_name') || 'Home';
   
   my $wiki_title = app->dbi->model('wiki')->select('title', id => $wiki_id)->value // 'None';
   my $title = stash('title') || 'RingoWiki';
@@ -43,26 +43,28 @@
           <ul class="nav navbar-nav">
             % if (defined $wiki_id) {
               <!-- Menu for wiki page -->
-              <li> <a href="<%= url_for("/$wiki_id/_pages") %>">一覧</a> </li>
-              <li> <a href="<%= url_for("/$wiki_id/_search") %>">検索</a> </li>
-              <li> <a href="<%= url_for("/$wiki_id/_wiki-history") %>">Wiki履歴</a> </li>
+              <li> <a href="<%= url_for("/$wiki_id/_pages") %>">Pages</a> </li>
+              <li> <a href="<%= url_for("/$wiki_id/_search") %>">Search</a> </li>
+              <li> <a href="<%= url_for("/$wiki_id/_wiki-history") %>">Wiki History</a> </li>
               <!---->
             % }
           </ul>
           <ul class="nav navbar-nav navbar-right">
             % if (defined $wiki_id) {
               <!-- Menu for wiki page -->
-              <li> <a href="<%= url_for("/$wiki_id/_create") %>">新規作成</a> </li>
+              <li> <a href="<%= url_for("/$wiki_id/_create") %>">New</a> </li>
               % if (defined $page_name) {
-                <li> <a href="<%= url_for("/$wiki_id/_edit/$page_name") %>">編集</a> </li>
-                <li> <a href="<%= url_for("/$wiki_id/_page-history/$page_name") %>">ページ履歴</a> </li>
+                <li> <a href="<%= url_for("/$wiki_id/_edit/$page_name") %>">Edit</a> </li>
+                <li> <a href="<%= url_for("/$wiki_id/_page-history/$page_name") %>">Page History</a> </li>
               % }
             % }
-            <li> <a href="<%= url_for '/_admin' %>">管理</a></li>
+            % if ($api->logined_admin) {
+              <li> <a href="<%= url_for '/_admin' %>">Admin</a></li>
+            % }
             % if ($api->logined) {
-              <li> <a href="<%= url_for '/_logout' %>">ログアウト</a></li>
+              <li> <a href="<%= url_for '/_logout' %>">Sign out</a></li>
             % } else {
-              <li> <a href="<%= url_for '/_login' %>">ログイン</a></li>
+              <li> <a href="<%= url_for '/_login' %>">Sign in</a></li>
             % }
           </ul>
         </div><!--/.nav-collapse -->

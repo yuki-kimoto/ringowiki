@@ -46,7 +46,7 @@ sub logined_admin {
   # Check logined as admin
   my $user = $c->session('user');
   
-  return $self->app->manager->is_admin($user) && $self->logined($user);
+  return $self->is_admin($user) && $self->logined($user);
 }
 
 sub logined {

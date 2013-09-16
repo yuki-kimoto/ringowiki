@@ -2,28 +2,28 @@
   my $wikies = app->dbi->model('wiki')->select->all;
 %>
 
-% layout 'common', title => 'りんごウィキ管理';
+% layout 'common', title => 'Admin';
 
-<h1 class="header">りんごウィキ管理</h1>
+<div class="container">
 
-<h2>ウィキ管理</h2>
-<table class="table">
-  <tr>
-    <th><a href="<%= url_for '/_admin/wikis' %>">ウィキの管理</a></th>
-    <td>ウィキを管理します。</td>
-  </tr>
-</table>
+  <h1 class="header">Admin</h1>
 
-<h2>ユーザー管理</h2>
-<table class="table">
-  <tr>
-    <th><a href="<%= url_for('/_admin/users') %>">ユーザー管理</a></th>
-    <td>ユーザを管理します。</td>
-  </tr>
-</table>
+  <table class="table">
+    <tr>
+      <th><a href="<%= url_for '/_admin/wikis' %>">Admin Wiki</a></th>
+      <td>Admin wiki</td>
+    </tr>
+    <tr>
+      <th><a href="<%= url_for('/_admin/users') %>">Admin User</a></th>
+      <td>Admin user</td>
+    </tr>
+  </table>
+  
+  % if ($self->app->mode eq 'development') {
+    <h2>Development</h2>
+    <a href="<%= url_for '/dbviewer' %>" class="btn btn-info">Tables</a>
+  % }
 
-% if ($self->app->mode eq 'development') {
-  <h2>開発用</h2>
-  <a href="<%= url_for '/dbviewer' %>" class="btn btn-info">テーブル一覧</a>
+  <div><a href="<%= url_for('/') %>">Top page</a></div>
 
-% }
+</div>
