@@ -135,6 +135,9 @@ sub startup {
       
       # List page
       $r->any('/_pages' => template '_pages');
+
+      # Search
+      $r->any('/_search' => template '_search');
       
       {
         # Page
@@ -145,7 +148,7 @@ sub startup {
 
         # Page history
         $r->any('/_page-history/:page_name' => {page_name => undef} => template '_page-history');
-
+        
         # Page
         $r->any("/:page_name" => {page_name => undef} => template 'page');
       }

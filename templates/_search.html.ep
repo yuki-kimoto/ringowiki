@@ -1,0 +1,44 @@
+<%
+  my $wiki_id = param('wiki_id');
+  my $query = param('q');
+  
+  my $pages;
+  if (defined $query && length $query) {
+    
+    # Where
+    my $clause = [
+      'and', ':wiki_id{=}', ':content{like}'
+    ];
+    my $param = {wiki_id => $wiki_id, content => "%$query%"};
+    
+    $pages = app->dbi->model('page')->select(
+      where => [$clause, $param]
+    )->all;
+  }
+%>
+
+% layout 'common', title => 'Search page', body_class => 'normal';
+
+  <!-- search page -->
+  <form class="form-inline" role="form" action="<%= url_for->query(op => 'search') %>" method="get" style="margin-bottom:30px">
+    <%= text_field q => '' %>
+
+    <label class="radio inline">
+      <%= radio_button type => 'or', checked => 1 %> or
+    </label>
+    <label class="radio inline">
+      <%= radio_button type => 'and' %> and
+    </label>
+
+    <input type="submit" id="search_btn" class="btn btn-primary" value="Search">
+  </form>
+  
+  % if (@$pages) {
+    % for my $page (@$pages) {
+      <div>
+        % my $name = $page->{name};
+        <b><a href="<%= url_for("/$name") %>"><%= $name %></a></b>
+        <%= substr($page->{content}, 0, 50) %>
+      </div>
+    % }
+  % }
