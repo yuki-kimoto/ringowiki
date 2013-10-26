@@ -1,5 +1,5 @@
 <%
-  use Text::Markdown ();
+  use Text::Markdown::Discount ();
   
   my $api = wiki_api;
   
@@ -37,9 +37,9 @@
   $page->{content} = $hf->parse_wiki_link($self, $page->{content}, $page->{wiki_id});
   
   # Content to html(Markdown)
-  $page->{content} = Text::Markdown::markdown($hf->sanitize_tag($page->{content}));
-
-
+  my $content_enc = Encode::encode('UTF-8', $page->{content});
+  my $content_md_enc = Text::Markdown::Discount::markdown($hf->sanitize_tag($content_enc));
+  $page->{content} = Encode::decode('UTF-8', $content_md_enc);
 %>
 
 % layout 'common', title => $page->{name};

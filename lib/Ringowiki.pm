@@ -125,14 +125,13 @@ sub startup {
     $self->plugin('DBViewer', dsn => "dbi:SQLite:$dbpath", route => $r)
       if $self->mode eq 'development';
 
-    $r->any('/' => template 'page');
+    $r->any('/' => template 'page')->to(wiki_id => 'main');
     
     # Auto routes
     $self->plugin('AutoRoute', route => $r);
     
     {
-      # Wikis
-      # my $r = $r->route("/:wiki_id");
+      my $r = $r->route('/')->to(wiki_id => 'main');
       
       # List page
       $r->any('/_pages' => template '_pages');

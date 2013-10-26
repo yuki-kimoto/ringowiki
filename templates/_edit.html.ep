@@ -1,6 +1,7 @@
 <%
-  use Text::Markdown ();
+  use Text::Markdown::Discount ();
   use Text::Diff ();
+  use Encode ();
   
   my $api = wiki_api;
   
@@ -9,7 +10,7 @@
   
   # Exeption
   unless (defined $wiki_id && defined $page_name) {
-    $self->render_exeption;
+    $self->render_exception;
     return;
   }
   
@@ -62,7 +63,9 @@
         $html_content = $hf->parse_wiki_link($self, $content, $wiki_id);
         
         # Sanitize and Markdown
-        $html_content = Text::Markdown::markdown $hf->sanitize_tag($content);
+        my $content_enc = Encode::encode('UTF-8', $content);
+        my $html_content_enc = Text::Markdown::Discount::markdown $hf->sanitize_tag($content);
+        $html_content = Encode::decode('UTF-8', $html_content_enc);
       }
       else {
         $errors = $vresult->messages;

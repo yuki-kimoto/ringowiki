@@ -2,7 +2,6 @@ package Ringowiki::API;
 use Mojo::Base 'Mojolicious::Controller';
 use utf8;
 use Text::Diff 'diff';
-use Text::Markdown 'markdown';
 use Ringowiki::HTMLFilter;
 
 use Digest::MD5 'md5_hex';

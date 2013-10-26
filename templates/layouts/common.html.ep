@@ -41,26 +41,20 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            % if (defined $wiki_id) {
-              <!-- Menu for wiki page -->
-              <li> <a href="<%= url_for("/$wiki_id/_pages") %>">Pages</a> </li>
-              <li> <a href="<%= url_for("/$wiki_id/_search") %>">Search</a> </li>
-              <li> <a href="<%= url_for("/$wiki_id/_wiki-history") %>">Wiki History</a> </li>
-              <!---->
-            % }
+            <!-- Menu for wiki page -->
+            <li> <a href="<%= url_for("/_pages") %>">Pages</a> </li>
+            <li> <a href="<%= url_for("/_search") %>">Search</a> </li>
+            <li> <a href="<%= url_for("/_wiki-history") %>">Wiki History</a> </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            % if (defined $wiki_id) {
-              <!-- Menu for wiki page -->
+            % if ($api->logined) {
+              <li> <a href="<%= url_for("/_create") %>">New</a> </li>
+            % }
+            % if (defined $page_name) {
               % if ($api->logined) {
-                <li> <a href="<%= url_for("/$wiki_id/_create") %>">New</a> </li>
+                <li> <a href="<%= url_for("/_edit/$page_name") %>">Edit</a> </li>
               % }
-              % if (defined $page_name) {
-                % if ($api->logined) {
-                  <li> <a href="<%= url_for("/$wiki_id/_edit/$page_name") %>">Edit</a> </li>
-                % }
-                <li> <a href="<%= url_for("/$wiki_id/_page-history/$page_name") %>">Page History</a> </li>
-              % }
+              <li> <a href="<%= url_for("/_page-history/$page_name") %>">Page History</a> </li>
             % }
             % if ($api->logined_admin) {
               <li> <a href="<%= url_for '/_admin' %>">Admin</a></li>

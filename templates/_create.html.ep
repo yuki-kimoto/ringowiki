@@ -1,3 +1,7 @@
+<%
+  my $wiki_id = param('wiki_id');
+%>
+
 % layout 'common', title => 'Create page', body_class => 'normal';
 %= javascript begin
   $(document).ready(function () {
