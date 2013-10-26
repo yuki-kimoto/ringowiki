@@ -4,12 +4,20 @@
   
   my $pages;
   if (defined $query && length $query) {
+    my $type = param('type') || '';
+    $type = 'or' unless $type eq 'and' || $type eq 'or';
+    my @querys = split / /, $query;
+    for $query (@querys) {
+      $query = "%$query%";
+    }
     
     # Where
     my $clause = [
-      'and', ':wiki_id{=}', ':content{like}'
+      'and',
+      ':wiki_id{=}',
+      [$type, (':content{like}') x @querys]
     ];
-    my $param = {wiki_id => $wiki_id, content => "%$query%"};
+    my $param = {wiki_id => $wiki_id, content => \@querys};
     
     $pages = app->dbi->model('page')->select(
       where => [$clause, $param]
