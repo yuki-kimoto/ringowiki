@@ -87,8 +87,10 @@
       my $content_new = $params->{content};
       
       # Exception
-      return $self->render(json => {success => 0})
-        unless defined $wiki_id && defined $page_name && defined $content_new;
+      unless (defined $wiki_id && defined $page_name && defined $content_new) {
+        $self->render_exception('Internal Error');
+        return;
+      }
       
       # Content diff
       my $content = $self->app->dbi->model('page')
@@ -144,8 +146,10 @@
             my $content_new = $params->{content};
           
             # No change
-            return $self->render_json({success => 1})
-              if $content eq $content_new;
+            if ($content eq $content_new) {
+              $self->redirect_to("/$page_name");
+              return;
+            }
             
             # Content diff
             my $content_diff = Text::Diff::diff(\$content, \$content_new, {STYLE => 'Unified'});

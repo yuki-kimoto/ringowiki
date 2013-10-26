@@ -13,7 +13,7 @@
       }
       else {
         location.href
-          = "<%= url_for("/$wiki_id/_edit/") %>" + page_name;
+          = "<%= url_for("/_edit/") %>" + page_name;
         return false;
       }
     });
