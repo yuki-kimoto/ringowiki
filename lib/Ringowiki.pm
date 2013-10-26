@@ -106,20 +106,34 @@ sub startup {
     my $r = $r->under(sub {
       my $self = shift;
       
+      my $api = $self->wiki_api;
+      
+      # If admin user don't exists, redirect to _start page
+      my $admin_user = $api->admin_user;
+      unless (defined $admin_user && length $admin_user) {
+        my $path_parts = $self->url_for->path->parts;
+        unless (@$path_parts && $path_parts->[0] eq '_start') {
+          $self->redirect_to('/_start');
+          return;
+        }
+      }
+      
       return 1;
     });
 
     # DBViewer (/dbviewer)
     $self->plugin('DBViewer', dsn => "dbi:SQLite:$dbpath", route => $r)
       if $self->mode eq 'development';
+
+    $r->any('/' => template 'page');
     
     # Auto routes
     $self->plugin('AutoRoute', route => $r);
     
     {
-      # Wiki
-      my $r = $r->route("/:wiki_id");
-    
+      # Wikis
+      # my $r = $r->route("/:wiki_id");
+      
       # List page
       $r->any('/_pages' => template '_pages');
       
@@ -167,7 +181,6 @@ my $table_infos = {
     primary_keys => ['id'],
     columns => [
       ["title", "not null default ''"],
-      ["main",  "not null default 0"]
     ]
   },
   user => {

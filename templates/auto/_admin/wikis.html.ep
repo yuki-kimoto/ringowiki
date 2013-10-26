@@ -88,7 +88,7 @@
       </div>
     % }
     
-    <div><h3>Admin Wikis</h3></div>
+    <div><h3>Wiki</h3></div>
     <div style="margin-bottom:10px"><a class="btn" href="<%= url_for('/_admin/wiki/create') %>">Create Wiki</a></div>
     <div class="container">
       <table class="table">

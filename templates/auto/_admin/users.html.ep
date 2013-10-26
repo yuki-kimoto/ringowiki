@@ -44,7 +44,7 @@
   my $users = $api->users;
 %>
 
-% layout 'common', title => 'Admin Users';
+% layout 'common', title => 'Users';
 
   %= javascript begin
     $(document).ready(function () {
@@ -88,7 +88,7 @@
       </div>
     % }
     
-    <div><h3>Admin Users</h3></div>
+    <div><h3>Users</h3></div>
     <div style="margin-bottom:10px"><a class="btn" href="<%= url_for('/_admin/user/create') %>">Create User</a></div>
     <div class="container">
       <table class="table">
@@ -110,7 +110,7 @@
       </table>
     </div>
   </div>
-  <div class="text-center" style="margin-bottom:20px"><big><a href="<%= url_for('/_admin') %>">Admin page</a></big></div>
+  <div class="text-center"><a href="<%= url_for('/_admin') %>">Administration</a></div>
   
   %= include '/include/footer';
   

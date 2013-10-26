@@ -1,29 +1,23 @@
 <%
-  my $wikies = app->dbi->model('wiki')->select->all;
+  my $wiki_main = app->dbi->model('wiki')->select(id => 'main')->one;
 %>
 
 % layout 'common', title => 'Admin';
 
 <div class="container">
 
-  <h1 class="header">Admin</h1>
-
-  <table class="table">
-    <tr>
-      <th><a href="<%= url_for '/_admin/wikis' %>">Admin Wiki</a></th>
-      <td>Admin wiki</td>
-    </tr>
-    <tr>
-      <th><a href="<%= url_for('/_admin/users') %>">Admin User</a></th>
-      <td>Admin user</td>
-    </tr>
-  </table>
+  <h1 class="header">Administration</h1>
   
-  % if ($self->app->mode eq 'development') {
-    <h2>Development</h2>
-    <a href="<%= url_for '/dbviewer' %>" class="btn btn-info">Tables</a>
-  % }
-
-  <div><a href="<%= url_for('/') %>">Top page</a></div>
-
+  <ul>
+    % if ($wiki_main) {
+      <li><a href="<%= url_for('/_admin/wiki/setting')->query(wiki => $wiki_main->{id}) %>">Wiki setting</a></li>
+    % } else {
+      <li><a href="<%= url_for '/_admin/wiki/create' %>">Create wiki</a></li>
+    % }
+    <li><a href="<%= url_for('/_admin/users') %>">Users</a></li>
+  </ul>
+  
+  <div>
+    <a href="<%= url_for('/') %>">Top</a>
+  </div>
 </div>

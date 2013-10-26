@@ -74,19 +74,19 @@
       </div>
     % }
     
-    <div><h3>Wiki Setting</h3></div>
-    <div class="border-gray bk-gray-light" style="padding:5px;font-weight:bold;font-size:17px">
-      
-    </div>
+    <h3>Wiki setting</h3>
+
     <form role="form" class="login_form form-horizontal" action="<%= url_for->query(op => 'update') %>" method="post">
-      <div class="form-group">
-        <label class="col-lg-2 control-label" for="wiki_id">Wiki ID</label>
-        <div class="col-lg-8">
-          <%= $wiki_id %>
-          %= hidden_field id => $wiki_id;
+      % if ($wiki_id ne 'main') {
+        <div class="form-group">
+          <label class="col-lg-2 control-label" for="wiki_id">Wiki ID</label>
+          <div class="col-lg-8">
+            <%= $wiki_id %>
+          </div>
         </div>
-       </div>
-       <div class="form-group">
+      % }
+      %= hidden_field id => $wiki_id;
+      <div class="form-group">
         <label class="col-lg-2 control-label" for="login_pw">Title</label>
         <div class="col-lg-8">
           %= text_field title => $wiki->{title}, class => "form-control", id => "title",  placeholder => "title";
@@ -98,6 +98,10 @@
         </div>
       </div>
     </form>
+  </div>
+  
+  <div>
+    <a href="<%= url_for('/_admin') %>">Administration</a>
   </div>
   
   %= include '/include/footer';

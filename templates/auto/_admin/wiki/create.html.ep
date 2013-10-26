@@ -20,18 +20,15 @@
     
     # Validation
     my $rule = [
-      id => [
-        [not_blank => 'Wiki ID is empty'],
-        [$wiki_exists_check => 'Wiki already exists']
-      ],
-      title => {require => 0, default => ''} => [
-        'any'
+      title => [
+        ['not_blank' => 'Title is empty']
       ]
     ];
     my $vresult = app->validator->validate($params, $rule);
     if ($vresult->is_ok) {
       # Safe parameters
       my $p = $vresult->data;
+      $p->{id} = 'main';
       
       # Create wiki
       my $dbi = app->dbi;
@@ -45,10 +42,10 @@
       # Error check
       if (my $e = $@) {
         $errors = ['Internal Error'];
-        app->log->error(url_with . " $@");
+        app->log->error(url_with . ":$e");
       }
       else {
-        flash(message => "Success: Wiki created($p->{id}, $p->{title}).");
+        flash(message => "Success: Wiki created. $p->{title}.");
         $self->redirect_to('current');
         return;
       }
@@ -81,12 +78,6 @@
   % }
   
   <form role="form" class="login_form form-horizontal" action="<%= url_for->query(op => 'create') %>" method="post">
-    <div class="form-group">
-      <label class="col-lg-2 control-label" for="wiki_id">Wiki ID</label>
-      <div class="col-lg-8">
-        %= text_field id => ($wiki_count ? '' : 'main'), class => "form-control", id => "wiki_id", placeholder => "Wiki ID";
-      </div>
-     </div>
      <div class="form-group">
       <label class="col-lg-2 control-label" for="login_pw">Title</label>
       <div class="col-lg-8">
@@ -99,3 +90,7 @@
       </div>
     </div>
   </form>
+  
+  <div>
+    <a href="<%= url_for('/_admin') %>">Administration</a>
+  </div>
