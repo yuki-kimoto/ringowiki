@@ -16,7 +16,6 @@
     
     %= javascript '/js/jquery-1.7.1.min.js';
     %= javascript '/js/bootstrap.min.js';
-    %= javascript '/js/ringowikiapi.js';
     
     %= stylesheet '/css/bootstrap.css';
     %= stylesheet '/css/common.css';
