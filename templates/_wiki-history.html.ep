@@ -1,0 +1,51 @@
+<%
+  my $api = wiki_api;
+
+  my $wiki_id = param('wiki_id');
+  
+  # DBI
+  my $dbi = app->dbi;
+  
+  # Page history
+  my $histories = $dbi->model('page_history')->select(
+    where => {wiki_id => $wiki_id},
+    append => 'order by ctime desc'
+  )->all;
+  
+  # Not found
+  unless (@$histories) {
+    $self->render_not_found;
+    return;
+  }
+%>
+
+% layout 'common', title => 'History';
+
+<h1 class="header">
+  Wiki history
+</h1>
+
+<table class="table table-striped">
+    <tr>
+      <th>Page</th>
+      <th>User</th>
+      <th>Time</th>
+      <th>Message</th>
+      <th>Operation</th>
+    </tr>
+  % for my $history (@$histories) {
+    <tr>
+      <td><%= $history->{page_name} %></td>
+      <td><%= $history->{user} || 'unknown' %></td>
+      <td>
+        %= $history->{ctime};
+      </td>
+      <td>
+        %= $history->{message} || 'no message';
+      </td>
+      <td>
+        <a href="#">See</a>
+      </td>
+    </tr>
+  % }
+</table>

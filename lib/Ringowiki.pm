@@ -139,6 +139,9 @@ sub startup {
       # Search
       $r->any('/_search' => template '_search');
       
+      # Wiki history
+      $r->any('/_wiki-history' => template '_wiki-history');
+      
       {
         # Page
         $r->any("/_create/:page_name" => {page_name => undef} => template '_create');
